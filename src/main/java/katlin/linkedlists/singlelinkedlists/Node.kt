@@ -3,10 +3,9 @@ package katlin.linkedlists.singlelinkedlists
 class Node(var item: Any?) {
     var next: Node? = null
 
-    override fun equals(o: Any?): Boolean {
-        if (o === this) return true
-        if (o !is Node) return false
-        val other = o
+    override fun equals(other: Any?): Boolean {
+        if (other === this) return true
+        if (other !is Node) return false
         if (!other.canEqual(this as Any)) return false
         val `this$item` = this.item
         val `other$item` = other.item
@@ -26,7 +25,8 @@ class Node(var item: Any?) {
         return other is Node
     }
 
-    override fun toString(): String {
-        return "jaba.linkedlists.singlelinkedlists.Node(item=" + this.item + ")"
-    }
+//    override fun toString(): String {
+//        return "jaba.linkedlists.singlelinkedlists.Node(item=" + this.item + ")"
+//    }
+    override fun toString(): String = "Node(item=${this.item})"
 }
