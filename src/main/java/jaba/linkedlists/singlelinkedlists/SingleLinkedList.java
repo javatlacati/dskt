@@ -41,16 +41,19 @@ public class SingleLinkedList {
         root = newNode;
     }
 
-    /**Index is 0 base
+    /**
+     * Index is 0 base
+     *
      * @param newNode
-     * @param index*/
+     * @param index
+     */
     public void addAtIndex(Node newNode, int index) {
         if (index == 0) {
             addAtRoot(newNode);
         } else {
             if (index > 0) {
                 root.addAtIndex(newNode, index, 0);
-            }else{
+            } else {
                 throw new IndexOutOfBoundsException("no negative index values allowed");
             }
         }
@@ -64,20 +67,26 @@ public class SingleLinkedList {
     public void addSingleLinkedListAtEnd(SingleLinkedList singleLinkedList) {
         root.add(singleLinkedList.getRoot());
     }
-    
-    public void printList(){
+
+    public void printList() {
         System.out.println(getStrings());
     }
 
-    public void remove() {
-
+    public void removeLast() {
+        if (root != null) {
+            if(root.getNext()==null){
+                root=null;
+            }else{
+                root.removeLast();
+            }
+        }
     }
 
     public void reverse() {
-        
+        root.reverse();
     }
 
     private String getStrings() {
-        return root==null?"":root.getStrings();
+        return root == null ? "" : root.getStrings();
     }
 }

@@ -50,4 +50,18 @@ public class Node<T> {
     String getStrings() {
         return next == null ? toString() : toString() + next.getStrings();
     }
+
+    void removeLast() {
+        if(next!=null){
+            if(next.getNext()==null){
+                next=null;
+            }else{
+                next.removeLast();
+            }
+        }
+    }
+
+    void reverse() {
+        
+    }
 }
