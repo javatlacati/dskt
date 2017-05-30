@@ -24,9 +24,10 @@ class JosephusProblem(internal val romanSoldiersNumber: Int, internal val iterat
         }
 
     companion object {
-        fun main(args: Array<String>?) {
-            val josephusProblem = JosephusProblem(10, 10)
-            System.out.println(josephusProblem.survivor)
+        @JvmStatic
+        fun main(args: Array<String>) {
+                val josephusProblem = JosephusProblem(10, 10)
+                System.out.println(josephusProblem.survivor)
         }
     }
 }
