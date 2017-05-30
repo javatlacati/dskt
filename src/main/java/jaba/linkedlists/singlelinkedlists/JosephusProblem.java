@@ -12,9 +12,9 @@ public class JosephusProblem {
     final int iteration;
 
     Node getSurvivor() {
-        Node tail = new Node(1);
+        Node tail = new Node(0);
         Node survivor = tail;
-        for (int i = 0; i < romanSoldiersNumber; i++) {
+        for (int i = 1; i <= romanSoldiersNumber; i++) {
             survivor.setNext(new Node(i));
             survivor = survivor.getNext();
         }
@@ -27,5 +27,11 @@ public class JosephusProblem {
             }
         }
         return survivor;
+    }
+    
+    public static void main(String[] args) {
+        JosephusProblem josephusProblem = new JosephusProblem(10,10);
+        Node survivor = josephusProblem.getSurvivor();
+        System.out.println(survivor);
     }
 }
