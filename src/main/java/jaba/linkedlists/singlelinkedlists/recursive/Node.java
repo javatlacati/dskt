@@ -1,4 +1,4 @@
-package jaba.linkedlists.singlelinkedlists;
+package jaba.linkedlists.singlelinkedlists.recursive;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
