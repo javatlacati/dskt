@@ -4,6 +4,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import lombok.val;
 
 /**
  * Created by Administrador on 22/05/2017.
@@ -52,16 +53,26 @@ public class Node<T> {
     }
 
     void removeLast() {
-        if(next!=null){
-            if(next.getNext()==null){
-                next=null;
-            }else{
+        if (next != null) {
+            if (next.getNext() == null) {
+                next = null;
+            } else {
                 next.removeLast();
             }
         }
     }
 
     void reverse() {
-        
+        if (next != null) {
+            if (next.getNext() != null) {
+                if (next.getNext().getNext() != null) {
+                    next.getNext().reverse();
+                }else{
+                    val aux= next.getNext();
+                    val aux1=aux.getNext();
+                    
+                }
+            }
+        }
     }
 }

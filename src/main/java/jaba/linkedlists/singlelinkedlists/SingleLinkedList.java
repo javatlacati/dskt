@@ -74,16 +74,18 @@ public class SingleLinkedList {
 
     public void removeLast() {
         if (root != null) {
-            if(root.getNext()==null){
-                root=null;
-            }else{
+            if (root.getNext() == null) {
+                root = null;
+            } else {
                 root.removeLast();
             }
         }
     }
 
     public void reverse() {
-        root.reverse();
+        if (root.getNext() != null) {
+            root.reverse();
+        }
     }
 
     private String getStrings() {
