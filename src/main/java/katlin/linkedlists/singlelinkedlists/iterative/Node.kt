@@ -28,8 +28,5 @@ class Node(var item: Any?) {
         return other is Node
     }
 
-    //    override fun toString(): String {
-//        return "jaba.linkedlists.singlelinkedlists.Node(item=" + this.item + ")"
-//    }
     override fun toString(): String = "Node(item=${this.item})"
 }
