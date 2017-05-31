@@ -1,5 +1,6 @@
 package jaba.linkedlists.singlelinkedlists.iterative;
 
+import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,6 +9,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
+@EqualsAndHashCode(of = "root")
 public class SingleLinkedList {
     private Node root;
 
