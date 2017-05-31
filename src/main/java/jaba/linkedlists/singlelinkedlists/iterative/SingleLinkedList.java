@@ -67,4 +67,13 @@ public class SingleLinkedList {
             }
         }
     }
+
+    public void addSingleLinkedListAtRoot(SingleLinkedList singleLinkedList) {
+        singleLinkedList.addAtEnd(root);
+        root = singleLinkedList.getRoot();
+    }
+
+    public void addSingleLinkedListAtEnd(SingleLinkedList singleLinkedList) {
+        addAtRoot(singleLinkedList.getRoot());
+    }
 }
