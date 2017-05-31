@@ -76,4 +76,10 @@ public class SingleLinkedList {
     public void addSingleLinkedListAtEnd(SingleLinkedList singleLinkedList) {
         addAtRoot(singleLinkedList.getRoot());
     }
+
+    public void printList() {
+        System.out.println(getStrings());
+    }
+
+
 }
