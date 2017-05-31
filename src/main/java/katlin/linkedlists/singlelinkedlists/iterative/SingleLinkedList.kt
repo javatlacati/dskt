@@ -1,8 +1,5 @@
 package katlin.linkedlists.singlelinkedlists.iterative
 
-/**
- * Created by Core i7 on 30/05/2017.
- */
 class SingleLinkedList {
     var root: Node? = null
 
@@ -31,5 +28,10 @@ class SingleLinkedList {
             }
             actual!!.next = newNode
         }
+    }
+
+    fun addAtRoot(newNode: Node) {
+        newNode.next=root
+        root = newNode
     }
 }

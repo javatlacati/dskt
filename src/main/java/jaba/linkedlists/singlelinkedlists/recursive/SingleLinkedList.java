@@ -19,10 +19,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- *
- * @author Core i7
- */
 @Setter
 @Getter
 @EqualsAndHashCode(of = "root")
