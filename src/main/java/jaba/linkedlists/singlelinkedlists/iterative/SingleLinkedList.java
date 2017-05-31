@@ -3,6 +3,7 @@ package jaba.linkedlists.singlelinkedlists.iterative;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.val;
 
 @Setter
 @Getter
@@ -52,12 +53,12 @@ public class SingleLinkedList {
             addAtRoot(newNode);
         } else {
             if (index > 0) {
-                Node currentNode=root.getNext();
+                Node currentNode = root.getNext();
                 for (int currentIndex = 1; currentIndex < index; currentIndex++) {
                     Node next = currentNode.getNext();
                     if (next != null) {
-                        currentNode= next;
-                    }else{
+                        currentNode = next;
+                    } else {
                         throw new IndexOutOfBoundsException("the specified index is not possible to reach");
                     }
                 }
@@ -81,5 +82,19 @@ public class SingleLinkedList {
         System.out.println(getStrings());
     }
 
-
+    public void removeLast() {
+        if (root != null) {
+            if (root.getNext() == null) {
+                root = null;
+            } else {
+                Node currentNode = root;
+                while (currentNode.getNext() != null) {
+                    currentNode = currentNode.getNext();
+                }
+                if (currentNode.getNext() == null) {
+                    currentNode.setNext(null);
+                }
+            }
+        }
+    }
 }
