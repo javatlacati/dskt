@@ -3,6 +3,7 @@ package jaba.queue;
 import org.databene.contiperf.PerfTest;
 import org.databene.contiperf.junit.ContiPerfRule;
 import org.databene.contiperf.junit.ParallelRunner;
+import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -33,6 +34,7 @@ public class ArrayBasedQueueTest {
             queue.enqueue(i);
         }
         assertEquals("ArrayBasedQueue(queueArray=[0, 1, 2, 3, 4])", queue.toString());
+        assertThat(queue.isFull()).isNotNull();
         assertTrue(queue.isFull());
     }
 
