@@ -4,9 +4,6 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 
-/**
- * Created by Core i7 on 30/05/2017.
- */
 @Setter
 @Getter
 @EqualsAndHashCode(of = "root")
@@ -37,5 +34,10 @@ public class SingleLinkedList {
             }
             actual.setNext(newNode);
         }
+    }
+
+    public void addAtRoot(Node newNode) {
+        newNode.setNext(root);
+        root = newNode;
     }
 }
