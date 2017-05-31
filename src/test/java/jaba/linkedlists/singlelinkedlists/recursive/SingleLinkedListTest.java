@@ -1,5 +1,6 @@
 package jaba.linkedlists.singlelinkedlists.recursive;
 
+import lombok.val;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -9,8 +10,11 @@ import static org.junit.Assert.*;
  * Created by Core i7 on 31/05/2017.
  */
 public class SingleLinkedListTest {
+    SingleLinkedList instance;
+
     @Before
     public void setUp() throws Exception {
+        instance = new SingleLinkedList();
     }
 
     @Test
@@ -36,7 +40,6 @@ public class SingleLinkedListTest {
     @Test
     public void printList() throws Exception {
         System.out.println("printList");
-        SingleLinkedList instance = new SingleLinkedList();
         instance.addAtEnd(new Node("Adios"));
         instance.addAtEnd(new Node("mundo"));
         instance.addAtEnd(new Node("cruel"));
@@ -49,6 +52,15 @@ public class SingleLinkedListTest {
 
     @Test
     public void reverse() throws Exception {
+        instance.addAtEnd(new Node("Adios"));
+        instance.addAtEnd(new Node("mundo"));
+        instance.addAtEnd(new Node("cruel"));
+        val instance1 = new SingleLinkedList();
+        instance1.addAtEnd(new Node("cruel"));
+        instance.addAtEnd(new Node("mundo"));
+        instance.addAtEnd(new Node("Adios"));
+        instance.reverse();
+        assertEquals(instance1, instance);
     }
 
     @Test
