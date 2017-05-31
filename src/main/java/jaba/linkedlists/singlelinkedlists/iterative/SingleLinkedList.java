@@ -40,4 +40,31 @@ public class SingleLinkedList {
         newNode.setNext(root);
         root = newNode;
     }
+
+    /**
+     * Index is 0 base
+     *
+     * @param newNode
+     * @param index
+     */
+    public void addAtIndex(Node newNode, int index) {
+        if (index == 0) {
+            addAtRoot(newNode);
+        } else {
+            if (index > 0) {
+                Node currentNode=root.getNext();
+                for (int currentIndex = 1; currentIndex < index; currentIndex++) {
+                    Node next = currentNode.getNext();
+                    if (next != null) {
+                        currentNode= next;
+                    }else{
+                        throw new IndexOutOfBoundsException("the specified index is not possible to reach");
+                    }
+                }
+                currentNode.setNext(newNode);
+            } else {
+                throw new IndexOutOfBoundsException("no negative index values allowed");
+            }
+        }
+    }
 }
