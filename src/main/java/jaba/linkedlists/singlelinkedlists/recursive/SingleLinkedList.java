@@ -90,7 +90,7 @@ public class SingleLinkedList {
         }
     }
 
-    private String getStrings() {
+    public String getStrings() {
         return root == null ? "" : root.getStrings();
     }
 }

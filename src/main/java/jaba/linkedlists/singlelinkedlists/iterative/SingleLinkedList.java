@@ -13,7 +13,7 @@ import lombok.Setter;
 public class SingleLinkedList {
     private Node root;
 
-    private String getStrings() {
+    public String getStrings() {
         if (root == null) {
             return "";
         } else {
@@ -21,9 +21,21 @@ public class SingleLinkedList {
             Node actual = root;
             while (actual.getNext() != null) {
                 actual = actual.getNext();
-                salida += salida.toString();
+                salida += actual.toString();
             }
             return salida;
+        }
+    }
+
+    public void addAtEnd(Node newNode) {
+        if (root == null) {
+            root = newNode;
+        } else {
+            Node actual = root;
+            while (actual.getNext() != null) {
+                actual = actual.getNext();
+            }
+            actual.setNext(newNode);
         }
     }
 }
