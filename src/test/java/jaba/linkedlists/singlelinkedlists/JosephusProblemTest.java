@@ -1,5 +1,6 @@
 package jaba.linkedlists.singlelinkedlists;
 
+import jaba.linkedlists.singlelinkedlists.recursive.Node;
 import org.junit.Assert;
 import org.junit.Test;
 
