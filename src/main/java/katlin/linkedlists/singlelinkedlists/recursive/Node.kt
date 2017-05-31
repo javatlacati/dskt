@@ -1,4 +1,4 @@
-package katlin.linkedlists.singlelinkedlists
+package katlin.linkedlists.singlelinkedlists.recursive
 
 class Node(var item: Any?) {
     var next: Node? = null

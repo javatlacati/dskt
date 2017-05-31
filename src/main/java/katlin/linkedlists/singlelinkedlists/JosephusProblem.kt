@@ -1,5 +1,7 @@
 package katlin.linkedlists.singlelinkedlists
 
+import katlin.linkedlists.singlelinkedlists.recursive.Node
+
 /**
  * Created by Administrador on 24/05/2017.
  */
