@@ -21,7 +21,7 @@ public class ArrayBasedQueue {
         queueArray = new Object[this.capacity];
     }
 
-    public void enqueue(Object item) {
+    public synchronized void enqueue(Object item) {
         if (isFull()) {
             throw new OutOfMemoryError("Queue Capacity has been excedeed");
         } else {
@@ -30,7 +30,7 @@ public class ArrayBasedQueue {
 
     }
 
-    public Object dequeue() {
+    public synchronized Object dequeue() {
         if (isEmpty()) {
             throw new IndexOutOfBoundsException("Queue Undeflow");
         } else {

@@ -1,16 +1,25 @@
 package jaba.queue;
 
+import org.databene.contiperf.PerfTest;
+import org.databene.contiperf.junit.ContiPerfRule;
+import org.databene.contiperf.junit.ParallelRunner;
 import org.junit.Before;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 
 import static org.junit.Assert.*;
 
 /**
  * Created by Core i7 on 31/05/2017.
  */
+//@RunWith(ParallelRunner.class)
 public class ArrayBasedQueueTest {
     ArrayBasedQueue queue;
     private static final int initialCapacity = 5;
+
+    @Rule
+    public ContiPerfRule i = new ContiPerfRule();
 
     @Before
     public void setUp() throws Exception {
@@ -18,6 +27,7 @@ public class ArrayBasedQueueTest {
     }
 
     @Test
+    @PerfTest(invocations = 1000, threads = 2)
     public void enqueue() throws Exception {
         for (int i = 0; i < initialCapacity; i++) {
             queue.enqueue(i);
@@ -27,6 +37,7 @@ public class ArrayBasedQueueTest {
     }
 
     @Test
+    @PerfTest(invocations = 1000, threads = 2)
     public void dequeue() throws Exception {
         for (int i = 0; i < 3; i++) {
             queue.enqueue(i);
