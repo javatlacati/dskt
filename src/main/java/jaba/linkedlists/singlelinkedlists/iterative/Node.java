@@ -14,7 +14,7 @@ import lombok.ToString;
 @ToString(of = "item")
 public class Node {
     private Object item;
-    private jaba.linkedlists.singlelinkedlists.recursive.Node next;
+    private Node next;
 
     public Node(Object item) {
         this.item = item;
