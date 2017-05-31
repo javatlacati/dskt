@@ -25,8 +25,18 @@ class Node(var item: Any?) {
         return other is Node
     }
 
-//    override fun toString(): String {
-//        return "jaba.linkedlists.singlelinkedlists.Node(item=" + this.item + ")"
-//    }
     override fun toString(): String = "Node(item=${this.item})"
+
+    @Synchronized internal fun add(newNode: Node) {
+        if (next == null) {
+            next = newNode
+        } else {
+            next!!.add(newNode)
+        }
+    }
+
+    internal val strings: String
+        get() {
+            return if (next == null) toString() else toString() + next!!.strings
+        }
 }
