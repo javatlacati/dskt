@@ -5,9 +5,9 @@ import lombok.ToString;
 
 @ToString(of = "stackArray")
 public class ArrayBasedStack {
-    private Object stackArray[];
+    Object[] stackArray;
     @Getter
-    private int topPosition;
+    int topPosition;
 
     public ArrayBasedStack(int capacity) {
         stackArray = new Object[capacity];
