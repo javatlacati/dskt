@@ -23,14 +23,14 @@ public class AutoGrowingArrayBasedStack extends ArrayBasedStack {
 
     @Override
     public void push(Object item) {
-        if (stackArray.length > topPosition) {
-            super.push(item);
-        } else {
-            val newArray=new Object[stackArray.length+capacityIncrement];
+        if (stackArray.length <= topPosition) {
+            val newCapacity = stackArray.length + capacityIncrement;
+            val newArray=new Object[newCapacity];
             for (int i = 0; i < stackArray.length; i++) {
                 newArray[i]=stackArray[i];
             }
             stackArray=newArray;
         }
+        super.push(item);
     }
 }

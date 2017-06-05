@@ -12,9 +12,9 @@ import lombok.val;
 public class ArrayBasedQueue {
     @Getter
     @Setter
-    private int capacity;
-    private Object queueArray[];
-    private int topIndex = 0;
+    int capacity;
+    Object[] queueArray;
+    int topIndex = 0;
 
     public ArrayBasedQueue(int queueSize) {
         this.capacity = queueSize;
