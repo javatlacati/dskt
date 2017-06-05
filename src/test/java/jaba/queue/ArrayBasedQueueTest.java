@@ -1,14 +1,10 @@
 package jaba.queue;
 
 import org.databene.contiperf.PerfTest;
-import org.databene.contiperf.junit.ContiPerfRule;
-import org.databene.contiperf.junit.ParallelRunner;
-import static org.fest.assertions.Assertions.assertThat;
 import org.junit.Before;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 
+import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.*;
 
 /**
@@ -19,8 +15,8 @@ public class ArrayBasedQueueTest {
     ArrayBasedQueue queue;
     private static final int initialCapacity = 5;
 
-    @Rule
-    public ContiPerfRule i = new ContiPerfRule();
+//    @Rule
+//    public ContiPerfRule i = new ContiPerfRule();
 
     @Before
     public void setUp() throws Exception {
