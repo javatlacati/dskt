@@ -2,11 +2,13 @@ package jaba.stack;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 import lombok.val;
 
 /**
  * Created by Administrador on 05/06/2017.
  */
+@ToString(callSuper = true,of = {"capacityIncrement"})
 public class AutoGrowingArrayBasedStack extends ArrayBasedStack {
     @Getter
     @Setter
