@@ -3,7 +3,7 @@ package jaba.stack;
 import lombok.Getter;
 import lombok.ToString;
 
-@ToString(of = "stackArray")
+@ToString(of = {"stackArray", "topPosition"})
 public class ArrayBasedStack {
     Object[] stackArray;
     @Getter
@@ -22,9 +22,9 @@ public class ArrayBasedStack {
     }
 
     public Object pop() {
-        if(topPosition>0) {
+        if (topPosition > 0) {
             return stackArray[--topPosition];
-        }else{
+        } else {
             throw new IndexOutOfBoundsException("Capacity underflow");
         }
     }
