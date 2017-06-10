@@ -61,9 +61,9 @@ public class MyListTest {
         myList.add("hola");
         Object[] arr = new Object[]{"hola"};
         assertArrayEquals(arr, myList.toArray());
-//        myList.add("mundo!");
-//        arr = new Object[]{"hola", "mundo"};
-//        assertArrayEquals(arr, myList.toArray());
+        myList.add("mundo!");
+        arr = new Object[]{"hola", "mundo!"};
+        assertArrayEquals(arr, myList.toArray());
     }
 
     @Test
