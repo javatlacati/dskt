@@ -100,4 +100,31 @@ public class Node<T> {
             }
         }
     }
+
+    public Object[] toArray() {
+        Object[] internalArray = privateCreateArray(1);
+        if (next != null) {
+            return next.toArray(2, internalArray);
+        } else {
+            internalArray[0] = item;
+            return internalArray;
+        }
+    }
+
+    private Object[] toArray(int i, Object[] internalArray) {
+        internalArray[i - 1] = item;
+        if (next != null) {
+            return next.toArray(i + 1, internalArray);
+        } else {
+            return internalArray;
+        }
+    }
+
+    Object[] privateCreateArray(int i) {
+        if (next == null) {
+            return new Object[i];
+        } else {
+            return next.privateCreateArray(i + 1);
+        }
+    }
 }

@@ -128,4 +128,20 @@ public class SingleLinkedList implements MyList {
         }
         return false;
     }
+
+    @Override
+    public Object[] toArray() {
+        int size = size();
+        Object[] retorno = new Object[size];
+        if(size!=0){
+            Node currentNode = root;
+            int index=0;
+            while (currentNode != null) {
+                currentNode = currentNode.getNext();
+                retorno[index]=currentNode.getItem();
+                index++;
+            }
+        }
+        return retorno;
+    }
 }

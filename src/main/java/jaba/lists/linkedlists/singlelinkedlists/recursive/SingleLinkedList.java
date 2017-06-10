@@ -120,4 +120,13 @@ public class SingleLinkedList implements MyList {
             }
         }
     }
+
+    @Override
+    public Object[] toArray() {
+        if(root==null) {
+            return new Object[0];
+        }else {
+            return root.toArray();
+        }
+    }
 }
