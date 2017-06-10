@@ -142,8 +142,8 @@ public class SingleLinkedList implements MyList {
             Node currentNode = root;
             int index = 0;
             while (currentNode != null) {
-                currentNode = currentNode.getNext();
                 retorno[index] = currentNode.getItem();
+                currentNode = currentNode.getNext();
                 index++;
             }
         }

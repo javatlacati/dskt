@@ -58,6 +58,12 @@ public class MyListTest {
     @Test
     public void toArray() throws Exception {
         assertArrayEquals(new Object[0], myList.toArray());
+        myList.add("hola");
+        Object[] arr = new Object[]{"hola"};
+        assertArrayEquals(arr, myList.toArray());
+//        myList.add("mundo!");
+//        arr = new Object[]{"hola", "mundo"};
+//        assertArrayEquals(arr, myList.toArray());
     }
 
     @Test
