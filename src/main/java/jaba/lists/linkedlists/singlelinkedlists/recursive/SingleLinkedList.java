@@ -103,4 +103,21 @@ public class SingleLinkedList implements MyList {
     public boolean isEmpty() {
         return root==null;
     }
+
+    @Override
+    public boolean contains(Object o) {
+        if (root == null && o == null) {
+            return false;
+        }else{
+            if(root.equals(o)){
+                return true;
+            }else{
+                if (root.getNext()!=null){
+                    return root.getNext().contains(o);
+                }else{
+                    return false;
+                }
+            }
+        }
+    }
 }

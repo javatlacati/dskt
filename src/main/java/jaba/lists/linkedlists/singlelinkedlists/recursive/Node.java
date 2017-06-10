@@ -25,6 +25,7 @@ public class Node<T> {
     }
 
     //second step
+
     /**
      * Appends a node at the end.
      */
@@ -67,21 +68,36 @@ public class Node<T> {
             if (next.getNext() != null) {
                 if (next.getNext().getNext() != null) {
                     next.getNext().reverse();
-                }else{
-                    val aux= next.getNext();
-                    val aux1=aux.getNext();
-                    
+                } else {
+                    val aux = next.getNext();
+                    val aux1 = aux.getNext();
+
                 }
             }
         }
     }
 
     public int size(int i) {
-        if(next==null) {
+        if (next == null) {
             return i;
-        }else {
-            int i1 = i+1;
+        } else {
+            int i1 = i + 1;
             return next.size(i1);
+        }
+    }
+
+    /**
+     * rercursive implementation!
+     */
+    public boolean contains(Object o) {
+        if (item.equals(o)) {
+            return true;
+        } else {
+            if (next != null) {
+                return next.contains(o);
+            } else {
+                return false;
+            }
         }
     }
 }

@@ -6,4 +6,6 @@ package jaba.lists;
 public interface MyList {
     int size();
     boolean isEmpty();
+    boolean contains(Object o);
+    //Object[] toArray();
 }

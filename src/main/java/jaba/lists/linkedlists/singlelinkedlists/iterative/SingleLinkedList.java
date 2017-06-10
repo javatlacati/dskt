@@ -100,10 +100,10 @@ public class SingleLinkedList implements MyList {
 
     @Override
     public int size() {
-        int size=0;
-        Node currentNode=root;
-        while (currentNode!=null){
-            currentNode=currentNode.getNext();
+        int size = 0;
+        Node currentNode = root;
+        while (currentNode != null) {
+            currentNode = currentNode.getNext();
             size++;
         }
         return size;
@@ -111,6 +111,21 @@ public class SingleLinkedList implements MyList {
 
     @Override
     public boolean isEmpty() {
-        return root==null;
+        return root == null;
+    }
+
+    @Override
+    public boolean contains(Object o) {
+        if (root == null && o == null) {
+            return false;
+        } else {
+            Node currentNode = root;
+            while (currentNode != null) {
+                if (currentNode.equals(o))
+                    return true;
+                currentNode = currentNode.getNext();
+            }
+        }
+        return false;
     }
 }
