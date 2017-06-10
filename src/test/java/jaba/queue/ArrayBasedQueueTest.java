@@ -4,7 +4,7 @@ import org.databene.contiperf.PerfTest;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.fest.assertions.Assertions.assertThat;
+//import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.*;
 
 /**
@@ -30,7 +30,8 @@ public class ArrayBasedQueueTest {
             queue.enqueue(i);
         }
         assertEquals("ArrayBasedQueue(queueArray=[0, 1, 2, 3, 4])", queue.toString());
-        assertThat(queue.isFull()).isNotNull();
+//        assertThat(queue.isFull()).isNotNull();
+        assertNotNull(queue.isFull());
         assertTrue(queue.isFull());
     }
 
