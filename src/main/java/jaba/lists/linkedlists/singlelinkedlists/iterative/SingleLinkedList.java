@@ -108,4 +108,9 @@ public class SingleLinkedList implements MyList {
         }
         return size;
     }
+
+    @Override
+    public boolean isEmpty() {
+        return root==null;
+    }
 }

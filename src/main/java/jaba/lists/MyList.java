@@ -1,8 +1,9 @@
 package jaba.lists;
 
 /**
- * Created by Administrador on 10/06/2017.
+ * we will try to reach java.util.List features
  */
 public interface MyList {
     int size();
+    boolean isEmpty();
 }

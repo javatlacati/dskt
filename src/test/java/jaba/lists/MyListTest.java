@@ -9,6 +9,7 @@ import java.util.Collection;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Administrador on 10/06/2017.
@@ -25,13 +26,18 @@ public class MyListTest {
                 }
         );
     }
-    //tests
-
 
     public MyList myInterface;
 
+
     public MyListTest(MyList myInterface) {
         this.myInterface = myInterface;
+    }
+
+    //tests
+    @Test
+    public void isEmpty() throws Exception {
+        assertTrue(myInterface.isEmpty());
     }
 
     @Test
