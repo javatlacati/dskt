@@ -7,9 +7,7 @@ import org.junit.runners.Parameterized;
 import java.util.Arrays;
 import java.util.Collection;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 /**
  * Created by Administrador on 10/06/2017.
@@ -29,10 +27,10 @@ public class MyListTest {
 
     public MyList myInterface;
 
-
     public MyListTest(MyList myInterface) {
         this.myInterface = myInterface;
     }
+
 
     //tests
     @Test
@@ -44,6 +42,11 @@ public class MyListTest {
     public void size() throws Exception {
         assertNotNull(myInterface.size());
         assertEquals(0, myInterface.size());
+    }
+
+    @Test
+    public void contains() throws Exception {
+        assertFalse(myInterface.contains(null));
     }
 
 }
