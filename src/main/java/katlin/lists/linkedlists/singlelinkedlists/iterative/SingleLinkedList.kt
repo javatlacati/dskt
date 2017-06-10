@@ -1,6 +1,8 @@
-package katlin.lists.singlelinkedlists.iterative
+package katlin.lists.linkedlists.singlelinkedlists.iterative
 
-class SingleLinkedList {
+import katlin.lists.MyList
+
+class SingleLinkedList: MyList {
     var root: Node? = null
 
     internal val strings: String
@@ -34,4 +36,14 @@ class SingleLinkedList {
         newNode.next=root
         root = newNode
     }
+    override fun size(): Int {
+        var size = 0
+        var currentNode: Node? = root
+        while (currentNode != null) {
+            currentNode = currentNode.next
+            size++
+        }
+        return size
+    }
+
 }

@@ -1,14 +1,13 @@
-package katlin.lists.singlelinkedlists.iterative
-
-import org.junit.Before
-import org.junit.Test
+package katlin.lists.linkedlists.singlelinkedlists.iterative
 
 import org.junit.Assert.*
+import org.junit.Before
+import org.junit.Test
 
 /**
  * Created by Core i7 on 31/05/2017.
  */
-class SingleLinkedListTest {
+class SingleLinkedListTest  {
     internal var instance: SingleLinkedList? = null
     @Before
     @Throws(Exception::class)
@@ -53,5 +52,4 @@ class SingleLinkedListTest {
         instance!!.root = Node(3)
         assertNotNull(instance!!.root)
     }
-
 }

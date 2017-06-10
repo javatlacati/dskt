@@ -1,8 +1,5 @@
-package katlin.lists.singlelinkedlists.iterative
+package katlin.lists.linkedlists.singlelinkedlists.recursive
 
-/**
- * Created by Core i7 on 30/05/2017.
- */
 class Node(var item: Any?) {
     var next: Node? = null
 
@@ -29,4 +26,26 @@ class Node(var item: Any?) {
     }
 
     override fun toString(): String = "Node(item=${this.item})"
+
+    @Synchronized internal fun add(newNode: Node) {
+        if (next == null) {
+            next = newNode
+        } else {
+            next!!.add(newNode)
+        }
+    }
+
+    internal val strings: String
+        get() {
+            return if (next == null) toString() else toString() + next!!.strings
+        }
+
+    fun size(i: Int): Int {
+        if (next == null) {
+            return i
+        } else {
+            val i1 = i + 1
+            return next!!.size(i1)
+        }
+    }
 }

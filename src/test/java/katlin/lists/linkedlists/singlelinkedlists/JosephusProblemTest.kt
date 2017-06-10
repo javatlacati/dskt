@@ -1,4 +1,4 @@
-package katlin.lists.singlelinkedlists
+package katlin.lists.linkedlists.singlelinkedlists
 
 import junit.framework.Assert.assertNotNull
 import org.junit.Test
