@@ -25,28 +25,33 @@ public class MyListTest {
         );
     }
 
-    public MyList myInterface;
+    public MyList myList;
 
-    public MyListTest(MyList myInterface) {
-        this.myInterface = myInterface;
+    public MyListTest(MyList myList) {
+        this.myList = myList;
     }
-
 
     //tests
     @Test
     public void isEmpty() throws Exception {
-        assertTrue(myInterface.isEmpty());
+        assertTrue(myList.isEmpty());
     }
+
 
     @Test
     public void size() throws Exception {
-        assertNotNull(myInterface.size());
-        assertEquals(0, myInterface.size());
+        assertNotNull(myList.size());
+        assertEquals(0, myList.size());
     }
 
     @Test
     public void contains() throws Exception {
-        assertFalse(myInterface.contains(null));
+        assertFalse(myList.contains(null));
+    }
+
+    @Test
+    public void toArray() throws Exception {
+        assertArrayEquals(new Object[0], myList.toArray());
     }
 
 }
