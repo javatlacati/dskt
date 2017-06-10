@@ -1,4 +1,4 @@
-package katlin
+package katlin.adt
 
 class LabeledPoint(override var y: Double, override var x: Double, var label: String) : Point() {
 

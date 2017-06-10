@@ -1,4 +1,4 @@
-package jaba;
+package jaba.adt;
 
 
 import lombok.AllArgsConstructor;

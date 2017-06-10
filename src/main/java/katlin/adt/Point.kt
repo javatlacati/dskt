@@ -1,4 +1,4 @@
-package katlin
+package katlin.adt
 
 open class Point {
     open var y: Double
