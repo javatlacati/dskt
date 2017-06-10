@@ -27,11 +27,16 @@ public class SingleLinkedList implements MyList {
 
     private Node root;
 
-    public void addAtEnd(Node newNode) {
-        if (root == null) {
-            root = newNode;
-        } else {
-            root.add(newNode);
+    public boolean addAtEnd(Node newNode) {
+        try {
+            if (root == null) {
+                root = newNode;
+            } else {
+                root.add(newNode);
+            }
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 
@@ -93,28 +98,28 @@ public class SingleLinkedList implements MyList {
 
     @Override
     public int size() {
-        if(root==null) {
+        if (root == null) {
             return 0;
-        }else
+        } else
             return root.size(1);
     }
 
     @Override
     public boolean isEmpty() {
-        return root==null;
+        return root == null;
     }
 
     @Override
     public boolean contains(Object o) {
         if (root == null && o == null) {
             return false;
-        }else{
-            if(root.equals(o)){
+        } else {
+            if (root.equals(o)) {
                 return true;
-            }else{
-                if (root.getNext()!=null){
+            } else {
+                if (root.getNext() != null) {
                     return root.getNext().contains(o);
-                }else{
+                } else {
                     return false;
                 }
             }
@@ -123,10 +128,20 @@ public class SingleLinkedList implements MyList {
 
     @Override
     public Object[] toArray() {
-        if(root==null) {
+        if (root == null) {
             return new Object[0];
-        }else {
+        } else {
             return root.toArray();
         }
+    }
+
+    @Override
+    public boolean add(Object o) {
+        return addAtEnd(new Node(o));
+    }
+
+    @Override
+    public void clear() {
+        root=null;
     }
 }

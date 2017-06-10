@@ -1,5 +1,6 @@
 package jaba.lists;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -31,18 +32,23 @@ public class MyListTest {
         this.myList = myList;
     }
 
+    @Before
+    public void setUp() throws Exception {
+        myList.clear();
+    }
+
     //tests
     @Test
     public void isEmpty() throws Exception {
         assertTrue(myList.isEmpty());
     }
 
-
     @Test
     public void size() throws Exception {
         assertNotNull(myList.size());
         assertEquals(0, myList.size());
     }
+
 
     @Test
     public void contains() throws Exception {
@@ -52,6 +58,12 @@ public class MyListTest {
     @Test
     public void toArray() throws Exception {
         assertArrayEquals(new Object[0], myList.toArray());
+    }
+
+    @Test
+    public void add() throws Exception {
+        assertTrue(myList.add("hola"));
+        assertTrue(myList.add("mundo!"));
     }
 
 }

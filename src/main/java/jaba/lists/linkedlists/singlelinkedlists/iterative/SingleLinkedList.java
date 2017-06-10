@@ -25,15 +25,20 @@ public class SingleLinkedList implements MyList {
         }
     }
 
-    public void addAtEnd(Node newNode) {
-        if (root == null) {
-            root = newNode;
-        } else {
-            Node actual = root;
-            while (actual.getNext() != null) {
-                actual = actual.getNext();
+    public boolean addAtEnd(Node newNode) {
+        try {
+            if (root == null) {
+                root = newNode;
+            } else {
+                Node actual = root;
+                while (actual.getNext() != null) {
+                    actual = actual.getNext();
+                }
+                actual.setNext(newNode);
             }
-            actual.setNext(newNode);
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 
@@ -133,15 +138,25 @@ public class SingleLinkedList implements MyList {
     public Object[] toArray() {
         int size = size();
         Object[] retorno = new Object[size];
-        if(size!=0){
+        if (size != 0) {
             Node currentNode = root;
-            int index=0;
+            int index = 0;
             while (currentNode != null) {
                 currentNode = currentNode.getNext();
-                retorno[index]=currentNode.getItem();
+                retorno[index] = currentNode.getItem();
                 index++;
             }
         }
         return retorno;
+    }
+
+    @Override
+    public boolean add(Object o) {
+        return addAtEnd(new Node(o));
+    }
+
+    @Override
+    public void clear() {
+        root=null;
     }
 }
