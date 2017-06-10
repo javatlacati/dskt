@@ -28,9 +28,9 @@ public class MyListTest {
     //tests
 
 
-    public katlin.lists.MyList myInterface;
+    public MyList myInterface;
 
-    public MyListTest(katlin.lists.MyList myInterface) {
+    public MyListTest(MyList myInterface) {
         this.myInterface = myInterface;
     }
 
