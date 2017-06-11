@@ -54,7 +54,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
             @Override
             public boolean hasNext() {
-                return topPosition != internalArray.length - 1;
+                return currentElementIdx < topPosition;
             }
 
             @Override
