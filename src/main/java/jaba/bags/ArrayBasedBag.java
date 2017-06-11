@@ -3,8 +3,10 @@ package jaba.bags;
 import org.jetbrains.annotations.NotNull;
 import sun.plugin.dom.exception.NoModificationAllowedException;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.Spliterator;
+import java.util.Spliterators;
 import java.util.function.Consumer;
 
 public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
@@ -82,20 +84,21 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
             int currentElementIdx = 0;
 
             @Override
-            public boolean tryAdvance(Consumer action) {
+            public boolean tryAdvance(Consumer<? super Item> action) {
                 if (action == null)
                     throw new NullPointerException();
                 if (currentElementIdx >= topPosition)
                     return false;
-                    //TODO implement
-                else
-                    return true;
+                action.accept(internalArray[currentElementIdx++]);
+                return true;
             }
 
             @Override
             public Spliterator<Item> trySplit() {
-                //TODO implement
-                return null;
+                return Spliterators.spliterator(
+                        Arrays.copyOfRange(internalArray, currentElementIdx, internalArray.length)
+                        , IMMUTABLE | SIZED
+                );
             }
 
             @Override
