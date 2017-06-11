@@ -79,12 +79,17 @@ public class ArrayBasedBag implements Bag, Iterable {
     @Override
     public Spliterator spliterator() {
         return new Spliterator() {
+            int currentElementIdx = 0;
+
             @Override
             public boolean tryAdvance(Consumer action) {
                 if (action == null)
                     throw new NullPointerException();
-                //TODO implement
-                return false;
+                if (currentElementIdx >= topPosition)
+                    return false;
+                    //TODO implement
+                else
+                    return true;
             }
 
             @Override
@@ -95,14 +100,12 @@ public class ArrayBasedBag implements Bag, Iterable {
 
             @Override
             public long estimateSize() {
-                //TODO implement
-                return 0;
+                return size() - currentElementIdx;
             }
 
             @Override
             public int characteristics() {
-                //TODO implement
-                return 0;
+                return IMMUTABLE | SIZED;
             }
         };
     }
