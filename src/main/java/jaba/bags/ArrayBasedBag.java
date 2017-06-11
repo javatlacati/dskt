@@ -28,6 +28,13 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
         }
     }
 
+    /**
+     * indexes are 0 based
+     */
+    Item getAtIndex(int index) {
+        return internalArray[index];
+    }
+
     @Override
     public boolean isEmpty() {
         return topPosition == 0;

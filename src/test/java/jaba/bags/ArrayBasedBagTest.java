@@ -3,8 +3,11 @@ package jaba.bags;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Spliterator;
 import java.util.stream.StreamSupport;
+
+import static org.junit.Assert.assertEquals;
 
 /**
  * Created by Administrador on 11/06/2017.
@@ -41,10 +44,12 @@ public class ArrayBasedBagTest {
     public void spliterator() throws Exception {
         arrayBasedBag.add("hola");
         arrayBasedBag.add("mundo");
-        Spliterator spliterator = arrayBasedBag.spliterator();
-
+        Spliterator<String> spliterator = arrayBasedBag.spliterator();
+        ArrayList<String> list = new ArrayList<>(2);
         StreamSupport.stream(spliterator, false)
-                .forEachOrdered(System.out::println);
+                .forEachOrdered(list::add);
+        assertEquals(list.get(0), arrayBasedBag.getAtIndex(0));
+        assertEquals(list.get(1), arrayBasedBag.getAtIndex(1));
     }
 
 }
