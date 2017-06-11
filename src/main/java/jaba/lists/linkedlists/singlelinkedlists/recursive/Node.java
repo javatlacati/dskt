@@ -103,10 +103,10 @@ public class Node<T> {
 
     public Object[] toArray() {
         Object[] internalArray = privateCreateArray(1);
+        internalArray[0] = item;
         if (next != null) {
             return next.toArray(2, internalArray);
         } else {
-            internalArray[0] = item;
             return internalArray;
         }
     }
