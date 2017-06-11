@@ -85,12 +85,15 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
             @Override
             public boolean tryAdvance(Consumer<? super Item> action) {
-                if (action == null)
+                if (action == null) {
                     throw new NullPointerException();
-                if (currentElementIdx >= topPosition)
+                }
+                if (currentElementIdx < topPosition) {
+                    action.accept(internalArray[currentElementIdx++]);
+                    return true;
+                } else {
                     return false;
-                action.accept(internalArray[currentElementIdx++]);
-                return true;
+                }
             }
 
             @Override
