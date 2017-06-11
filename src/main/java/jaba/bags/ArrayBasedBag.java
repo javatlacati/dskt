@@ -7,18 +7,18 @@ import java.util.Iterator;
 import java.util.Spliterator;
 import java.util.function.Consumer;
 
-public class ArrayBasedBag implements Bag, Iterable {
+public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
-    private Object[] internalArray;
+    private Item[] internalArray;
     private int topPosition;
 
     public ArrayBasedBag(int capacity) {
-        internalArray = new Object[capacity];
+        internalArray = (Item[]) new Object[capacity];
         topPosition = 0;
     }
 
     @Override
-    public void add(Object item) {
+    public void add(Item item) {
         if (internalArray.length > topPosition) {
             internalArray[topPosition++] = item;
         } else {
@@ -38,8 +38,8 @@ public class ArrayBasedBag implements Bag, Iterable {
 
     @NotNull
     @Override
-    public Iterator iterator() {
-        return new Iterator() {
+    public Iterator<Item> iterator() {
+        return new Iterator<Item>() {
             /**Index of current element.*/
             int currentElementIdx = 0;
 
@@ -49,7 +49,7 @@ public class ArrayBasedBag implements Bag, Iterable {
             }
 
             @Override
-            public Object next() {
+            public Item next() {
                 if (currentElementIdx <= topPosition) {
                     return internalArray[currentElementIdx++];
                 } else {
@@ -64,7 +64,7 @@ public class ArrayBasedBag implements Bag, Iterable {
 
             //Java8 only
             //@Override
-            public void forEachRemaining(Consumer action) {
+            public void forEachRemaining(Consumer<? super Item> action) {
                 while (hasNext())
                     action.accept(next());
             }
@@ -72,13 +72,13 @@ public class ArrayBasedBag implements Bag, Iterable {
     }
 
     @Override
-    public void forEach(Consumer action) {
+    public void forEach(Consumer<? super Item> action) {
         iterator().forEachRemaining(action);
     }
 
     @Override
-    public Spliterator spliterator() {
-        return new Spliterator() {
+    public Spliterator<Item> spliterator() {
+        return new Spliterator<Item>() {
             int currentElementIdx = 0;
 
             @Override
@@ -93,7 +93,7 @@ public class ArrayBasedBag implements Bag, Iterable {
             }
 
             @Override
-            public Spliterator trySplit() {
+            public Spliterator<Item> trySplit() {
                 //TODO implement
                 return null;
             }
