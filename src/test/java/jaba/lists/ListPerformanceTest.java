@@ -1,20 +1,22 @@
 package jaba.lists;
 
+import com.carrotsearch.junitbenchmarks.BenchmarkOptions;
 import com.carrotsearch.junitbenchmarks.BenchmarkRule;
-import com.carrotsearch.junitbenchmarks.annotation.BenchmarkHistoryChart;
-import com.carrotsearch.junitbenchmarks.annotation.LabelType;
+import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
+import org.junit.BeforeClass;
 import org.junit.Rule;
 import org.junit.Test;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Properties;
 import java.util.Random;
 
 import static org.junit.Assert.*;
 
-/**
- * Created by Administrador on 10/06/2017.
- */
-@BenchmarkHistoryChart(filePrefix = "map-types-benchmark-history-chart", labelWith = LabelType.RUN_ID, maxRuns = 40)
+@BenchmarkMethodChart(filePrefix = "listPerformance")
 public class ListPerformanceTest {
     private final int iterations = 7000;
     final Random random = new Random();
@@ -22,22 +24,35 @@ public class ListPerformanceTest {
     @Rule
     public BenchmarkRule benchmarkRun = new BenchmarkRule();
 
+    @BeforeClass
+    public static void loadProperties() throws IOException {
+        Properties p = new Properties();
+        p.load(new FileInputStream(new File("src/test/resources/jub.properties")));
+        for (String k : p.stringPropertyNames()) {
+            System.setProperty(k, p.getProperty(k));
+        }
+    }
+
     @Test
+    @BenchmarkOptions(concurrency = 0)
     public void sizeIteraiveSingleLinkedList() throws Exception {
         size(new jaba.lists.linkedlists.singlelinkedlists.iterative.SingleLinkedList());
     }
 
     @Test
+    @BenchmarkOptions(concurrency = 0)
     public void sizeRecursiveSingleLinkedList() throws Exception {
         size(new jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList());
     }
 
     @Test
+    @BenchmarkOptions(concurrency = 0)
     public void toArrayIteraiveSingleLinkedList() throws Exception {
         toArray(new jaba.lists.linkedlists.singlelinkedlists.iterative.SingleLinkedList());
     }
 
     @Test
+    @BenchmarkOptions(concurrency = 0)
     public void toArrayRecursiveSingleLinkedList() throws Exception {
         toArray(new jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList());
     }
