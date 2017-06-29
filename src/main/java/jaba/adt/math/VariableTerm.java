@@ -11,12 +11,40 @@ import lombok.Setter;
 @Setter
 @Getter
 public class VariableTerm {
-    int coefficient;
-    String literalPart;
-    int grade;
+    private int coefficient;
+    private String literalPart;
+    private int grade;
 
     @Override
     public String toString() {
         return (coefficient == 0 ? "" : coefficient) + literalPart + (grade == 0 ? "" : "^" +grade);
+    }
+
+    public void sum(VariableTerm otherTerm){
+        if(literalPart==otherTerm.getLiteralPart()){
+            if(grade==otherTerm.getGrade()){
+                coefficient+=otherTerm.getCoefficient();
+            }else{
+                //binomial
+            }
+        }
+    }
+
+
+    public Object sum1(VariableTerm otherTerm){
+        if(literalPart==otherTerm.getLiteralPart()){
+            if(grade==otherTerm.getGrade()){
+                return new VariableTerm(coefficient+otherTerm.getCoefficient(),literalPart,grade);
+            }else{
+                final Monomial monomial = new Monomial(0);
+                monomial.addTerm(this);
+                monomial.addTerm(otherTerm);
+                return monomial;
+            }
+        }
+        final Monomial monomial = new Monomial(0);
+        monomial.addTerm(this);
+        monomial.addTerm(otherTerm);
+        return monomial;
     }
 }
