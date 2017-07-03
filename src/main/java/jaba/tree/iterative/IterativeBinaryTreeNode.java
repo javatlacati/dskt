@@ -8,8 +8,10 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-public class IterativeBinaryTreeNode<Item> {
+public class IterativeBinaryTreeNode<Item>  {
     Item value;
     private IterativeBinaryTreeNode left;
     private IterativeBinaryTreeNode right;
+
+
 }

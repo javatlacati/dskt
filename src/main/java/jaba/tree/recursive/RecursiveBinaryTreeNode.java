@@ -8,7 +8,6 @@ import lombok.Setter;
  */
 @Getter
 @Setter
-
 public class RecursiveBinaryTreeNode<Item> {
     Item value;
     private RecursiveBinaryTreeNode left;
