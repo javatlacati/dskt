@@ -1,7 +1,6 @@
 package jaba.bags;
 
 import org.jetbrains.annotations.NotNull;
-import sun.plugin.dom.exception.NoModificationAllowedException;
 
 import java.util.Arrays;
 import java.util.Iterator;
@@ -68,7 +67,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
             @Override
             public void remove() {
-                throw new NoModificationAllowedException("Bag can't remove elements only add");
+                //"Bag can't remove elements only add"
             }
 
             //Java8 only
