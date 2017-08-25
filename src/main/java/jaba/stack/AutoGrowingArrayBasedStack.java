@@ -7,9 +7,10 @@ import lombok.val;
 
 /**
  * Created by Administrador on 05/06/2017.
+ * Actually like a Vector.
  */
 @ToString(callSuper = true,of = {"capacityIncrement"})
-public class AutoGrowingArrayBasedStack extends ArrayBasedStack {
+public class AutoGrowingArrayBasedStack<Item> extends ArrayBasedStack<Item> {
     @Getter
     @Setter
     int capacityIncrement=10;
@@ -24,15 +25,15 @@ public class AutoGrowingArrayBasedStack extends ArrayBasedStack {
     }
 
     @Override
-    public void push(Object item) {
+    public Item push(Item item) {
         if (stackArray.length <= topPosition) {
             val newCapacity = stackArray.length + capacityIncrement;
             val newArray=new Object[newCapacity];
             for (int i = 0; i < stackArray.length; i++) {
                 newArray[i]=stackArray[i];
             }
-            stackArray=newArray;
+            stackArray= (Item[]) newArray;
         }
-        super.push(item);
+        return super.push(item);
     }
 }
