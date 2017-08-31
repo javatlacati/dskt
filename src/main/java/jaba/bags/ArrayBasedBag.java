@@ -18,6 +18,9 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
         topPosition = 0;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void add(Item item) {
         if (internalArray.length > topPosition) {
@@ -34,16 +37,33 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
         return internalArray[index];
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public boolean isEmpty() {
         return topPosition == 0;
     }
 
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void disposeItems() {
+        internalArray = (Item[]) new Object[internalArray.length];
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public int size() {
         return topPosition;
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @NotNull
     @Override
     public Iterator<Item> iterator() {
@@ -79,16 +99,25 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
         };
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public void forEach(Consumer<? super Item> action) {
         iterator().forEachRemaining(action);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
     public Spliterator<Item> spliterator() {
         return new Spliterator<Item>() {
             int currentElementIdx = 0;
 
+            /**
+             * {@inheritDoc}
+             */
             @Override
             public boolean tryAdvance(Consumer<? super Item> action) {
                 if (action == null) {
@@ -102,6 +131,9 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
                 }
             }
 
+            /**
+             * {@inheritDoc}
+             */
             @Override
             public Spliterator<Item> trySplit() {
                 return Spliterators.spliterator(
@@ -110,11 +142,17 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
                 );
             }
 
+            /**
+             * {@inheritDoc}
+             */
             @Override
             public long estimateSize() {
                 return size() - currentElementIdx;
             }
 
+            /**
+             * {@inheritDoc}
+             */
             @Override
             public int characteristics() {
                 return IMMUTABLE | SIZED;
