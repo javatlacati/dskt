@@ -14,7 +14,7 @@ import static org.junit.Assert.assertNull;
  * Created by Administrador on 11/06/2017.
  */
 public class ArrayBasedBagTest {
-    ArrayBasedBag arrayBasedBag;
+    ArrayBasedBag<String> arrayBasedBag;
 
     @Before
     public void setUp() throws Exception {
@@ -42,7 +42,7 @@ public class ArrayBasedBagTest {
         arrayBasedBag.add("hola");
         arrayBasedBag.add("mundo");
         ArrayList<String> list = new ArrayList<>(2);
-        arrayBasedBag.forEach((x) -> list.add((String) x));
+        arrayBasedBag.forEach(list::add);
         assertEquals(2, list.size());
         assertEquals(list.get(0), arrayBasedBag.getAtIndex(0));
         assertEquals(list.get(1), arrayBasedBag.getAtIndex(1));
