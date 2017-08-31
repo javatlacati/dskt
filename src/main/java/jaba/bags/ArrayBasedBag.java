@@ -51,6 +51,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
     @Override
     public void disposeItems() {
         internalArray = (Item[]) new Object[internalArray.length];
+        topPosition=0;
     }
 
     /**
