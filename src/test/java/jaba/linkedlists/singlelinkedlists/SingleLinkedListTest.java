@@ -13,8 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package jaba.linkedlists.singlelinkedlists;
+package jaba.lists.linkedlists.singlelinkedlists;
 
+import jaba.lists.linkedlists.singlelinkedlists.recursive.Node;
+import jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -25,7 +27,7 @@ import org.junit.Ignore;
 
 /**
  *
- * @author Core i7
+ * @author Javatlacati
  */
 public class SingleLinkedListTest {
     
