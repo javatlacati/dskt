@@ -1,0 +1,2 @@
+class ArrayBasedBag
+  constructor:(@capacity)
