@@ -6,7 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class BagTest {
-    Bag<Integer> bag;
+    private Bag<Integer> bag;
 
     @Before
     public void setUp() throws Exception {

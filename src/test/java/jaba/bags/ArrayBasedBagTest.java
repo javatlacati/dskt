@@ -13,7 +13,7 @@ import static org.junit.Assert.*;
  * Created by Administrador on 11/06/2017.
  */
 public class ArrayBasedBagTest {
-    ArrayBasedBag<String> arrayBasedBag;
+    private ArrayBasedBag<String> arrayBasedBag;
 
     @Before
     public void setUp() throws Exception {
