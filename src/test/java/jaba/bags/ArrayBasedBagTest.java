@@ -7,8 +7,7 @@ import java.util.ArrayList;
 import java.util.Spliterator;
 import java.util.stream.StreamSupport;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
+import static org.junit.Assert.*;
 
 /**
  * Created by Administrador on 11/06/2017.
@@ -18,15 +17,21 @@ public class ArrayBasedBagTest {
 
     @Before
     public void setUp() throws Exception {
-        arrayBasedBag = new ArrayBasedBag(5);
+        arrayBasedBag = new ArrayBasedBag<>(5);
     }
 
     @Test
     public void add() throws Exception {
+        assertEquals(0, arrayBasedBag.size());
+        arrayBasedBag.add("asd");
+        assertEquals(1, arrayBasedBag.size());
     }
 
     @Test
     public void isEmpty() throws Exception {
+        assertTrue(arrayBasedBag.isEmpty());
+        arrayBasedBag.add("hola");
+        assertFalse(arrayBasedBag.isEmpty());
     }
 
     @Test
@@ -35,6 +40,16 @@ public class ArrayBasedBagTest {
 
     @Test
     public void iterator() throws Exception {
+    }
+
+    @Test
+    public void disposeItems() throws Exception {
+        for (int i = 0; i < 5; i++) {
+            arrayBasedBag.add(Integer.toString(i));
+        }
+        assertEquals(5, arrayBasedBag.size());
+        arrayBasedBag.disposeItems();
+        assertEquals(0, arrayBasedBag.size());
     }
 
     @Test
