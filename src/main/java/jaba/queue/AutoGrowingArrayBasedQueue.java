@@ -3,7 +3,6 @@ package jaba.queue;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.val;
 
 /**
  * Created by Administrador on 05/06/2017.
@@ -26,11 +25,9 @@ public class AutoGrowingArrayBasedQueue extends ArrayBasedQueue {
     @Override
     public synchronized void enqueue(Object item) {
         if (isFull()) {
-            val newCapacity = queueArray.length + capacityIncrement;
-            val newArray = new Object[newCapacity];
-            for (int i = 0; i < queueArray.length; i++) {
-                newArray[i] = queueArray[i];
-            }
+            int newCapacity = queueArray.length + capacityIncrement;
+            Object[] newArray = new Object[newCapacity];
+            System.arraycopy(queueArray, 0, newArray, 0, queueArray.length);
             queueArray = newArray;
             capacity = newCapacity;
         }

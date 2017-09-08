@@ -34,7 +34,7 @@ public class ArrayBasedQueue {
         if (isEmpty()) {
             throw new IndexOutOfBoundsException("Queue Undeflow");
         } else {
-            val dequeued = queueArray[topIndex-1];
+            Object dequeued = queueArray[topIndex-1];
             queueArray[topIndex-1] = null;
             topIndex--;
             return dequeued;

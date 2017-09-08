@@ -69,8 +69,8 @@ public class Node<T> {
                 if (next.getNext().getNext() != null) {
                     next.getNext().reverse();
                 } else {
-                    val aux = next.getNext();
-                    val aux1 = aux.getNext();
+                    Node aux = next.getNext();
+                    Node aux1 = aux.getNext();
 
                 }
             }
