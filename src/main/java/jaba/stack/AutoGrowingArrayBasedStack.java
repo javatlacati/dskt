@@ -27,8 +27,8 @@ public class AutoGrowingArrayBasedStack<Item> extends ArrayBasedStack<Item> {
     @Override
     public Item push(Item item) {
         if (stackArray.length <= topPosition) {
-            val newCapacity = stackArray.length + capacityIncrement;
-            val newArray=new Object[newCapacity];
+            int newCapacity = stackArray.length + capacityIncrement;
+            Object[] newArray=new Object[newCapacity];
             for (int i = 0; i < stackArray.length; i++) {
                 newArray[i]=stackArray[i];
             }

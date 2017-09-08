@@ -42,7 +42,7 @@ public class HeapBasedPriorityQueue implements Queue {
     }
 
     private void exch(int i, int j) {
-        val t=pq[i];
+        Comparable<Object> t=pq[i];
         pq[i]=pq[j];
         pq[j]=t;
     }
@@ -98,7 +98,7 @@ public class HeapBasedPriorityQueue implements Queue {
 
     @Override
     public boolean add(Object o) {
-        val obj= (Comparable<Object>)o;
+        Comparable<Object> obj= (Comparable<Object>)o;
         pq[++N] = obj;
         return swim(N);
     }
