@@ -75,7 +75,7 @@ public class SingleLinkedListTest {
         instance.addAtEnd(new Node("Adios"));
         instance.addAtEnd(new Node("mundo"));
         instance.addAtEnd(new Node("cruel"));
-        val instance1 = new SingleLinkedList();
+        SingleLinkedList instance1 = new SingleLinkedList();
         instance1.addAtEnd(new Node("cruel"));
         instance1.addAtEnd(new Node("mundo"));
         instance1.addAtEnd(new Node("Adios"));
