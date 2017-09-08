@@ -72,7 +72,7 @@ public class BubbleSort {
 
 
     private void swap(int[] targetArray, int i, int i1) {
-        val aux = targetArray[i];
+        int aux = targetArray[i];
         targetArray[i] = targetArray[i1];
         targetArray[i1] = aux;
     }
