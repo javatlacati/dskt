@@ -6,17 +6,19 @@ import lombok.Setter;
 import lombok.ToString;
 
 /**
- * Created by Core i7 on 30/05/2017.
+ * Created by Javatlacati on 30/05/2017.
+ * @param <Type> Type of contained objects
+ * @author Javatlacati
  */
 @Setter
 @Getter
 @EqualsAndHashCode(of = {"item"})
 @ToString(of = "item")
-public class Node {
-    private Object item;
-    private Node next;
+public class Node<Type> {
+    private Type item;
+    private Node<Type> next;
 
-    public Node(Object item) {
+    public Node(Type item) {
         this.item = item;
     }
 }
