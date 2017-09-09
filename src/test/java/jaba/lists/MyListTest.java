@@ -22,6 +22,8 @@ public class MyListTest {
                         new jaba.lists.linkedlists.singlelinkedlists.iterative.SingleLinkedList()
                 }, new Object[]{
                         new jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList()
+                }, new Object[]{
+                        new jaba.lists.linkedlists.singlelinkedlists.iterative.TailedSingleLinkedList<>()
                 }
         );
     }

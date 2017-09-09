@@ -37,7 +37,7 @@ public class SingleLinkedListTest {
 
     @Test
     public void getRoot() throws Exception {
-        SingleLinkedList instance = new SingleLinkedList();
+        instance = new SingleLinkedList();
         assertNull(instance.getRoot());
     }
 
