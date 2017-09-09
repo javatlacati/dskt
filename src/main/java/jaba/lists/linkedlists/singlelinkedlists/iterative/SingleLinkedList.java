@@ -8,15 +8,15 @@ import lombok.Setter;
 @Setter
 @Getter
 @EqualsAndHashCode(of = "root")
-public class SingleLinkedList implements MyList {
-    private Node root;
+public class SingleLinkedList<Type> implements MyList<Type> {
+    private Node<Type> root;
 
     public String getStrings() {
         if (root == null) {
             return "";
         } else {
             String salida = root.toString();
-            Node actual = root;
+            Node<Type> actual = root;
             while (actual.getNext() != null) {
                 actual = actual.getNext();
                 salida += actual.toString();
@@ -30,7 +30,7 @@ public class SingleLinkedList implements MyList {
             if (root == null) {
                 root = newNode;
             } else {
-                Node actual = root;
+                Node<Type> actual = root;
                 while (actual.getNext() != null) {
                     actual = actual.getNext();
                 }
@@ -58,9 +58,9 @@ public class SingleLinkedList implements MyList {
             addAtRoot(newNode);
         } else {
             if (index > 0) {
-                Node currentNode = root.getNext();
+                Node<Type> currentNode = root.getNext();
                 for (int currentIndex = 1; currentIndex < index; currentIndex++) {
-                    Node next = currentNode.getNext();
+                    Node<Type> next = currentNode.getNext();
                     if (next != null) {
                         currentNode = next;
                     } else {
@@ -92,7 +92,7 @@ public class SingleLinkedList implements MyList {
             if (root.getNext() == null) {
                 root = null;
             } else {
-                Node currentNode = root;
+                Node<Type> currentNode = root;
                 while (currentNode.getNext() != null) {
                     currentNode = currentNode.getNext();
                 }
@@ -106,7 +106,7 @@ public class SingleLinkedList implements MyList {
     @Override
     public int size() {
         int size = 0;
-        Node currentNode = root;
+        Node<Type> currentNode = root;
         while (currentNode != null) {
             currentNode = currentNode.getNext();
             size++;
@@ -120,11 +120,11 @@ public class SingleLinkedList implements MyList {
     }
 
     @Override
-    public boolean contains(Object o) {
+    public boolean contains(Type o) {
         if (root == null && o == null) {
             return false;
         } else {
-            Node currentNode = root;
+            Node<Type> currentNode = root;
             while (currentNode != null) {
                 if (currentNode.equals(o))
                     return true;
@@ -135,11 +135,11 @@ public class SingleLinkedList implements MyList {
     }
 
     @Override
-    public Object[] toArray() {
+    public Type[] toArray() {
         int size = size();
-        Object[] retorno = new Object[size];
+        Type[] retorno = (Type[])new Object[size];
         if (size != 0) {
-            Node currentNode = root;
+            Node<Type> currentNode = root;
             int index = 0;
             while (currentNode != null) {
                 retorno[index] = currentNode.getItem();
@@ -151,8 +151,8 @@ public class SingleLinkedList implements MyList {
     }
 
     @Override
-    public boolean add(Object o) {
-        return addAtEnd(new Node(o));
+    public boolean add(Type o) {
+        return addAtEnd(new Node<>(o));
     }
 
     @Override
