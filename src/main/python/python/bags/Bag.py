@@ -1,11 +1,12 @@
 class Bag:
-    # void
-    def add(self) :
+    def add(self) -> None:
         pass
-    # -> bool
-    def is_empty(self):
+
+    def is_empty(self) -> bool:
         pass
-    def size(self):
+
+    def size(self) -> int:
         pass
-    def dispose_items(self):
+
+    def dispose_items(self) -> None:
         pass
