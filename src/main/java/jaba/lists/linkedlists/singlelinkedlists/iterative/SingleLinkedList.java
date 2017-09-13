@@ -25,7 +25,9 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
-    public boolean addAtEnd(Node<Type> newNode) {
+    /***/
+    public boolean addAtEnd(Type element) {
+        Node<Type> newNode = new Node<>(element);
         try {
             if (root == null) {
                 root = newNode;
@@ -43,7 +45,8 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     }
 
     /***/
-    public void addAtRoot(Node<Type> newNode) {
+    public void addAtRoot(Type element) {
+        Node<Type> newNode = new Node<>(element);
         newNode.setNext(root);
         root = newNode;
     }
@@ -51,12 +54,12 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     /**
      * Index is 0 base
      *
-     * @param newNode a new node with content of the same type
+     * @param element
      * @param index   position to insert
      */
-    public void addAtIndex(Node<Type> newNode, int index) {
+    public void addAtIndex(Type element, int index) {
         if (index == 0) {
-            addAtRoot(newNode);
+            addAtRoot(element);
         } else {
             if (index > 0) {
                 Node<Type> currentNode = root.getNext();
@@ -68,7 +71,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
                         throw new IndexOutOfBoundsException("the specified index is not possible to reach");
                     }
                 }
-                currentNode.setNext(newNode);
+                currentNode.setNext(new Node<>(element));
             } else {
                 throw new IndexOutOfBoundsException("no negative index values allowed");
             }
@@ -76,12 +79,12 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     }
 
     public void addSingleLinkedListAtRoot(SingleLinkedList<Type> singleLinkedList) {
-        singleLinkedList.addAtEnd(root);
+        singleLinkedList.addAtEnd(root.getItem());
         root = singleLinkedList.getRoot();
     }
 
     public void addSingleLinkedListAtEnd(SingleLinkedList<Type> singleLinkedList) {
-        addAtRoot(singleLinkedList.getRoot());
+        addAtRoot(singleLinkedList.getRoot().getItem());
     }
 
     public void printList() {
@@ -153,7 +156,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
 
     @Override
     public boolean add(Type o) {
-        return addAtEnd(new Node<>(o));
+        return addAtEnd(o);
     }
 
     @Override

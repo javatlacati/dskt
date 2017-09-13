@@ -9,7 +9,7 @@ import static org.junit.Assert.*;
  * Created by Core i7 on 31/05/2017.
  */
 public class SingleLinkedListTest {
-    SingleLinkedList instance;
+    SingleLinkedList<String> instance;
     @Before
     public void setUp() throws Exception {
         instance = new SingleLinkedList();
@@ -17,9 +17,9 @@ public class SingleLinkedListTest {
 
     @Test
     public void getStrings() throws Exception {
-        instance.addAtEnd(new Node("Adios"));
-        instance.addAtEnd(new Node("mundo"));
-        instance.addAtEnd(new Node("cruel"));
+        instance.addAtEnd("Adios");
+        instance.addAtEnd("mundo");
+        instance.addAtEnd("cruel");
         assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
     }
 
@@ -37,13 +37,13 @@ public class SingleLinkedListTest {
 
     @Test
     public void getRoot() throws Exception {
-        instance = new SingleLinkedList();
+        instance = new SingleLinkedList<>();
         assertNull(instance.getRoot());
     }
 
     @Test
     public void setRoot() throws Exception {
-        instance.setRoot(new Node(3));
+        instance.setRoot(new Node<>("3"));
         assertNotNull(instance.getRoot());
     }
 
