@@ -25,7 +25,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
-    public boolean addAtEnd(Node newNode) {
+    public boolean addAtEnd(Node<Type> newNode) {
         try {
             if (root == null) {
                 root = newNode;
@@ -42,7 +42,8 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
-    public void addAtRoot(Node newNode) {
+    /***/
+    public void addAtRoot(Node<Type> newNode) {
         newNode.setNext(root);
         root = newNode;
     }
@@ -50,10 +51,10 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     /**
      * Index is 0 base
      *
-     * @param newNode
-     * @param index
+     * @param newNode a new node with content of the same type
+     * @param index   position to insert
      */
-    public void addAtIndex(Node newNode, int index) {
+    public void addAtIndex(Node<Type> newNode, int index) {
         if (index == 0) {
             addAtRoot(newNode);
         } else {
@@ -74,12 +75,12 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
-    public void addSingleLinkedListAtRoot(SingleLinkedList singleLinkedList) {
+    public void addSingleLinkedListAtRoot(SingleLinkedList<Type> singleLinkedList) {
         singleLinkedList.addAtEnd(root);
         root = singleLinkedList.getRoot();
     }
 
-    public void addSingleLinkedListAtEnd(SingleLinkedList singleLinkedList) {
+    public void addSingleLinkedListAtEnd(SingleLinkedList<Type> singleLinkedList) {
         addAtRoot(singleLinkedList.getRoot());
     }
 
@@ -137,7 +138,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     @Override
     public Type[] toArray() {
         int size = size();
-        Type[] retorno = (Type[])new Object[size];
+        Type[] retorno = (Type[]) new Object[size];
         if (size != 0) {
             Node<Type> currentNode = root;
             int index = 0;
@@ -157,6 +158,6 @@ public class SingleLinkedList<Type> implements MyList<Type> {
 
     @Override
     public void clear() {
-        root=null;
+        root = null;
     }
 }
