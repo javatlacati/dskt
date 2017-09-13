@@ -23,11 +23,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @EqualsAndHashCode(of = "root")
-public class SingleLinkedList implements MyList {
+public class SingleLinkedList<Type> implements MyList<Type> {
 
-    private Node root;
+    private Node<Type> root;
 
-    public boolean addAtEnd(Node newNode) {
+    public boolean addAtEnd(Node<Type> newNode) {
         try {
             if (root == null) {
                 root = newNode;
@@ -40,18 +40,18 @@ public class SingleLinkedList implements MyList {
         }
     }
 
-    public void addAtRoot(Node newNode) {
+    public void addAtRoot(Node<Type> newNode) {
         newNode.setNext(root);
         root = newNode;
     }
 
     /**
-     * Index is 0 base
+     * Index is 0 based
      *
      * @param newNode
-     * @param index
+     * @param index position in the list
      */
-    public void addAtIndex(Node newNode, int index) {
+    public void addAtIndex(Node<Type> newNode, int index) {
         if (index == 0) {
             addAtRoot(newNode);
         } else {
@@ -63,12 +63,12 @@ public class SingleLinkedList implements MyList {
         }
     }
 
-    public void addSingleLinkedListAtRoot(SingleLinkedList singleLinkedList) {
+    public void addSingleLinkedListAtRoot(SingleLinkedList<Type> singleLinkedList) {
         singleLinkedList.addAtEnd(root);
         root = singleLinkedList.getRoot();
     }
 
-    public void addSingleLinkedListAtEnd(SingleLinkedList singleLinkedList) {
+    public void addSingleLinkedListAtEnd(SingleLinkedList<Type> singleLinkedList) {
         root.add(singleLinkedList.getRoot());
     }
 
@@ -110,34 +110,30 @@ public class SingleLinkedList implements MyList {
     }
 
     @Override
-    public boolean contains(Object o) {
+    public boolean contains(Type o) {
         if (root == null && o == null) {
             return false;
         } else {
             if (root.equals(o)) {
                 return true;
             } else {
-                if (root.getNext() != null) {
-                    return root.getNext().contains(o);
-                } else {
-                    return false;
-                }
+                return root.getNext() != null && root.getNext().contains(o);
             }
         }
     }
 
     @Override
-    public Object[] toArray() {
+    public Type[] toArray() {
         if (root == null) {
-            return new Object[0];
+            return (Type[]) new Object[0];
         } else {
             return root.toArray();
         }
     }
 
     @Override
-    public boolean add(Object o) {
-        return addAtEnd(new Node(o));
+    public boolean add(Type o) {
+        return addAtEnd(new Node<>(o));
     }
 
     @Override

@@ -4,23 +4,22 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.val;
 
 /**
  * Created by Administrador on 22/05/2017.
  *
- * @param <T> generic type
+ * @param <Type> generic type
  */
 @Setter
 @Getter
 @EqualsAndHashCode(of = {"item"})
 @ToString(of = "item")
-public class Node<T> {
+public class Node<Type> {
 
-    private T item;
-    private Node next;
+    private Type item;
+    private Node<Type> next;
 
-    public Node(T item) {
+    public Node(Type item) {
         this.item = item;
     }
 
@@ -29,7 +28,7 @@ public class Node<T> {
     /**
      * Appends a node at the end.
      */
-    synchronized void add(Node newNode) {
+    synchronized void add(Node<Type> newNode) {
         if (next == null) {
             next = newNode;
         } else {
@@ -37,7 +36,7 @@ public class Node<T> {
         }
     }
 
-    synchronized void addAtIndex(Node newNode, int targetIndex, int currentIndex) {
+    synchronized void addAtIndex(Node<Type> newNode, int targetIndex, int currentIndex) {
         if (targetIndex == currentIndex) {
             next = newNode;
         } else {
@@ -69,8 +68,8 @@ public class Node<T> {
                 if (next.getNext().getNext() != null) {
                     next.getNext().reverse();
                 } else {
-                    Node aux = next.getNext();
-                    Node aux1 = aux.getNext();
+                    Node<Type> aux = next.getNext();
+                    Node<Type> aux1 = aux.getNext();
 
                 }
             }
@@ -89,7 +88,7 @@ public class Node<T> {
     /**
      * rercursive implementation!
      */
-    public boolean contains(Object o) {
+    public boolean contains(Type o) {
         if (item.equals(o)) {
             return true;
         } else {
@@ -101,8 +100,8 @@ public class Node<T> {
         }
     }
 
-    public Object[] toArray() {
-        Object[] internalArray = privateCreateArray(1);
+    public Type[] toArray() {
+        Type[] internalArray = privateCreateArray(1);
         internalArray[0] = item;
         if (next != null) {
             return next.toArray(2, internalArray);
@@ -111,7 +110,7 @@ public class Node<T> {
         }
     }
 
-    private Object[] toArray(int i, Object[] internalArray) {
+    private Type[] toArray(int i, Type[] internalArray) {
         internalArray[i - 1] = item;
         if (next != null) {
             return next.toArray(i + 1, internalArray);
@@ -120,9 +119,9 @@ public class Node<T> {
         }
     }
 
-    Object[] privateCreateArray(int i) {
+    Type[] privateCreateArray(int i) {
         if (next == null) {
-            return new Object[i];
+            return (Type[]) new Object[i];
         } else {
             return next.privateCreateArray(i + 1);
         }
