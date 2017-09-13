@@ -1,24 +1,12 @@
-/*
- * Copyright 2017 Ruslan López Carro.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
 import jaba.lists.MyList;
-import java.util.NoSuchElementException;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
 /**
  *
@@ -27,7 +15,7 @@ import lombok.Setter;
  */
 @Setter
 @Getter
-public class TailedSingleLinkedList<Type> implements MyList<Type> {
+public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type> {
 
     private Node<Type> head;
     private Node<Type> tail;
@@ -113,7 +101,7 @@ public class TailedSingleLinkedList<Type> implements MyList<Type> {
          
         Node<Type> tmp = head;
         Node<Type> refNode = null;
-        /**
+        /*
          * Traverse till given element
          */
         while(true){
@@ -145,7 +133,7 @@ public class TailedSingleLinkedList<Type> implements MyList<Type> {
     public void deleteFront(){
          
         if(head == null){
-            //System.out.println("Underflow...");
+            throw new IndexOutOfBoundsException("Capacity underflow");
         }
         Node<Type> tmp = head;
         head = tmp.getNext();
@@ -160,7 +148,7 @@ public class TailedSingleLinkedList<Type> implements MyList<Type> {
         Node<Type> tmp = head;
         Node<Type> refNode = null;
         //System.out.println("Traversing to all nodes..");
-        /**
+        /*
          * Traverse till given element
          */
         while(true){
@@ -186,4 +174,39 @@ public class TailedSingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
+    public String getStrings() {
+        if (head== null) {
+            return "";
+        } else {
+            StringBuilder salida = new StringBuilder(head.toString());
+            Node<Type> actual = head;
+            while (actual.getNext() != null) {
+                actual = actual.getNext();
+                salida.append(actual.toString());
+            }
+            return salida.toString();
+        }
+    }
+
+    public void printList() {
+        System.out.println(getStrings());
+    }
+
+    @NotNull
+    @Override
+    public Iterator<Type> iterator() {
+        return new Iterator<Type>() {
+            Node<Type> tmp = head;
+            @Override
+            public boolean hasNext() {
+                return null == tmp.getNext();
+            }
+
+            @Override
+            public Type next() {
+                tmp=tmp.getNext();
+                return tmp.getItem();
+            }
+        };
+    }
 }
