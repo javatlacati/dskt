@@ -15,13 +15,13 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         if (root == null) {
             return "";
         } else {
-            String salida = root.toString();
+            StringBuilder salida = new StringBuilder(root.toString());
             Node<Type> actual = root;
             while (actual.getNext() != null) {
                 actual = actual.getNext();
-                salida += actual.toString();
+                salida.append(actual.toString());
             }
-            return salida;
+            return salida.toString();
         }
     }
 
