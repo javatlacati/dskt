@@ -36,12 +36,12 @@ public class Node<Type> {
         }
     }
 
-    synchronized void addAtIndex(Node<Type> newNode, int targetIndex, int currentIndex) {
+    synchronized void addAtIndex(Type element, int targetIndex, int currentIndex) {
         if (targetIndex == currentIndex) {
-            next = newNode;
+            next = new Node<>(element);
         } else {
             if (next != null) {
-                next.addAtIndex(newNode, targetIndex, 1 + currentIndex);
+                next.addAtIndex(element, targetIndex, 1 + currentIndex);
             } else {
                 throw new IndexOutOfBoundsException("the specified index is not possible to reach");
             }
@@ -92,11 +92,7 @@ public class Node<Type> {
         if (item.equals(o)) {
             return true;
         } else {
-            if (next != null) {
-                return next.contains(o);
-            } else {
-                return false;
-            }
+            return next != null && next.contains(o);
         }
     }
 
