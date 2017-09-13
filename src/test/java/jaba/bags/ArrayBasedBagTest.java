@@ -40,6 +40,14 @@ public class ArrayBasedBagTest {
 
     @Test
     public void iterator() throws Exception {
+        String expected="holamundo";
+        StringBuilder actual= new StringBuilder();
+        arrayBasedBag.add("hola");
+        arrayBasedBag.add("mundo");
+        for(String el:arrayBasedBag){
+            actual.append(el);
+        }
+        assertEquals(expected, actual.toString());
     }
 
     @Test
