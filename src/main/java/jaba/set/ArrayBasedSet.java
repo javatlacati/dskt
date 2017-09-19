@@ -1,16 +1,16 @@
 package jaba.set;
 
-public class ArrayBasedSet implements jaba.set.Set {
-    Object[] internalArray;
-    int topPosition;
+import jaba.bags.ArrayBasedBag;
+
+public class ArrayBasedSet<Item> extends ArrayBasedBag<Item> implements jaba.set.Set<Item> {
 
     public ArrayBasedSet(int capacity) {
-        internalArray = new Object[capacity];
-        topPosition = 0;
+        super(capacity);
     }
 
+    @Override
     public boolean contains(Object item) {
-        for (Object element : internalArray) {
+        for (Object element : super.internalArray) {
             if (element.equals(item)) {
                 return true;
             }
@@ -21,36 +21,10 @@ public class ArrayBasedSet implements jaba.set.Set {
     /**
      * {@inheritDoc}
      */
-    public void add(Object item) {
+    @Override
+    public void add(Item item) {
         if (!contains(item)) {
-            if (internalArray.length > topPosition) {
-                internalArray[topPosition++] = item;
-            } else {
-                throw new IndexOutOfBoundsException("Capacity overflow");
-            }
+            super.add(item);
         }
     }
-
-    /**
-     * Returns the number of elements in this set (its cardinality).  If this
-     * set contains more than <tt>Integer.MAX_VALUE</tt> elements, returns
-     * <tt>Integer.MAX_VALUE</tt>.
-     *
-     * @return the number of elements in this set (its cardinality)
-     */
-    @Override
-    public int size() {
-        return topPosition;
-    }
-
-    /**
-     * Returns <tt>true</tt> if this set contains no elements.
-     *
-     * @return <tt>true</tt> if this set contains no elements
-     */
-    @Override
-    public boolean isEmpty() {
-        return topPosition == 0;
-    }
-
 }
