@@ -6,22 +6,27 @@ package jaba.bags;
  */
 public interface Bag<Item> {
     /**
-     * Adds an item to the bag
+     * Adds an item to the bag.
      */
     void add(Item item);
 
     /**
-     * Checks if the bag is empty
+     * Checks if the bag is empty.
      */
     boolean isEmpty();
 
     /**
-     * Returns how many items it contains
+     * Returns how many items it contains.
      */
     int size();
 
     /**
-     * Makes this bag empty
+     * Searches for an Item.
+     */
+    Item find(Item target);
+
+    /**
+     * Makes this bag empty.
      */
     void disposeItems();
 }

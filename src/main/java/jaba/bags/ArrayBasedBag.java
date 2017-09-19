@@ -10,8 +10,8 @@ import java.util.function.Consumer;
 
 public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
-    private Item[] internalArray;
-    private int topPosition;
+    protected Item[] internalArray;
+    protected int topPosition;
 
     public ArrayBasedBag(int capacity) {
         internalArray = (Item[]) new Object[capacity];
@@ -64,6 +64,20 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
     /**
      * {@inheritDoc}
+     * This method performs a lineal search.
+     */
+    @Override
+    public Item find(Item target) {
+        for (Item element :internalArray) {
+            if (element.equals(target)){
+                return element;
+            }
+        }
+        return null;
+    }
+
+    /**
+     * {@inheritDoc}
      */
     @NotNull
     @Override
@@ -88,7 +102,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
             @Override
             public void remove() {
-                //"Bag can't remove elements only add"
+                throw new UnsupportedOperationException("Bag can't remove elements only add");
             }
 
             //Java8 only
