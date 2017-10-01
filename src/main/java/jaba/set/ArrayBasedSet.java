@@ -8,9 +8,12 @@ public class ArrayBasedSet<Item> extends ArrayBasedBag<Item> implements jaba.set
         super(capacity);
     }
 
+    /**
+     * {@inheritDoc}
+     */
     @Override
-    public boolean contains(Object item) {
-        for (Object element : super.internalArray) {
+    public boolean contains(Item item) {
+        for (Item element : super.internalArray) {
             if (element.equals(item)) {
                 return true;
             }
