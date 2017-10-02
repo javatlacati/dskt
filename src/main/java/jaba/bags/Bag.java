@@ -7,6 +7,8 @@ package jaba.bags;
 public interface Bag<Item> {
     /**
      * Adds an item to the bag.
+     *
+     * @param item item to be added to the bag
      */
     void add(Item item);
 
@@ -22,6 +24,8 @@ public interface Bag<Item> {
 
     /**
      * Searches for an Item.
+     *
+     * @param target element to be searched
      */
     Item find(Item target);
 

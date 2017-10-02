@@ -10,9 +10,20 @@ import java.util.function.Consumer;
 
 public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
 
+    /**
+     * Array that contains the bag elements.
+     */
     protected Item[] internalArray;
+    /**
+     * Number of max 0 based index of used slots in the array.
+     */
     protected int topPosition;
 
+    /**
+     * Constructs instances of bag class.
+     *
+     * @param capacity number of elements that this bag can hold.
+     */
     public ArrayBasedBag(int capacity) {
         internalArray = (Item[]) new Object[capacity];
         topPosition = 0;
@@ -51,7 +62,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
     @Override
     public void disposeItems() {
         internalArray = (Item[]) new Object[internalArray.length];
-        topPosition=0;
+        topPosition = 0;
     }
 
     /**
@@ -68,8 +79,8 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
      */
     @Override
     public Item find(Item target) {
-        for (Item element :internalArray) {
-            if (element.equals(target)){
+        for (Item element : internalArray) {
+            if (element.equals(target)) {
                 return element;
             }
         }
@@ -82,15 +93,17 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
     @NotNull
     @Override
     public Iterator<Item> iterator() {
-        return new Iterator<Item>() {
+        return new Iterator<>() {
             /**Index of current element.*/
-            int currentElementIdx = 0;
+            private int currentElementIdx = 0;
 
+            /**{@inheritDoc}*/
             @Override
             public boolean hasNext() {
                 return currentElementIdx < topPosition;
             }
 
+            /**{@inheritDoc}*/
             @Override
             public Item next() {
                 if (currentElementIdx <= topPosition) {
@@ -100,12 +113,13 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
                 }
             }
 
+            /**{@inheritDoc}*/
             @Override
             public void remove() {
                 throw new UnsupportedOperationException("Bag can't remove elements only add");
             }
 
-            //Java8 only
+            //Java8 an 9 only
             //@Override
             public void forEachRemaining(Consumer<? super Item> action) {
                 while (hasNext())
@@ -127,7 +141,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
      */
     @Override
     public Spliterator<Item> spliterator() {
-        return new Spliterator<Item>() {
+        return new Spliterator<>() {
             int currentElementIdx = 0;
 
             /**
