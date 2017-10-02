@@ -16,13 +16,7 @@
 package jaba.lists.linkedlists.singlelinkedlists.recursive;
 
 import jaba.lists.MyList;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
-@Setter
-@Getter
-@EqualsAndHashCode(of = "root")
 public class SingleLinkedList<Type> implements MyList<Type> {
 
     private Node<Type> root;
@@ -51,7 +45,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
      * Index is 0 based
      *
      * @param element
-     * @param index position in the list
+     * @param index   position in the list
      */
     public void addAtIndex(Type element, int index) {
         if (index == 0) {
@@ -66,8 +60,15 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     }
 
     public void addSingleLinkedListAtRoot(SingleLinkedList<Type> singleLinkedList) {
-        singleLinkedList.addAtEnd(root.getItem());
-        root = singleLinkedList.getRoot();
+        if (singleLinkedList == null || singleLinkedList.getRoot() == null)
+            return;
+        if (root != null)
+            if (singleLinkedList.addAtEnd(root.getItem()))
+                root = singleLinkedList.getRoot();
+            else
+                System.err.println("can't be addeded");
+        else
+            System.err.println("root es nulo");
     }
 
     public void addSingleLinkedListAtEnd(SingleLinkedList<Type> singleLinkedList) {
@@ -90,8 +91,12 @@ public class SingleLinkedList<Type> implements MyList<Type> {
 
     public void reverse() {
         if (root.getNext() != null) {
-            root.reverse();
+            Node<Type> aux = root;
+            root.reverse(aux, root);
         }
+
+
+        // else we are done
     }
 
     public String getStrings() {
@@ -116,7 +121,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         if (root == null && o == null) {
             return false;
         } else {
-            if (root.equals(o)) {
+            if (root.getItem().equals(o)) {
                 return true;
             } else {
                 return root.getNext() != null && root.getNext().contains(o);
@@ -140,6 +145,37 @@ public class SingleLinkedList<Type> implements MyList<Type> {
 
     @Override
     public void clear() {
-        root=null;
+        root = null;
+    }
+
+    public Node<Type> getRoot() {
+        return this.root;
+    }
+
+    public void setRoot(Node<Type> root) {
+        this.root = root;
+    }
+
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof SingleLinkedList)) return false;
+        final SingleLinkedList other = (SingleLinkedList) o;
+        if (!other.canEqual((Object) this)) return false;
+        final Object this$root = this.getRoot();
+        final Object other$root = other.getRoot();
+        if (this$root == null ? other$root != null : !this$root.equals(other$root)) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final Object $root = this.getRoot();
+        result = result * PRIME + ($root == null ? 43 : $root.hashCode());
+        return result;
+    }
+
+    protected boolean canEqual(Object other) {
+        return other instanceof SingleLinkedList;
     }
 }
