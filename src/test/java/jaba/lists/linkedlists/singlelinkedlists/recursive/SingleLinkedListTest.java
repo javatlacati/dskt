@@ -38,7 +38,7 @@ public class SingleLinkedListTest {
         instance.addAtRoot("mundo");
         instance.addAtRoot("Adios");
         instance.addAtEnd("cruel");
-        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)", instance.getStrings());
     }
 
     /**
@@ -50,7 +50,7 @@ public class SingleLinkedListTest {
         instance.addAtRoot("cruel");
         instance.addAtRoot("mundo");
         instance.addAtRoot("Adios");
-        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)", instance.getStrings());
     }
 
     /**
@@ -63,7 +63,7 @@ public class SingleLinkedListTest {
         instance.addAtRoot("Adios");
         int index = 1;
         instance.addAtIndex("mundo", index);
-        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)", instance.getStrings());
     }
 
     /**
@@ -73,10 +73,15 @@ public class SingleLinkedListTest {
     @Ignore
     public void testAddSingleLinkedListAtRoot() {
         System.out.println("addSingleLinkedListAtRoot");
-        SingleLinkedList instance1 = null;
+        SingleLinkedList instance1 = new SingleLinkedList();
+        instance1.add(4);
         instance.addSingleLinkedListAtRoot(instance1);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        instance.printList();
+        SingleLinkedList<String> instance2 = new SingleLinkedList<>();
+        instance2.add("hola");
+        instance.addSingleLinkedListAtRoot(instance2);
+        System.out.println("list 2");
+        instance.printList();
     }
 
     /**
@@ -103,7 +108,7 @@ public class SingleLinkedListTest {
         instance.addAtEnd("mundo");
         instance.addAtEnd("cruel");
         instance.printList();
-        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)", instance.getStrings());
     }
 
     @Test
@@ -113,7 +118,7 @@ public class SingleLinkedListTest {
         instance.addAtEnd("cruel");
         instance.addAtEnd("perro");
         instance.removeLast();
-        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)", instance.getStrings());
     }
 
     @Test
@@ -136,9 +141,11 @@ public class SingleLinkedListTest {
     @Test
     public void testGetRoot() {
         System.out.println("getRoot");
-        Node expResult = null;
         Node result = instance.getRoot();
-        assertEquals(expResult, result);
+        assertEquals(null, result);
+        Node<String> expResult = new Node<>("Hola");
+        instance.add("Hola");
+        assertEquals(expResult, instance.getRoot());
     }
 
     /**
@@ -148,12 +155,12 @@ public class SingleLinkedListTest {
     public void testSetRoot() {
         System.out.println("setRoot");
         instance.add("Adios");
-        assertEquals("Node(item=Adios)",instance.getStrings());
+        assertEquals("Node(item=Adios)", instance.getStrings());
         Node root = null;
         instance.setRoot(root);
-        assertEquals("",instance.getStrings());
+        assertEquals("", instance.getStrings());
         instance.setRoot(new Node<>("hola"));
-        assertEquals("Node(item=hola)",instance.getStrings());
+        assertEquals("Node(item=hola)", instance.getStrings());
     }
 
     @Test
@@ -161,7 +168,7 @@ public class SingleLinkedListTest {
         instance.add("Adios");
         instance.add("mundo");
         instance.add("cruel");
-        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)", instance.getStrings());
     }
 
 }
