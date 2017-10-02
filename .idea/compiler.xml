@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="datastrructures" target="1.8" />
+      <module name="datastrructures" target="1.9" />
     </bytecodeTargetLevel>
   </component>
 </project>

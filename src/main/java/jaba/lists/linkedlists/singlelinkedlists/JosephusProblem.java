@@ -1,16 +1,20 @@
 package jaba.lists.linkedlists.singlelinkedlists;
 
 import jaba.lists.linkedlists.singlelinkedlists.recursive.Node;
-import lombok.AllArgsConstructor;
 
 /**
  * Created by Administrador on 22/05/2017.
  */
-@AllArgsConstructor
 public class JosephusProblem {
 
     final int romanSoldiersNumber;
     final int iteration;
+
+    @java.beans.ConstructorProperties({"romanSoldiersNumber", "iteration"})
+    public JosephusProblem(int romanSoldiersNumber, int iteration) {
+        this.romanSoldiersNumber = romanSoldiersNumber;
+        this.iteration = iteration;
+    }
 
     Node getSurvivor() {
         Node tail = new Node(0);

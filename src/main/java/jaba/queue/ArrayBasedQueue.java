@@ -1,17 +1,9 @@
 package jaba.queue;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.val;
-
 /**
  * The time needed to add or delete an item is constant and independent of the number of items in the queue. So both addition and deletion can be O(1) operation.
  */
-@ToString(of = "queueArray")
 public class ArrayBasedQueue {
-    @Getter
-    @Setter
     int capacity;
     Object[] queueArray;
     int topIndex = 0;
@@ -51,5 +43,17 @@ public class ArrayBasedQueue {
 
     public boolean isEmpty() {
         return topIndex == 0;
+    }
+
+    public String toString() {
+        return "ArrayBasedQueue(queueArray=" + java.util.Arrays.deepToString(this.queueArray) + ")";
+    }
+
+    public int getCapacity() {
+        return this.capacity;
+    }
+
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 }

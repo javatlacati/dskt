@@ -1,12 +1,10 @@
 package jaba.tree.recursive;
 
 import jaba.tree.iterative.IterativeBinaryTreeNode;
-import lombok.Getter;
 
 /**
  * Created by Administrador on 02/07/2017.
  */
-@Getter
 public class RecursiveBinaryTree<Item> {
     RecursiveBinaryTreeNode<Item> root;
 
@@ -45,4 +43,7 @@ public class RecursiveBinaryTree<Item> {
     }
 
 
+    public RecursiveBinaryTreeNode<Item> getRoot() {
+        return this.root;
+    }
 }

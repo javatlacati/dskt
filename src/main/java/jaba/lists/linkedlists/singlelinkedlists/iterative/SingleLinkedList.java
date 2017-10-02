@@ -1,13 +1,7 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
 import jaba.lists.MyList;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
 
-@Setter
-@Getter
-@EqualsAndHashCode(of = "root")
 public class SingleLinkedList<Type> implements MyList<Type> {
     private Node<Type> root;
 
@@ -162,5 +156,36 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     @Override
     public void clear() {
         root = null;
+    }
+
+    public Node<Type> getRoot() {
+        return this.root;
+    }
+
+    public void setRoot(Node<Type> root) {
+        this.root = root;
+    }
+
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof SingleLinkedList)) return false;
+        final SingleLinkedList other = (SingleLinkedList) o;
+        if (!other.canEqual((Object) this)) return false;
+        final Object this$root = this.getRoot();
+        final Object other$root = other.getRoot();
+        if (this$root == null ? other$root != null : !this$root.equals(other$root)) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final Object $root = this.getRoot();
+        result = result * PRIME + ($root == null ? 43 : $root.hashCode());
+        return result;
+    }
+
+    protected boolean canEqual(Object other) {
+        return other instanceof SingleLinkedList;
     }
 }

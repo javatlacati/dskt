@@ -1,9 +1,7 @@
-import unittest
-
 from jaba.bags import ArrayBasedBag
 
 
-class BagTest(unittest.TestCase):
+class BagTest():
     def test_is_empty(self):
         bag=ArrayBasedBag(50)
-        self.assertTrue(bag.isEmpty())
+        assert bag.isEmpty() == True

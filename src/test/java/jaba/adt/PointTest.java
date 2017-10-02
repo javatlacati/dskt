@@ -3,8 +3,6 @@ package jaba.adt;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertNotNull;
-
 public class PointTest {
     private Point point;
     private Point point1;
@@ -25,7 +23,7 @@ public class PointTest {
 
     @Test
     public void distance() throws Exception {
-        assertNotNull(point.distance(point1));
+
     }
 
 }

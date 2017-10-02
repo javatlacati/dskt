@@ -3,15 +3,18 @@ package jaba.queue;
 import org.junit.Before;
 import org.junit.Test;
 
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
 /**
  * Created by Administrador on 06/06/2017.
  */
 public class AutoGrowingArrayBasedQueueTest {
     ArrayBasedQueue queue;
     private static final int initialCapacity = 2;
+
     @Before
     public void setUp() throws Exception {
-        queue = new AutoGrowingArrayBasedQueue(initialCapacity,2);
+        queue = new AutoGrowingArrayBasedQueue(initialCapacity, 2);
     }
 
     @Test
@@ -81,12 +84,8 @@ public class AutoGrowingArrayBasedQueueTest {
         System.out.println(queue);
         queue.dequeue();
         System.out.println(queue);
-        try{
-            queue.dequeue();
-            System.out.println(queue);
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+        assertThrows(IndexOutOfBoundsException.class, () -> queue.dequeue());
+        System.out.println(queue);
     }
 
 }

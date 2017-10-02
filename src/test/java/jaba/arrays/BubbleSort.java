@@ -4,7 +4,6 @@ import com.carrotsearch.junitbenchmarks.BenchmarkRule;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkHistoryChart;
 import com.carrotsearch.junitbenchmarks.annotation.BenchmarkMethodChart;
 import com.carrotsearch.junitbenchmarks.annotation.LabelType;
-import lombok.val;
 import org.jetbrains.annotations.Contract;
 import org.junit.Assert;
 import org.junit.BeforeClass;

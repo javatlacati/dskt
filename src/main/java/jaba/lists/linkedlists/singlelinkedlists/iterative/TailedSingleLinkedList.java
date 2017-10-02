@@ -1,8 +1,6 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
 import jaba.lists.MyList;
-import lombok.Getter;
-import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
@@ -13,8 +11,6 @@ import java.util.NoSuchElementException;
  * @author Javatlacati
  * @param <Type> Type of contained elements
  */
-@Setter
-@Getter
 public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type> {
 
     private Node<Type> head;
@@ -208,5 +204,21 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
                 return tmp.getItem();
             }
         };
+    }
+
+    public Node<Type> getHead() {
+        return this.head;
+    }
+
+    public Node<Type> getTail() {
+        return this.tail;
+    }
+
+    public void setHead(Node<Type> head) {
+        this.head = head;
+    }
+
+    public void setTail(Node<Type> tail) {
+        this.tail = tail;
     }
 }

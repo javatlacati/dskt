@@ -1,12 +1,5 @@
 package jaba.lists.linkedlists.singlelinkedlists.circular.iterative;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-
-@Setter
-@Getter
-@EqualsAndHashCode(of = "root")
 public class CircularList {
     private Node root;
 
@@ -96,5 +89,36 @@ public class CircularList {
                 }
             }
         }
+    }
+
+    public Node getRoot() {
+        return this.root;
+    }
+
+    public void setRoot(Node root) {
+        this.root = root;
+    }
+
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof CircularList)) return false;
+        final CircularList other = (CircularList) o;
+        if (!other.canEqual((Object) this)) return false;
+        final Object this$root = this.getRoot();
+        final Object other$root = other.getRoot();
+        if (this$root == null ? other$root != null : !this$root.equals(other$root)) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final Object $root = this.getRoot();
+        result = result * PRIME + ($root == null ? 43 : $root.hashCode());
+        return result;
+    }
+
+    protected boolean canEqual(Object other) {
+        return other instanceof CircularList;
     }
 }

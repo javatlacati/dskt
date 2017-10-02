@@ -1,6 +1,5 @@
 package jaba.queue.priority;
 
-import lombok.val;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;

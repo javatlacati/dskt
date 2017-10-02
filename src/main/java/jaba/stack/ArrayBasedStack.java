@@ -1,12 +1,7 @@
 package jaba.stack;
 
-import lombok.Getter;
-import lombok.ToString;
-
-@ToString(of = {"stackArray", "topPosition"})
 public class ArrayBasedStack<Item>  { //extends Stack<Item>
     Item[] stackArray;
-    @Getter
     int topPosition;
 
     public ArrayBasedStack(int capacity) {
@@ -50,5 +45,13 @@ public class ArrayBasedStack<Item>  { //extends Stack<Item>
          }
         }
         return result;
+    }
+
+    public String toString() {
+        return "ArrayBasedStack(stackArray=" + java.util.Arrays.deepToString(this.stackArray) + ", topPosition=" + this.topPosition + ")";
+    }
+
+    public int getTopPosition() {
+        return this.topPosition;
     }
 }

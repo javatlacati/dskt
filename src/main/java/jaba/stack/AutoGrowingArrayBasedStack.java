@@ -1,18 +1,10 @@
 package jaba.stack;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-import lombok.val;
-
 /**
  * Created by Administrador on 05/06/2017.
  * Actually like a Vector.
  */
-@ToString(callSuper = true,of = {"capacityIncrement"})
 public class AutoGrowingArrayBasedStack<Item> extends ArrayBasedStack<Item> {
-    @Getter
-    @Setter
     int capacityIncrement=10;
 
     public AutoGrowingArrayBasedStack(int capacity) {
@@ -35,5 +27,17 @@ public class AutoGrowingArrayBasedStack<Item> extends ArrayBasedStack<Item> {
             stackArray= (Item[]) newArray;
         }
         return super.push(item);
+    }
+
+    public String toString() {
+        return "AutoGrowingArrayBasedStack(super=" + super.toString() + ", capacityIncrement=" + this.capacityIncrement + ")";
+    }
+
+    public int getCapacityIncrement() {
+        return this.capacityIncrement;
+    }
+
+    public void setCapacityIncrement(int capacityIncrement) {
+        this.capacityIncrement = capacityIncrement;
     }
 }

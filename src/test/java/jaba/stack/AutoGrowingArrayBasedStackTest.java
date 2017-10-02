@@ -2,15 +2,19 @@ package jaba.stack;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.jupiter.api.DisplayName;
+
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * Created by Administrador on 06/06/2017.
  */
 public class AutoGrowingArrayBasedStackTest {
-    ArrayBasedStack stack;
+    private AutoGrowingArrayBasedStack<Integer> stack;
+
     @Before
     public void setUp() throws Exception {
-        stack =new AutoGrowingArrayBasedStack(2,2);
+        stack =new AutoGrowingArrayBasedStack<>(2,2);
     }
 
     @Test
@@ -41,6 +45,7 @@ public class AutoGrowingArrayBasedStackTest {
     public void getTopPosition() throws Exception {
     }
 
+    @DisplayName("Escenario complejo")
     @Test
     public void happyPath() throws Exception {
         System.out.println(stack);
@@ -50,12 +55,12 @@ public class AutoGrowingArrayBasedStackTest {
         }
         System.out.println(stack);
         for(int i=1;i<12;i++){
-            try {
-                stack.pop();
-                System.out.println(stack);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+                if(i>9){
+                    assertThrows(IndexOutOfBoundsException.class, ()-> stack.pop());
+                }else{
+                    stack.pop();
+                    System.out.println(stack);
+                }
         }
     }
 

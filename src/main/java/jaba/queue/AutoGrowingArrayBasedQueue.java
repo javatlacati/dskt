@@ -1,16 +1,9 @@
 package jaba.queue;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 /**
  * Created by Administrador on 05/06/2017.
  */
-@ToString(callSuper = true,of = {"capacityIncrement"})
 public class AutoGrowingArrayBasedQueue extends ArrayBasedQueue {
-    @Getter
-    @Setter
     int capacityIncrement = 10;
 
     public AutoGrowingArrayBasedQueue(int queueSize) {
@@ -32,5 +25,17 @@ public class AutoGrowingArrayBasedQueue extends ArrayBasedQueue {
             capacity = newCapacity;
         }
         super.enqueue(item);
+    }
+
+    public String toString() {
+        return "AutoGrowingArrayBasedQueue(super=" + super.toString() + ", capacityIncrement=" + this.capacityIncrement + ")";
+    }
+
+    public int getCapacityIncrement() {
+        return this.capacityIncrement;
+    }
+
+    public void setCapacityIncrement(int capacityIncrement) {
+        this.capacityIncrement = capacityIncrement;
     }
 }
