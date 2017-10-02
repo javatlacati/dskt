@@ -93,7 +93,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
     @NotNull
     @Override
     public Iterator<Item> iterator() {
-        return new Iterator<>() {
+        return new Iterator<Item>() {
             /**Index of current element.*/
             private int currentElementIdx = 0;
 
@@ -141,7 +141,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
      */
     @Override
     public Spliterator<Item> spliterator() {
-        return new Spliterator<>() {
+        return new Spliterator<Item>() {
             int currentElementIdx = 0;
 
             /**
