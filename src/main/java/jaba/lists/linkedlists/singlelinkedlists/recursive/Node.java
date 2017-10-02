@@ -1,25 +1,18 @@
 package jaba.lists.linkedlists.singlelinkedlists.recursive;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Created by Administrador on 22/05/2017.
  *
  * @param <Type> generic type
  */
-@Setter
-@Getter
-@EqualsAndHashCode(of = {"item"})
-@ToString(of = "item")
 public class Node<Type> {
 
     private Type item;
     private Node<Type> next;
 
-    public Node(Type item) {
+    public Node(@NotNull Type item) {
         this.item = item;
     }
 
@@ -27,6 +20,7 @@ public class Node<Type> {
 
     /**
      * Appends a node at the end.
+     * @param newNode node to be addeded to singly linked list
      */
     synchronized void add(Node<Type> newNode) {
         if (next == null) {
@@ -37,8 +31,10 @@ public class Node<Type> {
     }
 
     synchronized void addAtIndex(Type element, int targetIndex, int currentIndex) {
-        if (targetIndex == currentIndex) {
+        if (targetIndex == currentIndex+1) {
+            Node<Type> aux = next;
             next = new Node<>(element);
+            next.setNext(aux);
         } else {
             if (next != null) {
                 next.addAtIndex(element, targetIndex, 1 + currentIndex);
@@ -62,19 +58,6 @@ public class Node<Type> {
         }
     }
 
-    void reverse() {
-        if (next != null) {
-            if (next.getNext() != null) {
-                if (next.getNext().getNext() != null) {
-                    next.getNext().reverse();
-                } else {
-                    Node<Type> aux = next.getNext();
-                    Node<Type> aux1 = aux.getNext();
-
-                }
-            }
-        }
-    }
 
     public int size(int i) {
         if (next == null) {
@@ -121,5 +104,67 @@ public class Node<Type> {
         } else {
             return next.privateCreateArray(i + 1);
         }
+    }
+
+    public void reverse(Node<Type> currentHead, Node<Type> root) {
+        if(root.getNext()==null){
+            //we are done
+            root.setNext(currentHead);
+        }else{
+            root=root.next;
+            if(currentHead.getNext().equals(root)){
+                currentHead.setNext(null);
+                Node<Type> aux = root;
+                root=root.getNext();
+                aux.setNext(currentHead);
+                currentHead=aux;
+                reverse(currentHead,root);
+            }else{
+
+            }
+        }
+    }
+
+    public Type getItem() {
+        return this.item;
+    }
+
+    public Node<Type> getNext() {
+        return this.next;
+    }
+
+    public void setItem(Type item) {
+        this.item = item;
+    }
+
+    public void setNext(Node<Type> next) {
+        this.next = next;
+    }
+
+    public boolean equals(Object o) {
+        if (o == this) return true;
+        if (!(o instanceof Node)) return false;
+        final Node other = (Node) o;
+        if (!other.canEqual((Object) this)) return false;
+        final Object this$item = this.getItem();
+        final Object other$item = other.getItem();
+        if (this$item == null ? other$item != null : !this$item.equals(other$item)) return false;
+        return true;
+    }
+
+    public int hashCode() {
+        final int PRIME = 59;
+        int result = 1;
+        final Object $item = this.getItem();
+        result = result * PRIME + ($item == null ? 43 : $item.hashCode());
+        return result;
+    }
+
+    protected boolean canEqual(Object other) {
+        return other instanceof Node;
+    }
+
+    public String toString() {
+        return "Node(item=" + this.getItem() + ")";
     }
 }
