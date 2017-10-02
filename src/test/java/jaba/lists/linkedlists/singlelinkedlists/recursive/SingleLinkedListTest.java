@@ -34,11 +34,11 @@ public class SingleLinkedListTest {
      * Test of addAtEnd method, of class SingleLinkedList.
      */
     @Test
-    @Ignore
     public void testAddAtEnd() {
-        System.out.println("addAtEnd");
-        instance.addAtEnd("5");
-        fail("The test case is a prototype.");
+        instance.addAtRoot("mundo");
+        instance.addAtRoot("Adios");
+        instance.addAtEnd("cruel");
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
     }
 
     /**
@@ -108,6 +108,12 @@ public class SingleLinkedListTest {
 
     @Test
     public void removeLast() throws Exception {
+        instance.addAtEnd("Adios");
+        instance.addAtEnd("mundo");
+        instance.addAtEnd("cruel");
+        instance.addAtEnd("perro");
+        instance.removeLast();
+        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
     }
 
     @Test
@@ -128,27 +134,26 @@ public class SingleLinkedListTest {
      * Test of getRoot method, of class SingleLinkedList.
      */
     @Test
-    @Ignore
     public void testGetRoot() {
         System.out.println("getRoot");
         Node expResult = null;
         Node result = instance.getRoot();
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
     }
 
     /**
      * Test of setRoot method, of class SingleLinkedList.
      */
     @Test
-    @Ignore
     public void testSetRoot() {
         System.out.println("setRoot");
+        instance.add("Adios");
+        assertEquals("Node(item=Adios)",instance.getStrings());
         Node root = null;
         instance.setRoot(root);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        assertEquals("",instance.getStrings());
+        instance.setRoot(new Node<>("hola"));
+        assertEquals("Node(item=hola)",instance.getStrings());
     }
 
     @Test
