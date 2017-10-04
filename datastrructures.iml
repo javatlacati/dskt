@@ -43,7 +43,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/test/python" isTestSource="true" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
-    <orderEntry type="jdk" jdkName="IDE SDK" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="Python 3.6.2 (C:\Users\Administrador.000\AppData\Local\Programs\Python\Python36\python.exe) interpreter library" level="application" />
     <orderEntry type="library" name="Maven: org.jetbrains.kotlin:kotlin-stdlib-jre8:1.1.4" level="project" />
