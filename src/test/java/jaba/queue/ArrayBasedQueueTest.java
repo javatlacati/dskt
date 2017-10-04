@@ -4,15 +4,16 @@ import org.databene.contiperf.PerfTest;
 import org.junit.Before;
 import org.junit.Test;
 
-//import static org.fest.assertions.Assertions.assertThat;
 import static org.junit.Assert.*;
+
+//import static org.fest.assertions.Assertions.assertThat;
 
 /**
  * Created by Core i7 on 31/05/2017.
  */
 //@RunWith(ParallelRunner.class)
 public class ArrayBasedQueueTest {
-    ArrayBasedQueue queue;
+    private ArrayBasedQueue<Integer> queue;
     private static final int initialCapacity = 5;
 
 //    @Rule
@@ -20,7 +21,7 @@ public class ArrayBasedQueueTest {
 
     @Before
     public void setUp() throws Exception {
-        queue = new ArrayBasedQueue(initialCapacity);
+        queue = new ArrayBasedQueue<>(initialCapacity);
     }
 
     @Test
@@ -30,8 +31,6 @@ public class ArrayBasedQueueTest {
             queue.enqueue(i);
         }
         assertEquals("ArrayBasedQueue(queueArray=[0, 1, 2, 3, 4])", queue.toString());
-//        assertThat(queue.isFull()).isNotNull();
-        assertNotNull(queue.isFull());
         assertTrue(queue.isFull());
     }
 
@@ -43,7 +42,7 @@ public class ArrayBasedQueueTest {
         }
         assertFalse(queue.isFull());
         for (int i = 0; i < 3; i++) {
-            assertEquals((2 - i), queue.dequeue());
+            assertEquals(Integer.valueOf(i), queue.dequeue());
         }
         assertEquals("ArrayBasedQueue(queueArray=[null, null, null, null, null])", queue.toString());
         assertTrue(queue.isEmpty());
@@ -79,6 +78,24 @@ public class ArrayBasedQueueTest {
     @Test
     public void toStringTest() throws Exception {
         assertEquals("ArrayBasedQueue(queueArray=[null, null, null, null, null])", queue.toString());
+    }
+
+    @Test
+    public void happyPath() throws Exception {
+        System.out.println("Happy Path");
+        final int expected = 1;
+        queue.enqueue(expected);
+        assertEquals(Integer.valueOf(expected), queue.dequeue());
+
+        queue.enqueue(2);
+        queue.enqueue(3);
+        queue.enqueue(4);
+        assertEquals(Integer.valueOf(2), queue.dequeue());
+
+        queue.enqueue(5);
+        queue.enqueue(6);
+        System.out.println(queue);
+        assertEquals("ArrayBasedQueue(queueArray=[3, 4, 5, 6, null])", queue.toString());
     }
 
 }
