@@ -7,6 +7,10 @@ Mantenience status: [![Average time to resolve an issue](http://isitmaintained.c
 
 Issue solving: [![Percentage of issues still open](http://isitmaintained.com/badge/open/javatlacati/datastrructureskotlin.svg)](http://isitmaintained.com/project/javatlacati/datastrructureskotlin "Percentage of issues still open")
 
+Tested code: [![coverage percent](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master)](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master "coverage percent")
+
+Dependency status: [![Dependency Status](https://dependencyci.com/github/javatlacati/datastrructureskotlin/badge)](https://dependencyci.com/github/javatlacati/datastrructureskotlin)
+
 Sample project that showcases how to implement and use some basic datastructures.
 
 Code has been implemented in the following pogramming languages:
