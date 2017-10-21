@@ -7,7 +7,7 @@ Mantenience status: [![Average time to resolve an issue](http://isitmaintained.c
 
 Issue solving: [![Percentage of issues still open](http://isitmaintained.com/badge/open/javatlacati/datastrructureskotlin.svg)](http://isitmaintained.com/project/javatlacati/datastrructureskotlin "Percentage of issues still open")
 
-Tested code: [![coverage percent](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master)](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master "coverage percent")
+Tested code: [![Coverage Status](https://coveralls.io/repos/github/javatlacati/datastrructureskotlin/badge.svg?branch=master)](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master)
 
 Dependency status: [![Dependency Status](https://dependencyci.com/github/javatlacati/datastrructureskotlin/badge)](https://dependencyci.com/github/javatlacati/datastrructureskotlin)
 
