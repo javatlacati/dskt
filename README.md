@@ -1,5 +1,16 @@
 # datastrructureskotlin
-![You can check Build status on Travis CI](https://travis-ci.org/javatlacati/datastrructureskotlin.svg?branch=master)
+Main branch status:  ![Main branch](https://travis-ci.org/javatlacati/datastrructureskotlin.svg?branch=master)
+
+Java 9 branch status: ![Java 9 branch](https://api.travis-ci.org/javatlacati/datastrructureskotlin.svg?branch=Java9)
+
+Mantenience status: [![Average time to resolve an issue](http://isitmaintained.com/badge/resolution/javatlacati/datastrructureskotlin.svg)](http://isitmaintained.com/project/javatlacati/datastrructureskotlin "Average time to resolve an issue")
+
+Issue solving: [![Percentage of issues still open](http://isitmaintained.com/badge/open/javatlacati/datastrructureskotlin.svg)](http://isitmaintained.com/project/javatlacati/datastrructureskotlin "Percentage of issues still open")
+
+Tested code: [![coverage percent](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master)](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master "coverage percent")
+
+Dependency status: [![Dependency Status](https://dependencyci.com/github/javatlacati/datastrructureskotlin/badge)](https://dependencyci.com/github/javatlacati/datastrructureskotlin)
+
 Sample project that showcases how to implement and use some basic datastructures.
 
 Code has been implemented in the following pogramming languages:
