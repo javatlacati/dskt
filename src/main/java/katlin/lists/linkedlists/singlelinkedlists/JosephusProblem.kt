@@ -1,6 +1,6 @@
-package katlin.lists.singlelinkedlists
+package katlin.lists.linkedlists.singlelinkedlists
 
-import katlin.lists.linkedlists.singlelinkedlists.recursive.*;
+import katlin.lists.linkedlists.singlelinkedlists.recursive.Node
 
 /**
  * Created by Administrador on 24/05/2017.
