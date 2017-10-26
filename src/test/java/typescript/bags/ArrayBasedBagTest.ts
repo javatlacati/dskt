@@ -1,4 +1,4 @@
-/* 
+/*
  * Copyright (C) 2017 root
  *
  * This program is free software: you can redistribute it and/or modify
@@ -15,14 +15,24 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-import * as BagPackage from "../../../../main/java/typescript/bags/bags";
-// import { expect } from 'chai';
+import * as BagPackage from '../../../../main/java/typescript/bags/bags';
+import * as Chai from "chai";
 
-//describe('Hello function', () => {
-//  it('should return hello world', () => {
-//    const result = hello();
-//    expect(result).to.equal('Hello World!');
-    let myBag:BagPackage.bags.Bag<Number> = new BagPackage.bags.ArrayBasedBag(5);
-//  });
-//});
+describe('Basic tests', () => {
+    it('emptyness test', () => {
+        let arrayBasedBag: BagPackage.bags.Bag<String> = new BagPackage.bags.ArrayBasedBag(5);
+        const result = arrayBasedBag.size();
+        Chai.expect(result).to.equal(0);
+    });
+
+    it('add test', () => {
+        let arrayBasedBag: BagPackage.bags.Bag<String> = new BagPackage.bags.ArrayBasedBag(5);
+        arrayBasedBag.add("asd");
+        const result = arrayBasedBag.size();
+        Chai.expect(result).to.equal(1);
+    });
+
+
+
+});
 
