@@ -4,11 +4,13 @@
 
 Main branch status on Linux:  ![Main branch on linux](https://travis-ci.org/javatlacati/datastrructureskotlin.svg?branch=master)
 
-Main branch status on Windows:  [![Main branch on windows](https://ci.appveyor.com/api/projects/status/yw2b2tlfivfs1vj3?svg=true)](https://ci.appveyor.com/project/javatlacati/datastrructureskotlin)
+Main branch status on Windows:  [![Main branch on windows](https://ci.appveyor.com/api/projects/status/yw2b2tlfivfs1vj3/branch/master?svg=true)](https://ci.appveyor.com/project/javatlacati/datastrructureskotlin?branch=master)
 
-Java 9 branch status on linux: ![Java 9 branch](https://api.travis-ci.org/javatlacati/datastrructureskotlin.svg?branch=Java9)
+Java 9 branch status on Linux: ![Java 9 branch on linux](https://api.travis-ci.org/javatlacati/datastrructureskotlin.svg?branch=Java9)
 
-Tested code: [![coverage percent](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master)](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master "coverage percent")
+Java 9 branch status on Windows:  [![Java 9 branch on windows](https://ci.appveyor.com/api/projects/status/yw2b2tlfivfs1vj3/branch/Java?svg=true)](https://ci.appveyor.com/project/javatlacati/datastrructureskotlin?branch=Java9)
+
+Tested code: [![Coverage Status](https://coveralls.io/repos/github/javatlacati/datastrructureskotlin/badge.svg?branch=master)](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master)
 
 
 Sample project that showcases how to implement and use some basic datastructures.
