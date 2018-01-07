@@ -20,17 +20,17 @@ public class Point {
     }
 
     double r() {
-        return Math.sqrt(x * x + y * y);
+        return Math.sqrt((x * x) + (y * y));
     }
 
     double theta() {
-        return Math.atan2(x, y);
+        return StrictMath.atan2(x, y);
     }
 
     double distance(Point point) {
         double dx = x - point.getX();
         double dy = y - point.getY();
-        return Math.sqrt(dx * dx + dy * dy);
+        return Math.sqrt((dx * dx) + (dy * dy));
     }
 
     @Override
