@@ -8,11 +8,11 @@ import java.util.List;
  * Created by Administrador on 29/06/2017.
  */
 public class Monomial {
-    int monomialCoefficient;
-    List<VariableTerm> variableTerms;
+    private int monomialCoefficient;
+    private List<VariableTerm> variableTerms;
 
-    public Monomial(int monomialCoefficient) {
-        this.monomialCoefficient = monomialCoefficient;
+    public Monomial(int coefficient) {
+        this.monomialCoefficient = coefficient;
         variableTerms = new ArrayList<>();
     }
 
@@ -41,14 +41,14 @@ public class Monomial {
 
     @Override
     public String toString() {
-        return (monomialCoefficient == 0 ? "" : monomialCoefficient + "(") + Arrays.toString(variableTerms.toArray()) + (monomialCoefficient == 0 ? "" : ")");
+        return (0 == monomialCoefficient ? "" : monomialCoefficient + "(") + Arrays.toString(variableTerms.toArray()) + (monomialCoefficient == 0 ? "" : ")");
     }
 
     public void addTerm(VariableTerm variableTerm) {
 //        if (isLiteralPartAndGradePesent(variableTerm.getLiteralPart(), variableTerm.getGrade())) {
-            //sum to normalize
+        //sum to normalize
 //        } else {
-            variableTerms.add(variableTerm);
+        variableTerms.add(variableTerm);
 //        }
     }
 

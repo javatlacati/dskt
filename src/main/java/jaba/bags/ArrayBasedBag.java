@@ -4,6 +4,7 @@ import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Spliterator;
 import java.util.Spliterators;
 import java.util.function.Consumer;
@@ -79,12 +80,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
      */
     @Override
     public Item find(Item target) {
-        for (Item element : internalArray) {
-            if (element.equals(target)) {
-                return element;
-            }
-        }
-        return null;
+        return Arrays.stream(internalArray).filter(element -> element.equals(target)).findFirst().orElse(null);
     }
 
     /**
@@ -109,7 +105,7 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
                 if (currentElementIdx <= topPosition) {
                     return internalArray[currentElementIdx++];
                 } else {
-                    return null;
+                    throw new NoSuchElementException("the element is not present in the aray based bag");
                 }
             }
 
