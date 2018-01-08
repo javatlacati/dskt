@@ -36,7 +36,8 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
     @Override
     public void add(Item item) {
         if (internalArray.length > topPosition) {
-            internalArray[topPosition++] = item;
+            internalArray[topPosition] = item;
+            topPosition++;
         } else {
             throw new IndexOutOfBoundsException("Capacity overflow");
         }
@@ -103,7 +104,9 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
             @Override
             public Item next() {
                 if (currentElementIdx <= topPosition) {
-                    return internalArray[currentElementIdx++];
+                    final Item result = internalArray[currentElementIdx];
+                    currentElementIdx++;
+                    return result;
                 } else {
                     throw new NoSuchElementException("the element is not present in the aray based bag");
                 }
@@ -145,11 +148,12 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
              */
             @Override
             public boolean tryAdvance(Consumer<? super Item> action) {
-                if (action == null) {
+                if (null == action) {
                     throw new NullPointerException();
                 }
                 if (currentElementIdx < topPosition) {
-                    action.accept(internalArray[currentElementIdx++]);
+                    action.accept(internalArray[currentElementIdx]);
+                    currentElementIdx++;
                     return true;
                 } else {
                     return false;

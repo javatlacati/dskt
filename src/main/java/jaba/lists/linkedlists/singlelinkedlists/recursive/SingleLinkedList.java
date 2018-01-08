@@ -163,8 +163,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         if (!other.canEqual((Object) this)) return false;
         final Object this$root = this.getRoot();
         final Object other$root = other.getRoot();
-        if (this$root == null ? other$root != null : !this$root.equals(other$root)) return false;
-        return true;
+        return (null == this$root) ? (null == other$root) : this$root.equals(other$root);
     }
 
     public int hashCode() {

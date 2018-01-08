@@ -16,12 +16,12 @@ public class ArrayBasedQueue<Item> {
     private int Index = 0;
 
     public ArrayBasedQueue(int queueSize) {
-        this.capacity = queueSize;
-        queueArray = (Item[]) new Object[this.capacity];
+        capacity = queueSize;
+        queueArray = (Item[]) new Object[capacity];
     }
 
     public boolean isEmpty() {
-        return Index == 0;
+        return 0 == Index;
     }
 
     public boolean isFull() {
@@ -32,7 +32,8 @@ public class ArrayBasedQueue<Item> {
         if (isFull()) {
             throw new OutOfMemoryError("Queue Capacity has been excedeed");
         } else {
-            queueArray[Index++] = item;
+            queueArray[Index] = item;
+            Index++;
         }
     }
 
@@ -40,7 +41,7 @@ public class ArrayBasedQueue<Item> {
         if (isEmpty()) {
             throw new IndexOutOfBoundsException("Queue Undeflow");
         } else {
-            Item dequeued = queueArray[0];
+            final Item dequeued = queueArray[0];
             final int length = queueArray.length - 1;
             for (int i = 0; i < length; i++) {
                 queueArray[i] = queueArray[i + 1];
@@ -59,11 +60,11 @@ public class ArrayBasedQueue<Item> {
     }
 
     public String toString() {
-        return "ArrayBasedQueue(queueArray=" + java.util.Arrays.deepToString(this.queueArray) + ")";
+        return "ArrayBasedQueue(queueArray=" + java.util.Arrays.deepToString(queueArray) + ")";
     }
 
     public int getCapacity() {
-        return this.capacity;
+        return capacity;
     }
 
     public void setCapacity(int capacity) {

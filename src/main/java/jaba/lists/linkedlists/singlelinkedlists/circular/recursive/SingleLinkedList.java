@@ -87,6 +87,6 @@ public class SingleLinkedList {
     }
 
     public String getStrings() {
-        return root == null ? "" : "";//root.getStrings();
+        return null == root ? "" : "";//root.getStrings();
     }
 }

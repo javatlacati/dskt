@@ -17,7 +17,8 @@ public class ArrayBasedStack<Item> {
      */
     public Item push(Item item) {
         if (stackArray.length > topPosition) {
-            stackArray[topPosition++] = item;
+            stackArray[topPosition] = item;
+            topPosition++;
             return item;
         } else {
             throw new IndexOutOfBoundsException("Capacity overflow");
@@ -29,7 +30,8 @@ public class ArrayBasedStack<Item> {
      */
     public Item pop() {
         if (topPosition > 0) {
-            return stackArray[--topPosition];
+            --topPosition;
+            return stackArray[topPosition];
         } else {
             throw new IndexOutOfBoundsException("Capacity underflow");
         }

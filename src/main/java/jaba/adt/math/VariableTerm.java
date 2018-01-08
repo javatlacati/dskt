@@ -17,7 +17,7 @@ public class VariableTerm {
 
     @Override
     public String toString() {
-        return (coefficient == 0 ? "" : coefficient) + literalPart + (grade == 0 ? "" : "^" +grade);
+        return ((0 == coefficient) ? "" : coefficient) + literalPart + ((0 == grade) ? "" : ("^" + grade));
     }
 
     public void sum(VariableTerm otherTerm){
