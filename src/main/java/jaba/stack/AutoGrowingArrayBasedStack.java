@@ -3,7 +3,6 @@ package jaba.stack;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.val;
 
 /**
  * Created by Administrador on 05/06/2017.

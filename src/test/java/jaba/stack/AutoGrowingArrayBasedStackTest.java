@@ -1,16 +1,18 @@
 package jaba.stack;
 
+import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by Administrador on 06/06/2017.
  */
+@Log
 public class AutoGrowingArrayBasedStackTest {
-    ArrayBasedStack stack;
+    private ArrayBasedStack<Integer> stack;
     @Before
     public void setUp() throws Exception {
-        stack =new AutoGrowingArrayBasedStack(2,2);
+        stack =new AutoGrowingArrayBasedStack<>(2,2);
     }
 
     @Test
@@ -54,7 +56,7 @@ public class AutoGrowingArrayBasedStackTest {
                 stack.pop();
                 System.out.println(stack);
             } catch (Exception e) {
-                e.printStackTrace();
+                log.info("test dind't poped as expected");
             }
         }
     }

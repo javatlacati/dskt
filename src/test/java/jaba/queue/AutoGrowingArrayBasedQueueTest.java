@@ -1,17 +1,20 @@
 package jaba.queue;
 
+import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by Administrador on 06/06/2017.
  */
+@Log
 public class AutoGrowingArrayBasedQueueTest {
-    ArrayBasedQueue queue;
+    private ArrayBasedQueue queue;
     private static final int initialCapacity = 2;
+
     @Before
     public void setUp() throws Exception {
-        queue = new AutoGrowingArrayBasedQueue(initialCapacity,2);
+        queue = new AutoGrowingArrayBasedQueue(initialCapacity, 2);
     }
 
     @Test
@@ -81,11 +84,11 @@ public class AutoGrowingArrayBasedQueueTest {
         System.out.println(queue);
         queue.dequeue();
         System.out.println(queue);
-        try{
+        try {
             queue.dequeue();
             System.out.println(queue);
-        }catch (Exception e){
-            e.printStackTrace();
+        } catch (Exception e) {
+            log.info("test dind't dequeued as expected");
         }
     }
 

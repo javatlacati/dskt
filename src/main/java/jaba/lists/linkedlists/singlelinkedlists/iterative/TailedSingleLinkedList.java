@@ -3,6 +3,7 @@ package jaba.lists.linkedlists.singlelinkedlists.iterative;
 import jaba.lists.MyList;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.extern.java.Log;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Iterator;
@@ -15,6 +16,7 @@ import java.util.NoSuchElementException;
  */
 @Setter
 @Getter
+@Log
 public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type> {
 
     private Node<Type> head;
@@ -24,10 +26,7 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
     public int size() {
         Node<Type> tmp = head;
         int size=0;
-        while(true){
-            if(tmp == null){
-                break;
-            }
+        while(null != tmp){
             tmp = tmp.getNext();
             size++;
         }
@@ -132,12 +131,12 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
     
     public void deleteFront(){
          
-        if(head == null){
+        if(null == head){
             throw new IndexOutOfBoundsException("Capacity underflow");
         }
         Node<Type> tmp = head;
         head = tmp.getNext();
-        if(head == null){
+        if(null == head){
             tail = null;
         }
         //System.out.println("Deleted: "+tmp.getItem());
