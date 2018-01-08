@@ -1,7 +1,10 @@
 package jaba.adt;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class PointTest {
     private Point point;
@@ -23,7 +26,7 @@ public class PointTest {
 
     @Test
     public void distance() throws Exception {
-
+        Assert.assertThat(point.distance(point1), notNullValue());
     }
 
 }

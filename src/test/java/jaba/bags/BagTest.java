@@ -3,37 +3,38 @@ package jaba.bags;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.*;
+import java.util.stream.IntStream;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
 
 public class BagTest {
     private Bag<Integer> bag;
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         bag = new ArrayBasedBag<>(5);
     }
 
     @Test
-    public void add() throws Exception {
-        assertEquals(0, bag.size());
+    public void add() {
+        assertThat(bag.size(), is(0));
         bag.add(10);
-        assertEquals(1, bag.size());
+        assertThat(bag.size(), is(1));
     }
 
     @Test
-    public void isEmpty() throws Exception {
-        assertTrue(bag.isEmpty());
+    public void isEmpty() {
+        assertThat(bag.isEmpty(), is(true));
         bag.add(50);
-        assertFalse(bag.isEmpty());
+        assertThat(bag.isEmpty(), is(false));
     }
 
     @Test
-    public void disposeItems() throws Exception {
-        for (int i = 0; i < 5; i++) {
-            bag.add(i);
-        }
-        assertEquals(5, bag.size());
+    public void disposeItems() {
+        IntStream.range(0, 5).forEachOrdered(i -> bag.add(i));
+        assertThat(bag.size(), is(5));
         bag.disposeItems();
-        assertEquals(0, bag.size());
+        assertThat(bag.size(), is(0));
     }
 }
