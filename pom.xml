@@ -16,7 +16,7 @@
     </licenses>
 
     <properties>
-        <kotlin.version>1.1.4</kotlin.version>
+        <kotlin.version>1.2.10</kotlin.version>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <lombok.version>1.16.18</lombok.version>
@@ -135,9 +135,31 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>org.jacoco.build</artifactId>
+                <version>0.8.0</version>
+            </plugin>
 
         </plugins>
     </build>
+
+    <reporting>
+        <plugins>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <reportSets>
+                    <reportSet>
+                        <reports>
+                            <!-- select non-aggregate reports -->
+                            <report>report</report>
+                        </reports>
+                    </reportSet>
+                </reportSets>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <repositories>
         <repository>
