@@ -1,14 +1,15 @@
 package jaba.stack;
 
-import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.logging.Logger;
 
 /**
  * Created by Administrador on 05/06/2017.
  */
-@Log
 public class ArrayBasedStackTest {
+    private static final Logger log = Logger.getLogger(ArrayBasedStackTest.class.getName());
     ArrayBasedStack<Integer> stack;
     private static final int initialCapacity = 5;
 

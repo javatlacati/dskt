@@ -1,9 +1,10 @@
 package jaba.queue;
 
-import lombok.extern.java.Log;
 import org.databene.contiperf.PerfTest;
 import org.junit.Before;
 import org.junit.Test;
+
+import java.util.logging.Logger;
 
 import static org.junit.Assert.*;
 
@@ -13,8 +14,8 @@ import static org.junit.Assert.*;
  * Created by Core i7 on 31/05/2017.
  */
 //@RunWith(ParallelRunner.class)
-@Log
 public class ArrayBasedQueueTest {
+    private static final Logger log = Logger.getLogger(ArrayBasedQueueTest.class.getName());
     private ArrayBasedQueue<Integer> queue;
     private static final int initialCapacity = 5;
 
