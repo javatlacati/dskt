@@ -129,13 +129,13 @@
                 <version>3.7.0</version>
                 <!--<version>3.7.0</version>-->
                 <!--<configuration>-->
-                    <!--<annotationProcessorPaths>-->
-                        <!--<path>-->
-                            <!--<groupId>org.projectlombok</groupId>-->
-                            <!--<artifactId>lombok</artifactId>-->
-                            <!--<version>1.16.16</version>-->
-                        <!--</path>-->
-                    <!--</annotationProcessorPaths>-->
+                <!--<annotationProcessorPaths>-->
+                <!--<path>-->
+                <!--<groupId>org.projectlombok</groupId>-->
+                <!--<artifactId>lombok</artifactId>-->
+                <!--<version>1.16.16</version>-->
+                <!--</path>-->
+                <!--</annotationProcessorPaths>-->
                 <!--</configuration>-->
                 <executions>
                     <execution>
@@ -154,7 +154,6 @@
                     </execution>
                 </executions>
             </plugin>
-
             <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
@@ -166,6 +165,37 @@
 
         </plugins>
     </build>
+
+    <reporting>
+        <outputDirectory>${project.build.directory}/site</outputDirectory>
+        <plugins>
+            <!-- Maven Project Info Reports Plugin -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <dependencyLocationsEnabled>false</dependencyLocationsEnabled>
+                </configuration>
+            </plugin>
+            <!-- Cobertura Code Coverage Plugin -->
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>cobertura-maven-plugin</artifactId>
+                <version>2.7</version>
+                <configuration>
+                    <instrumentation>
+                        <ignoreTrivial>true</ignoreTrivial>
+                    </instrumentation>
+                    <formats>
+                        <format>html</format>
+                        <format>xml</format>
+                    </formats>
+                    <check>true</check>
+                </configuration>
+            </plugin>
+        </plugins>
+    </reporting>
 
     <repositories>
         <repository>
@@ -184,5 +214,39 @@
             <id>maven central</id>
             <url>http://central.maven.org/maven2/</url>
         </repository>
+
+        <repository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+        </repository>
     </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <url>http://central</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>always</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>jboss-public-repository-group</id>
+            <name>JBoss Public Repository Group</name>
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
+    </pluginRepositories>
 </project>
