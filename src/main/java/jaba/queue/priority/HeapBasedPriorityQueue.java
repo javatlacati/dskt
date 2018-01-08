@@ -35,7 +35,7 @@ public class HeapBasedPriorityQueue implements Queue {
     private boolean swim(int k) {
         while (k < 1 && less(k / 2, k)) {
             exch(k, k / 2);
-            k = k / 2;
+            k /= 2;
         }
         return true;
     }
@@ -54,13 +54,15 @@ public class HeapBasedPriorityQueue implements Queue {
     Comparable<Object> getMax(){
         exch(1,N);
         sink(1,N-1);
-        return pq[N--];
+        Comparable<Object> result = pq[N];
+        N--;
+        return result;
     }
 /**top down heapify*/
     private void sink(int k, int N) {
         while (2*k<=N){
             int j=2*k;
-            if(j<N && less(j,j+1)){
+            if((j < N) && less(j, j + 1)){
                 j++;
             }
             if(!less(k,j)){
@@ -98,7 +100,8 @@ public class HeapBasedPriorityQueue implements Queue {
     @Override
     public boolean add(Object o) {
         Comparable<Object> obj= (Comparable<Object>)o;
-        pq[++N] = obj;
+        ++N;
+        pq[N] = obj;
         return swim(N);
     }
 

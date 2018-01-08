@@ -23,7 +23,7 @@ public class Node<Type> {
      * @param newNode node to be addeded to singly linked list
      */
     synchronized void add(Node<Type> newNode) {
-        if (next == null) {
+        if (null == next) {
             next = newNode;
         } else {
             next.add(newNode);
@@ -31,12 +31,12 @@ public class Node<Type> {
     }
 
     synchronized void addAtIndex(Type element, int targetIndex, int currentIndex) {
-        if (targetIndex == currentIndex+1) {
+        if (targetIndex == (currentIndex + 1)) {
             Node<Type> aux = next;
             next = new Node<>(element);
             next.setNext(aux);
         } else {
-            if (next != null) {
+            if (null != next) {
                 next.addAtIndex(element, targetIndex, 1 + currentIndex);
             } else {
                 throw new IndexOutOfBoundsException("the specified index is not possible to reach");
@@ -45,12 +45,12 @@ public class Node<Type> {
     }
 
     String getStrings() {
-        return next == null ? toString() : toString() + next.getStrings();
+        return (null == next) ? toString() : (toString() + next.getStrings());
     }
 
     void removeLast() {
-        if (next != null) {
-            if (next.getNext() == null) {
+        if (null != next) {
+            if (null == next.getNext()) {
                 next = null;
             } else {
                 next.removeLast();
@@ -72,38 +72,22 @@ public class Node<Type> {
      * rercursive implementation!
      */
     public boolean contains(Type o) {
-        if (item.equals(o)) {
-            return true;
-        } else {
-            return next != null && next.contains(o);
-        }
+        return item.equals(o) || ((null != next) && next.contains(o));
     }
 
     public Type[] toArray() {
-        Type[] internalArray = privateCreateArray(1);
+        final Type[] internalArray = privateCreateArray(1);
         internalArray[0] = item;
-        if (next != null) {
-            return next.toArray(2, internalArray);
-        } else {
-            return internalArray;
-        }
+        return (null == next) ? internalArray : next.toArray(2, internalArray);
     }
 
     private Type[] toArray(int i, Type[] internalArray) {
         internalArray[i - 1] = item;
-        if (next != null) {
-            return next.toArray(i + 1, internalArray);
-        } else {
-            return internalArray;
-        }
+        return (null == next) ? internalArray : next.toArray(i + 1, internalArray);
     }
 
     Type[] privateCreateArray(int i) {
-        if (next == null) {
-            return (Type[]) new Object[i];
-        } else {
-            return next.privateCreateArray(i + 1);
-        }
+        return (null == next) ? (Type[]) new Object[i] : next.privateCreateArray(i + 1);
     }
 
     public void reverse(Node<Type> currentHead, Node<Type> root) {
@@ -148,8 +132,7 @@ public class Node<Type> {
         if (!other.canEqual((Object) this)) return false;
         final Object this$item = this.getItem();
         final Object other$item = other.getItem();
-        if (this$item == null ? other$item != null : !this$item.equals(other$item)) return false;
-        return true;
+        return (null == this$item) ? (null == other$item) : this$item.equals(other$item);
     }
 
     public int hashCode() {

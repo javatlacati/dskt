@@ -17,13 +17,7 @@ public class Monomial {
     }
 
     int getGrade() {
-        int maxgrade = Integer.MIN_VALUE;
-        for (VariableTerm variableTerm : variableTerms) {
-            if (variableTerm.getGrade() > maxgrade) {
-                maxgrade = variableTerm.getGrade();
-            }
-        }
-        return maxgrade;
+        return variableTerms.stream().mapToInt(VariableTerm::getGrade).max().orElse(Integer.MIN_VALUE);
     }
 
 //    void normalize(){
@@ -41,7 +35,7 @@ public class Monomial {
 
     @Override
     public String toString() {
-        return (0 == monomialCoefficient ? "" : monomialCoefficient + "(") + Arrays.toString(variableTerms.toArray()) + (monomialCoefficient == 0 ? "" : ")");
+        return (0 == monomialCoefficient ? "" : monomialCoefficient + "(") + Arrays.toString(variableTerms.toArray()) + (0 == monomialCoefficient ? "" : ")");
     }
 
     public void addTerm(VariableTerm variableTerm) {

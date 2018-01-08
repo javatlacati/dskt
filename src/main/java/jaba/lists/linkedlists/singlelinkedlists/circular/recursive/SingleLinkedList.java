@@ -80,7 +80,7 @@ public class SingleLinkedList {
     }
 
     public String getStrings() {
-        return root == null ? "" : "";//root.getStrings();
+        return null == root ? "" : "";//root.getStrings();
     }
 
     public jaba.lists.linkedlists.singlelinkedlists.recursive.Node getRoot() {
