@@ -18,8 +18,8 @@ import static org.junit.Assert.*;
 
 @BenchmarkMethodChart(filePrefix = "listPerformance")
 public class ListPerformanceTest {
-    private final int iterations = 7000;
-    final Random random = new Random();
+    private static final int iterations = 7000;
+    private final Random random = new Random();
 
     @Rule
     public BenchmarkRule benchmarkRun = new BenchmarkRule();
@@ -35,13 +35,13 @@ public class ListPerformanceTest {
 
     @Test
     @BenchmarkOptions(concurrency = 0)
-    public void sizeIteraiveSingleLinkedList() throws Exception {
+    public void sizeIteraiveSingleLinkedList() {
         size(new jaba.lists.linkedlists.singlelinkedlists.iterative.SingleLinkedList());
     }
 
     @Test
     @BenchmarkOptions(concurrency = 0)
-    public void sizeRecursiveSingleLinkedList() throws Exception {
+    public void sizeRecursiveSingleLinkedList() {
         size(new jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList());
     }
 
@@ -61,7 +61,7 @@ public class ListPerformanceTest {
         assertNotNull(list.size());
         assertEquals(0, list.size());
 
-        for (int i = 1; i < iterations; i++) {
+        for (int i = 1; iterations > i; i++) {
             list.add(Math.abs(random.nextInt()));
             assertEquals(i, list.size());
         }

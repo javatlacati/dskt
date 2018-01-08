@@ -4,6 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
+import org.junit.runners.Parameterized.Parameters;
 
 import java.util.Arrays;
 import java.util.Collection;
@@ -15,7 +16,7 @@ import static org.junit.Assert.*;
  */
 @RunWith(Parameterized.class)
 public class MyListTest {
-    @Parameterized.Parameters
+    @Parameters
     public static Collection<Object[]> instancesToTest() {
         return Arrays.asList(
                 new Object[]{
@@ -28,7 +29,7 @@ public class MyListTest {
         );
     }
 
-    public MyList myList;
+    private MyList myList;
 
     public MyListTest(MyList myList) {
         this.myList = myList;

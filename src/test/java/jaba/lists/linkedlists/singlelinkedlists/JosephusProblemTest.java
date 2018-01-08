@@ -9,9 +9,9 @@ import org.junit.Test;
  */
 public class JosephusProblemTest {
     @Test
-    public void getSurvivor() throws Exception {
-        JosephusProblem josephusProblem = new JosephusProblem(9,5);        
-        Node survivor = josephusProblem.getSurvivor();
+    public void getSurvivor() {
+        final JosephusProblem josephusProblem = new JosephusProblem(9,5);
+        final Node survivor = josephusProblem.getSurvivor();
         System.out.println(survivor);
         Assert.assertNotNull(survivor);
     }

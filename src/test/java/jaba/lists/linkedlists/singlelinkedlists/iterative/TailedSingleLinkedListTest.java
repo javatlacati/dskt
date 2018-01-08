@@ -1,13 +1,15 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.CoreMatchers.notNullValue;
 
 public class TailedSingleLinkedListTest {
-    TailedSingleLinkedList<String> instance;
+    private TailedSingleLinkedList<String> instance;
+
     @Before
     public void setUp() throws Exception {
         instance = new TailedSingleLinkedList<>();
@@ -16,7 +18,7 @@ public class TailedSingleLinkedListTest {
     @Test
     public void setRoot() throws Exception {
         instance.setHead(new Node<>("hola"));
-        assertNotNull(instance.getHead());
+        Assert.assertThat(instance.getHead(), notNullValue());
     }
 
     @Test
@@ -24,7 +26,7 @@ public class TailedSingleLinkedListTest {
         instance.add("Adios");
         instance.add("mundo");
         instance.add("cruel");
-        assertEquals("Node(item=Adios)Node(item=mundo)Node(item=cruel)",instance.getStrings());
+        Assert.assertThat(instance.getStrings(), is("Node(item=Adios)Node(item=mundo)Node(item=cruel)"));
     }
 
 }
