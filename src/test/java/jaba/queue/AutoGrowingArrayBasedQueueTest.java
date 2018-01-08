@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * Created by Administrador on 06/06/2017.
  */
 public class AutoGrowingArrayBasedQueueTest {
-    ArrayBasedQueue queue;
+    private ArrayBasedQueue queue;
     private static final int initialCapacity = 2;
 
     @Before
@@ -84,7 +84,7 @@ public class AutoGrowingArrayBasedQueueTest {
         System.out.println(queue);
         queue.dequeue();
         System.out.println(queue);
-        assertThrows(IndexOutOfBoundsException.class, () -> queue.dequeue());
+        assertThrows(IndexOutOfBoundsException.class, () -> queue.dequeue(),"test dind't dequeued as expected");
         System.out.println(queue);
     }
 

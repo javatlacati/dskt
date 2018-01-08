@@ -42,17 +42,17 @@ public class CircularList {
      * @param index
      */
     public void addAtIndex(Node newNode, int index) {
-        if (index == 0) {
+        if (0 == index) {
             addAtRoot(newNode);
         } else {
-            if (index > 0) {
+            if (0 < index) {
                 Node currentNode = root.getNext();
                 for (int currentIndex = 1; currentIndex < index; currentIndex++) {
                     Node next = currentNode.getNext();
-                    if (next != null) {
-                        currentNode = next;
-                    } else {
+                    if (null == next) {
                         throw new IndexOutOfBoundsException("the specified index is not possible to reach");
+                    } else {
+                        currentNode = next;
                     }
                 }
                 currentNode.setNext(newNode);

@@ -10,8 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * Created by Administrador on 06/06/2017.
  */
 public class AutoGrowingArrayBasedStackTest {
-    private AutoGrowingArrayBasedStack<Integer> stack;
-
+    private ArrayBasedStack<Integer> stack;
     @Before
     public void setUp() throws Exception {
         stack =new AutoGrowingArrayBasedStack<>(2,2);
@@ -56,7 +55,7 @@ public class AutoGrowingArrayBasedStackTest {
         System.out.println(stack);
         for(int i=1;i<12;i++){
                 if(i>9){
-                    assertThrows(IndexOutOfBoundsException.class, ()-> stack.pop());
+                    assertThrows(IndexOutOfBoundsException.class, ()-> stack.pop(),"test dind't poped as expected");
                 }else{
                     stack.pop();
                     System.out.println(stack);

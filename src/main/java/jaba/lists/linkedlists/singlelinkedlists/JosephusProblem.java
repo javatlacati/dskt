@@ -16,11 +16,11 @@ public class JosephusProblem {
         this.iteration = iteration;
     }
 
-    Node getSurvivor() {
-        Node tail = new Node(0);
-        Node survivor = tail;
+    Node<Integer> getSurvivor() {
+        Node<Integer> tail = new Node<>(0);
+        Node<Integer> survivor = tail;
         for (int i = 1; i <= romanSoldiersNumber; i++) {
-            survivor.setNext(new Node(i));
+            survivor.setNext(new Node<>(i));
             survivor = survivor.getNext();
         }
         survivor.setNext(tail);
@@ -33,10 +33,10 @@ public class JosephusProblem {
         }
         return survivor;
     }
-    
-    public static void main(String[] args) {
-        JosephusProblem josephusProblem = new JosephusProblem(10,10);
-        Node survivor = josephusProblem.getSurvivor();
-        System.out.println(survivor);
+
+    public static void main(final String[] args) {
+        final JosephusProblem josephusProblem = new JosephusProblem(10, 10);
+        final Node<Integer> survivor = josephusProblem.getSurvivor();
+        //log.info(survivor.toString());
     }
 }

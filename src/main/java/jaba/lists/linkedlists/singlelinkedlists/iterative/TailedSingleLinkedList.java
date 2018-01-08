@@ -20,10 +20,7 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
     public int size() {
         Node<Type> tmp = head;
         int size=0;
-        while(true){
-            if(tmp == null){
-                break;
-            }
+        while(null != tmp){
             tmp = tmp.getNext();
             size++;
         }
@@ -128,12 +125,12 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
     
     public void deleteFront(){
          
-        if(head == null){
+        if(null == head){
             throw new IndexOutOfBoundsException("Capacity underflow");
         }
         Node<Type> tmp = head;
         head = tmp.getNext();
-        if(head == null){
+        if(null == head){
             tail = null;
         }
         //System.out.println("Deleted: "+tmp.getItem());

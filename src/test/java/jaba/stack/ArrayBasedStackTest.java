@@ -1,13 +1,15 @@
 package jaba.stack;
 
+import lombok.extern.java.Log;
 import org.junit.Before;
 import org.junit.Test;
 
 /**
  * Created by Administrador on 05/06/2017.
  */
+@Log
 public class ArrayBasedStackTest {
-    ArrayBasedStack stack;
+    ArrayBasedStack<Integer> stack;
     private static final int initialCapacity = 5;
 
 //    @Rule
@@ -15,7 +17,7 @@ public class ArrayBasedStackTest {
 
     @Before
     public void setUp() throws Exception {
-        stack = new ArrayBasedStack(initialCapacity);
+        stack = new ArrayBasedStack<>(initialCapacity);
     }
 
     @Test
@@ -38,36 +40,36 @@ public class ArrayBasedStackTest {
     public void idealScenario() throws Exception {
         try {
             stack.push(4);
-            System.out.println(stack);
+            log.info(stack.toString());
             stack.push(8);
-            System.out.println(stack);
+            log.info(stack.toString());
             stack.push(3);
-            System.out.println(stack);
+            log.info(stack.toString());
             stack.push(89);
-            System.out.println(stack);
+            log.info(stack.toString());
             stack.pop();
-            System.out.println(stack);
+            log.info(stack.toString());
             stack.push(34);
-            System.out.println(stack);
+            log.info(stack.toString());
             stack.push(45);
-            System.out.println(stack);
+            log.info(stack.toString());
             stack.push(78);
-            System.out.println(stack);
+            log.info(stack.toString());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
         try {
-            System.out.println(stack.pop());
-            System.out.println(stack.pop());
-            System.out.println(stack.pop());
-            System.out.println(stack.pop());
-            System.out.println(stack.pop());
-            System.out.println(stack.pop());
-            System.out.println(stack.pop());
-            System.out.println(stack.pop());
-            System.out.println(stack);
+            log.info(stack.pop().toString());
+            log.info(stack.pop().toString());
+            log.info(stack.pop().toString());
+            log.info(stack.pop().toString());
+            log.info(stack.pop().toString());
+            log.info(stack.pop().toString());
+            log.info(stack.pop().toString());
+            log.info(stack.pop().toString());
+            log.info(stack.toString());
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            log.info(e.getMessage());
         }
     }
 

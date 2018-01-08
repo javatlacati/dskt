@@ -1,5 +1,6 @@
 package jaba.queue;
 
+import lombok.extern.java.Log;
 import org.databene.contiperf.PerfTest;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
  * Created by Core i7 on 31/05/2017.
  */
 //@RunWith(ParallelRunner.class)
+@Log
 public class ArrayBasedQueueTest {
     private ArrayBasedQueue<Integer> queue;
     private static final int initialCapacity = 5;
@@ -20,14 +22,14 @@ public class ArrayBasedQueueTest {
 //    public ContiPerfRule i = new ContiPerfRule();
 
     @Before
-    public void setUp() throws Exception {
+    public void setUp() {
         queue = new ArrayBasedQueue<>(initialCapacity);
     }
 
     @Test
     @PerfTest(invocations = 1000, threads = 2)
-    public void enqueue() throws Exception {
-        for (int i = 0; i < initialCapacity; i++) {
+    public void enqueue() {
+        for (int i = 0; initialCapacity > i; i++) {
             queue.enqueue(i);
         }
         assertEquals("ArrayBasedQueue(queueArray=[0, 1, 2, 3, 4])", queue.toString());
@@ -36,7 +38,7 @@ public class ArrayBasedQueueTest {
 
     @Test
     @PerfTest(invocations = 1000, threads = 2)
-    public void dequeue() throws Exception {
+    public void dequeue() {
         for (int i = 0; i < 3; i++) {
             queue.enqueue(i);
         }
@@ -49,40 +51,40 @@ public class ArrayBasedQueueTest {
     }
 
     @Test
-    public void getCurrentSize() throws Exception {
+    public void getCurrentSize() {
         assertEquals(initialCapacity, queue.getCurrentSize());
     }
 
     @Test
-    public void isFull() throws Exception {
+    public void isFull() {
         assertFalse(queue.isFull());
     }
 
     @Test
-    public void isEmpty() throws Exception {
+    public void isEmpty() {
         assertTrue(queue.isEmpty());
     }
 
     @Test
-    public void getCapacity() throws Exception {
+    public void getCapacity() {
         assertEquals(initialCapacity, queue.getCapacity());
     }
 
     @Test
-    public void setCapacity() throws Exception {
+    public void setCapacity() {
         int newCapacity = 51;
         queue.setCapacity(newCapacity);
         assertEquals(newCapacity, queue.getCapacity());
     }
 
     @Test
-    public void toStringTest() throws Exception {
+    public void toStringTest() {
         assertEquals("ArrayBasedQueue(queueArray=[null, null, null, null, null])", queue.toString());
     }
 
     @Test
-    public void happyPath() throws Exception {
-        System.out.println("Happy Path");
+    public void happyPath() {
+        log.info("Happy Path");
         final int expected = 1;
         queue.enqueue(expected);
         assertEquals(Integer.valueOf(expected), queue.dequeue());
@@ -94,7 +96,7 @@ public class ArrayBasedQueueTest {
 
         queue.enqueue(5);
         queue.enqueue(6);
-        System.out.println(queue);
+        log.info(queue.toString());
         assertEquals("ArrayBasedQueue(queueArray=[3, 4, 5, 6, null])", queue.toString());
     }
 
