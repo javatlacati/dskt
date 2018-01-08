@@ -19,6 +19,7 @@ module Datastrructures {
     requires junit.benchmarks;
     requires kotlin.stdlib; //for kotlin
     requires java.desktop;
+    requires java.logging;
     exports jaba.bags;
     exports jaba.set;
 }
