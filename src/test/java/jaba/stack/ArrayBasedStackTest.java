@@ -1,6 +1,7 @@
 package jaba.stack;
 
 import lombok.extern.java.Log;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -58,6 +59,7 @@ public class ArrayBasedStackTest {
         } catch (Exception e) {
             log.info(e.getMessage());
         }
+        Assert.assertEquals(5, stack.getElementsCapacity());
         try {
             log.info(stack.pop().toString());
             log.info(stack.pop().toString());

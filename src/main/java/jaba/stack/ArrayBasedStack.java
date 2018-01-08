@@ -1,10 +1,16 @@
 package jaba.stack;
 
+import lombok.Getter;
+
 public class ArrayBasedStack<Item> {
     Item[] stackArray;
     int topPosition;
 
+    @Getter
+    int elementsCapacity;
+
     public ArrayBasedStack(int capacity) {
+        elementsCapacity=capacity;
         stackArray = (Item[]) new Object[capacity];
     }
 

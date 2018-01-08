@@ -1,6 +1,7 @@
 package jaba.stack;
 
 import lombok.extern.java.Log;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -10,9 +11,10 @@ import org.junit.Test;
 @Log
 public class AutoGrowingArrayBasedStackTest {
     private ArrayBasedStack<Integer> stack;
+
     @Before
     public void setUp() throws Exception {
-        stack =new AutoGrowingArrayBasedStack<>(2,2);
+        stack = new AutoGrowingArrayBasedStack<>(2, 2);
     }
 
     @Test
@@ -45,16 +47,17 @@ public class AutoGrowingArrayBasedStackTest {
 
     @Test
     public void happyPath() throws Exception {
-        System.out.println(stack);
-        for(int i=1;i<10;i++){
+        log.info(stack.toString());
+        for (int i = 1; i < 10; i++) {
             stack.push(i);
-            System.out.println(stack);
+            log.info(stack.toString());
         }
-        System.out.println(stack);
-        for(int i=1;i<12;i++){
+        Assert.assertEquals(10, stack.getElementsCapacity());
+        log.info(stack.toString());
+        for (int i = 1; i < 12; i++) {
             try {
                 stack.pop();
-                System.out.println(stack);
+                log.info(stack.toString());
             } catch (Exception e) {
                 log.info("test dind't poped as expected");
             }
