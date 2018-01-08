@@ -5,10 +5,11 @@ package jaba.stack;
  * Actually like a Vector.
  */
 public class AutoGrowingArrayBasedStack<Item> extends ArrayBasedStack<Item> {
-    int capacityIncrement=10;
+    private int capacityIncrement = 10;
 
     public AutoGrowingArrayBasedStack(int capacity) {
         super(capacity);
+        elementsCapacity = capacity;
     }
 
     public AutoGrowingArrayBasedStack(int capacity, int capacityIncrement) {
@@ -20,11 +21,12 @@ public class AutoGrowingArrayBasedStack<Item> extends ArrayBasedStack<Item> {
     public Item push(Item item) {
         if (stackArray.length <= topPosition) {
             int newCapacity = stackArray.length + capacityIncrement;
-            Object[] newArray=new Object[newCapacity];
+            elementsCapacity = newCapacity;
+            Object[] newArray = new Object[elementsCapacity];
             for (int i = 0; i < stackArray.length; i++) {
-                newArray[i]=stackArray[i];
+                newArray[i] = stackArray[i];
             }
-            stackArray= (Item[]) newArray;
+            stackArray = (Item[]) newArray;
         }
         return super.push(item);
     }

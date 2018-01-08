@@ -4,7 +4,10 @@ public class ArrayBasedStack<Item> {
     Item[] stackArray;
     int topPosition;
 
+    int elementsCapacity;
+
     public ArrayBasedStack(int capacity) {
+        elementsCapacity=capacity;
         stackArray = (Item[]) new Object[capacity];
     }
 
@@ -83,5 +86,9 @@ public class ArrayBasedStack<Item> {
 
     public int getTopPosition() {
         return this.topPosition;
+    }
+
+    public int getElementsCapacity() {
+        return elementsCapacity;
     }
 }

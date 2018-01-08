@@ -1,8 +1,11 @@
 package jaba.stack;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
+
+import java.util.logging.Logger;
 
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
@@ -10,10 +13,12 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
  * Created by Administrador on 06/06/2017.
  */
 public class AutoGrowingArrayBasedStackTest {
+    private static final Logger log = Logger.getLogger(AutoGrowingArrayBasedStackTest.class.getName());
     private ArrayBasedStack<Integer> stack;
+
     @Before
     public void setUp() throws Exception {
-        stack =new AutoGrowingArrayBasedStack<>(2,2);
+        stack = new AutoGrowingArrayBasedStack<>(2, 2);
     }
 
     @Test
@@ -47,18 +52,20 @@ public class AutoGrowingArrayBasedStackTest {
     @DisplayName("Escenario complejo")
     @Test
     public void happyPath() throws Exception {
-        System.out.println(stack);
-        for(int i=1;i<10;i++){
+        log.info(stack.toString());
+        for (int i = 1; i < 10; i++) {
             stack.push(i);
-            System.out.println(stack);
+            log.info(stack.toString());
         }
-        System.out.println(stack);
+        Assert.assertEquals(10, stack.getElementsCapacity());
+        log.info(stack.toString());
         for(int i=1;i<12;i++){
                 if(i>9){
                     assertThrows(IndexOutOfBoundsException.class, ()-> stack.pop(),"test dind't poped as expected");
+                    log.info("test dind't poped as expected");
                 }else{
                     stack.pop();
-                    System.out.println(stack);
+                    log.info(stack.toString());
                 }
         }
     }
