@@ -5,8 +5,8 @@ package jaba.tree.recursive;
  */
 public class RecursiveBinaryTreeNode<Item> {
     Item value;
-    private RecursiveBinaryTreeNode left;
-    private RecursiveBinaryTreeNode right;
+    private RecursiveBinaryTreeNode<Item> left;
+    private RecursiveBinaryTreeNode<Item> right;
 
     public Item getValue() {
         return this.value;
