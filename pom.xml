@@ -42,6 +42,11 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>4.12</version>
+        </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter-engine</artifactId>
+            <version>5.0.0</version>
             <scope>test</scope>
         </dependency>
         <dependency>
@@ -51,11 +56,13 @@
             <scope>test</scope>
         </dependency>
         <!--<dependency>-->
-        <!--<groupId>org.jetbrains.kotlin</groupId>-->
-        <!--<artifactId>kotlin-test</artifactId>-->
-        <!--<version>${kotlin.version}</version>-->
-        <!--<scope>test</scope>-->
+            <!--<groupId>org.jetbrains.kotlin</groupId>-->
+            <!--<artifactId>kotlin-test</artifactId>-->
+            <!--<version>${kotlin.version}</version>-->
+            <!--<scope>test</scope>-->
         <!--</dependency>-->
+
+        <!--performance testing and thread saety testing-->
         <dependency>
             <groupId>org.databene</groupId>
             <artifactId>contiperf</artifactId>
@@ -63,21 +70,31 @@
             <scope>test</scope>
         </dependency>
 
+        <!--performance testing-->
         <dependency>
             <groupId>com.carrotsearch</groupId>
             <artifactId>junit-benchmarks</artifactId>
             <version>0.7.2</version>
         </dependency>
+        <!--h2 database handling (for performance reports)-->
         <dependency>
             <groupId>com.h2database</groupId>
             <artifactId>h2</artifactId>
             <version>1.3.160</version>
             <scope>test</scope>
         </dependency>
+        <!--jetbrains annotations-->
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>13.0</version>
+        </dependency>
     </dependencies>
 
     <build>
         <plugins>
+
+            <!--kotlin-->
             <plugin>
                 <groupId>org.jetbrains.kotlin</groupId>
                 <artifactId>kotlin-maven-plugin</artifactId>
@@ -104,6 +121,8 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!--compilation process-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -134,6 +153,14 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>org.eluder.coveralls</groupId>
+                <artifactId>coveralls-maven-plugin</artifactId>
+                <version>4.3.0</version>
+                <configuration>
+                    <repoToken>DAM91Dwcgoa5x64XqjZOhvP3ErAmOJVSo</repoToken>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -188,10 +215,10 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-        <repository>
-            <id>maven central</id>
-            <url>http://central.maven.org/maven2/</url>
-        </repository>
+        <!--<repository>-->
+            <!--<id>maven central</id>-->
+            <!--<url>http://central.maven.org/maven2/</url>-->
+        <!--</repository>-->
 
         <repository>
             <id>jboss-public-repository-group</id>
