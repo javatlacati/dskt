@@ -38,5 +38,29 @@ public class RecursiveBinaryTree<Item> {
         return isParentNode(parentCandidate, childCandidate);
     }
 
+    @Override
+    public String toString() {
+        return showRecursive(root,0);
+    }
 
+    private String showRecursive(RecursiveBinaryTreeNode<Item> root, int h) {
+        StringBuilder result=new StringBuilder();
+        if(root == null){
+            result.append(printNode(null,h));
+        }else{
+            result.append(showRecursive(root.getRight(),h+1));
+            result.append(printNode(root.value,h));
+            result.append(showRecursive(root.getLeft(),h+1));
+        }
+        return result.toString();
+    }
+
+    private String printNode(Item value, int h) {
+        StringBuilder result=new StringBuilder();
+        for (int i = 0; i < h; i++) {
+            result.append(' ');
+        }
+        result.append('[').append(value).append(']');
+        return result.toString();
+    }
 }

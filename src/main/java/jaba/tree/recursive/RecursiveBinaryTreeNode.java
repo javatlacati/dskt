@@ -10,6 +10,6 @@ import lombok.Setter;
 @Setter
 public class RecursiveBinaryTreeNode<Item> {
     Item value;
-    private RecursiveBinaryTreeNode left;
-    private RecursiveBinaryTreeNode right;
+    private RecursiveBinaryTreeNode<Item> left;
+    private RecursiveBinaryTreeNode<Item> right;
 }
