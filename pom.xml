@@ -215,10 +215,13 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>
-        <!--<repository>-->
-            <!--<id>maven central</id>-->
-            <!--<url>http://central.maven.org/maven2/</url>-->
-        <!--</repository>-->
+        <repository>
+            <id>central</id>
+            <url>https://repo1.maven.org/maven2</url>
+            <releases>
+                <enabled>true</enabled>
+            </releases>
+        </repository>
 
         <repository>
             <id>jboss-public-repository-group</id>
@@ -230,7 +233,7 @@
     <pluginRepositories>
         <pluginRepository>
             <id>central</id>
-            <url>http://central</url>
+            <url>https://repo1.maven.org/maven2</url>
             <releases>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
