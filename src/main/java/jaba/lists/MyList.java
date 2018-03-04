@@ -8,7 +8,7 @@ import java.util.Collection;
  * @param <Type> The datatype of the contained elements
  * @author Javatlacati
  */
-public interface MyList<Type>  { //extends Collection<Type>
+public interface MyList<Type> extends Collection<Type> {
 
   /**
    * Gives the size of the list.

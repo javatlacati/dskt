@@ -124,7 +124,18 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     }
 
     @NotNull @Override public Iterator<Type> iterator() {
-        return null;
+      return new Iterator<Type>() {
+        Node<Type> tmp = root;
+
+        @Override public boolean hasNext() {
+          return null == tmp.getNext();
+        }
+
+        @Override public Type next() {
+          tmp = tmp.getNext();
+          return tmp.getItem();
+        }
+      };
     }
 
     @Override public boolean remove(Object o) {
@@ -139,16 +150,16 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         return false;
     }
 
-    @Override public boolean containsAll(@NotNull Collection<?> c) {
-        return false;
+    @Override public boolean containsAll(@NotNull Collection<?> collection) {
+      return collection.stream().allMatch(this::contains);
     }
 
-    @Override public boolean addAll(@NotNull Collection<? extends Type> c) {
-        return false;
+    @Override public boolean addAll(@NotNull Collection<? extends Type> collection) {
+      return collection.stream().allMatch(this::add);
     }
 
-    @Override public boolean removeAll(@NotNull Collection<?> c) {
-        return false;
+    @Override public boolean removeAll(@NotNull Collection<?> collection) {
+      return collection.stream().allMatch(this::remove);
     }
 
     @Override public boolean retainAll(@NotNull Collection<?> c) {
