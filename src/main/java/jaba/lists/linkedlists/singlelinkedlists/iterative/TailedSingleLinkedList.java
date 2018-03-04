@@ -1,6 +1,7 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
 import jaba.lists.MyList;
+import java.util.Collection;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.java.Log;
@@ -12,7 +13,7 @@ import java.util.NoSuchElementException;
 /**
  *
  * @author Javatlacati
- * @param <Type> Type of contained elements
+ * @param <Type> T of contained elements
  */
 @Setter
 @Getter
@@ -38,8 +39,11 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
         return head==null;
     }
 
-    @Override
-    public boolean contains(Type o) {
+    @Override public boolean contains(Object o) {
+        return o instanceof Class<?> && containsSameTypeVerified((Type) o);
+    }
+
+    public boolean containsSameTypeVerified(Type o) {
         Node<Type> current = head;
         while(current!=null){
             if(o.equals(current.getItem()))
@@ -65,6 +69,20 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
         return retorno;
     }
 
+    @NotNull public <T> T[] toArray(@NotNull T[] resultingArray) {
+        int size = size();
+        if (size != 0) {
+            Node<T> currentNode = (Node<T>) head;
+            int index = 0;
+            while (currentNode != null) {
+                resultingArray[index] = currentNode.getItem();
+                currentNode = currentNode.getNext();
+                index++;
+            }
+        }
+        return resultingArray;
+    }
+
     /**
      * {@inheritDoc}
      */
@@ -72,6 +90,45 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
     public boolean add(Type element) {
         //        System.out.println("Adding: "+element);
         return addAtEnd(new Node<>(element));
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override public boolean remove(Object o) {
+        return null!=o && null !=head && o.getClass().equals(head.getItem().getClass()) && removeChecked((Type) o);
+    }
+
+    public boolean removeChecked(Type content) {
+        Node<Type> anterior = head;
+        Node<Type> actual = head;
+
+        while (actual.getItem() != content && actual.getNext() != null) {
+            anterior = actual;
+            actual = actual.getNext();
+        }
+        if(anterior.equals(actual)){
+            head=actual.getNext();
+        }else {
+            anterior.setNext(actual.getNext());
+        }
+        return true;
+    }
+
+    public boolean containsAll(@NotNull Collection<?> c) {
+        return false;
+    }
+
+    public boolean addAll(@NotNull Collection<? extends Type> c) {
+        return false;
+    }
+
+    public boolean removeAll(@NotNull Collection<?> c) {
+        return false;
+    }
+
+    public boolean retainAll(@NotNull Collection<?> c) {
+        return false;
     }
 
     @Override

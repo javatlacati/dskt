@@ -116,17 +116,20 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         return root == null;
     }
 
-    @Override
-    public boolean contains(Type o) {
-        if (root == null && o == null) {
-            return false;
-        } else {
-            if (root.getItem().equals(o)) {
+    @Override public boolean contains(Object o) {
+        return o instanceof Class<?> && root.contains((Type) o);
+    }
+
+    @Override public boolean remove(Object o) {
+        if (null != o && null != root && o.getClass().equals(root.getItem().getClass()))
+            if(o.equals(root.getItem())) {
+                root = root.getNext();
                 return true;
             } else {
-                return root.getNext() != null && root.getNext().contains(o);
+                return root.remove((Type) o, root, root.getNext());
             }
-        }
+
+        return false;
     }
 
     @Override

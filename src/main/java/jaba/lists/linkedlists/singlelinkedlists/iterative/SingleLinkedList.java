@@ -1,170 +1,254 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
 import jaba.lists.MyList;
+import java.util.Collection;
+import java.util.Iterator;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 
-@Setter
-@Getter
-@EqualsAndHashCode(of = "root")
-public class SingleLinkedList<Type> implements MyList<Type> {
-    private Node<Type> root;
+@Setter @Getter @EqualsAndHashCode(of = "root") public class SingleLinkedList<Type>
+    implements MyList<Type> {
+  private Node<Type> root;
 
-    public String getStrings() {
-        if (root == null) {
-            return "";
-        } else {
-            StringBuilder salida = new StringBuilder(root.toString());
-            Node<Type> actual = root;
-            while (actual.getNext() != null) {
-                actual = actual.getNext();
-                salida.append(actual.toString());
-            }
-            return salida.toString();
-        }
+  public String getStrings() {
+    if (root == null) {
+      return "";
+    } else {
+      StringBuilder salida = new StringBuilder(root.toString());
+      Node<Type> actual = root;
+      while (actual.getNext() != null) {
+        actual = actual.getNext();
+        salida.append(actual.toString());
+      }
+      return salida.toString();
     }
+  }
 
-    /***/
-    public boolean addAtEnd(Type element) {
-        Node<Type> newNode = new Node<>(element);
-        try {
-            if (root == null) {
-                root = newNode;
-            } else {
-                Node<Type> actual = root;
-                while (actual.getNext() != null) {
-                    actual = actual.getNext();
-                }
-                actual.setNext(newNode);
-            }
-            return true;
-        } catch (Exception e) {
-            return false;
-        }
-    }
-
-    /***/
-    public void addAtRoot(Type element) {
-        Node<Type> newNode = new Node<>(element);
-        newNode.setNext(root);
+  /***/
+  public boolean addAtEnd(Type element) {
+    Node<Type> newNode = new Node<>(element);
+    try {
+      if (root == null) {
         root = newNode;
-    }
-
-    /**
-     * Index is 0 base
-     *
-     * @param element
-     * @param index   position to insert
-     */
-    public void addAtIndex(Type element, int index) {
-        if (index == 0) {
-            addAtRoot(element);
-        } else {
-            if (index > 0) {
-                Node<Type> currentNode = root.getNext();
-                for (int currentIndex = 1; currentIndex < index; currentIndex++) {
-                    Node<Type> next = currentNode.getNext();
-                    if (next != null) {
-                        currentNode = next;
-                    } else {
-                        throw new IndexOutOfBoundsException("the specified index is not possible to reach");
-                    }
-                }
-                currentNode.setNext(new Node<>(element));
-            } else {
-                throw new IndexOutOfBoundsException("no negative index values allowed");
-            }
+      } else {
+        Node<Type> actual = root;
+        while (actual.getNext() != null) {
+          actual = actual.getNext();
         }
+        actual.setNext(newNode);
+      }
+      return true;
+    } catch (Exception e) {
+      return false;
     }
+  }
 
-    public void addSingleLinkedListAtRoot(SingleLinkedList<Type> singleLinkedList) {
-        singleLinkedList.addAtEnd(root.getItem());
-        root = singleLinkedList.getRoot();
-    }
+  /***/
+  public void addAtRoot(Type element) {
+    Node<Type> newNode = new Node<>(element);
+    newNode.setNext(root);
+    root = newNode;
+  }
 
-    public void addSingleLinkedListAtEnd(SingleLinkedList<Type> singleLinkedList) {
-        addAtRoot(singleLinkedList.getRoot().getItem());
-    }
-
-    public void printList() {
-        System.out.println(getStrings());
-    }
-
-    public void removeLast() {
-        if (root != null) {
-            if (root.getNext() == null) {
-                root = null;
-            } else {
-                Node<Type> currentNode = root;
-                while (currentNode.getNext() != null) {
-                    currentNode = currentNode.getNext();
-                }
-                if (currentNode.getNext() == null) {
-                    currentNode.setNext(null);
-                }
-            }
+  /**
+   * Index is 0 base
+   *
+   * @param element
+   * @param index   position to insert
+   */
+  public void addAtIndex(Type element, int index) {
+    if (index == 0) {
+      addAtRoot(element);
+    } else {
+      if (index > 0) {
+        Node<Type> currentNode = root.getNext();
+        for (int currentIndex = 1; currentIndex < index; currentIndex++) {
+          Node<Type> next = currentNode.getNext();
+          if (next != null) {
+            currentNode = next;
+          } else {
+            throw new IndexOutOfBoundsException("the specified index is not possible to reach");
+          }
         }
+        currentNode.setNext(new Node<>(element));
+      } else {
+        throw new IndexOutOfBoundsException("no negative index values allowed");
+      }
     }
+  }
 
-    @Override
-    public int size() {
-        int size = 0;
-        Node<Type> currentNode = root;
-        while (currentNode != null) {
-            currentNode = currentNode.getNext();
-            size++;
-        }
-        return size;
-    }
+  public void addSingleLinkedListAtRoot(SingleLinkedList<Type> singleLinkedList) {
+    singleLinkedList.addAtEnd(root.getItem());
+    root = singleLinkedList.getRoot();
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return root == null;
-    }
+  public void addSingleLinkedListAtEnd(SingleLinkedList<Type> singleLinkedList) {
+    addAtRoot(singleLinkedList.getRoot().getItem());
+  }
 
-//    @Override
-//    public boolean contains(Object o){
-//        return o instanceof Class<Type> ? containsSameTypeVerified(o): false;
-//    }
+  public void printList() {
+    System.out.println(getStrings());
+  }
 
-    public boolean contains(Type o) { //SameTypeVerified
-        if (root == null && o == null) {
-            return false;
-        } else {
-            Node<Type> currentNode = root;
-            while (currentNode != null) {
-                if (currentNode.equals(o))
-                    return true;
-                currentNode = currentNode.getNext();
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public Type[] toArray() {
-        int size = size();
-        Type[] resultingArray = (Type[]) new Object[size];
-        if (size != 0) {
-            Node<Type> currentNode = root;
-            int index = 0;
-            while (currentNode != null) {
-                resultingArray[index] = currentNode.getItem();
-                currentNode = currentNode.getNext();
-                index++;
-            }
-        }
-        return resultingArray;
-    }
-
-    @Override
-    public boolean add(Type o) {
-        return addAtEnd(o);
-    }
-
-    @Override
-    public void clear() {
+  public void removeLast() {
+    if (root != null) {
+      if (root.getNext() == null) {
         root = null;
+      } else {
+        Node<Type> currentNode = root;
+        while (currentNode.getNext() != null) {
+          currentNode = currentNode.getNext();
+        }
+        if (currentNode.getNext() == null) {
+          currentNode.setNext(null);
+        }
+      }
     }
+  }
+
+  @Override public int size() {
+    int size = 0;
+    Node<Type> currentNode = root;
+    while (currentNode != null) {
+      currentNode = currentNode.getNext();
+      size++;
+    }
+    return size;
+  }
+
+  @Override public boolean isEmpty() {
+    return root == null;
+  }
+
+  @Override public boolean contains(Object o) {
+    return o instanceof Class<?> && containsSameTypeVerified((Type) o);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @NotNull public Iterator<Type> iterator() {
+    return new Iterator<Type>() {
+      Node<Type> tmp = root;
+
+      @Override public boolean hasNext() {
+        return null == tmp.getNext();
+      }
+
+      @Override public Type next() {
+        tmp = tmp.getNext();
+        return tmp.getItem();
+      }
+    };
+  }
+
+  public boolean containsSameTypeVerified(Type o) {
+    if (root == null && o == null) {
+      return false;
+    } else {
+      Node<Type> currentNode = root;
+      while (currentNode != null) {
+        if (currentNode.equals(o))
+          return true;
+        currentNode = currentNode.getNext();
+      }
+    }
+    return false;
+  }
+
+  @Override public Type[] toArray() {
+    int size = size();
+    Type[] resultingArray = (Type[]) new Object[size];
+    if (size != 0) {
+      Node<Type> currentNode = root;
+      int index = 0;
+      while (currentNode != null) {
+        resultingArray[index] = currentNode.getItem();
+        currentNode = currentNode.getNext();
+        index++;
+      }
+    }
+    return resultingArray;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @NotNull public <T> T[] toArray(@NotNull T[] resultingArray) {
+    int size = size();
+    if (size != 0) {
+      Node<T> currentNode = (Node<T>) root;
+      int index = 0;
+      while (currentNode != null) {
+        resultingArray[index] = currentNode.getItem();
+        currentNode = currentNode.getNext();
+        index++;
+      }
+    }
+    return resultingArray;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override public boolean add(Type o) {
+    return addAtEnd(o);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override public boolean remove(Object o) {
+    return null!=o && null !=root && o.getClass().equals(root.getItem().getClass()) && removeChecked((Type) o);
+  }
+
+  public boolean removeChecked(Type content) {
+    Node<Type> anterior = root;
+    Node<Type> actual = root;
+
+    while (actual.getItem() != content && actual.getNext() != null) {
+      anterior = actual;
+      actual = actual.getNext();
+    }
+    if(anterior.equals(actual)){
+      root=actual.getNext();
+    }else {
+      anterior.setNext(actual.getNext());
+    }
+    return true;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public boolean containsAll(@NotNull Collection<?> collection) {
+    return collection.stream().allMatch(this::contains);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public boolean addAll(@NotNull Collection<? extends Type> collection) {
+    return collection.stream().allMatch(this::add);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public boolean removeAll(@NotNull Collection<?> collection) {
+    return collection.stream().allMatch(this::remove);
+  }
+
+  /*
+   * {@inheritDoc}
+   */
+  //  public boolean retainAll(@NotNull Collection<?> c) {
+  //    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
+  //  }
+
+  @Override public void clear() {
+    root = null;
+  }
 }
