@@ -133,12 +133,13 @@ public class SingleLinkedList<Type> implements MyList<Type> {
       Node<Type> tmp = root;
 
       @Override public boolean hasNext() {
-        return null == tmp.getNext();
+        return null != tmp.getNext();
       }
 
       @Override public Type next() {
+        Type aux = tmp.getItem();
         tmp = tmp.getNext();
-        return tmp.getItem();
+        return aux;
       }
     };
   }
@@ -242,7 +243,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
   }
 
   @Override public boolean retainAll(@NotNull Collection<?> c) {
-    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
+    return this.stream().filter(o -> !c.contains(o)).allMatch(this::remove);
   }
 
   /*

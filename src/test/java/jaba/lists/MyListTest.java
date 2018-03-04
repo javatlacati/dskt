@@ -106,4 +106,14 @@ import static org.junit.Assert.*;
     assertTrue(myList.removeAll(Arrays.asList(arr)));
     assertArrayEquals(new String[] {"adios"}, myList.toArray());
   }
+  @Test public void retainAll() {
+    assertTrue(myList.add("adios"));
+    assertTrue(myList.add("mundo"));
+    assertTrue(myList.add("cruel"));
+    assertTrue(myList.add("bye!"));
+
+    String[] arr = new String[] {"mundo","bye!"};
+    assertTrue(myList.retainAll(Arrays.asList(arr)));
+    assertArrayEquals(new String[] {"mundo","bye!"}, myList.toArray());
+  }
 }

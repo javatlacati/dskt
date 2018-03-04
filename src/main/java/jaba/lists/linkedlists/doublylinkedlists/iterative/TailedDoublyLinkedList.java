@@ -24,21 +24,34 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
   }
 
   @Override public boolean contains(Object o) {
-    return null!=o && null !=head && o.getClass().equals(head.getItem().getClass()) && containsSameTypeVerified((Type) o);
+    return null != o && null != head && o.getClass().equals(head.getItem().getClass())
+        && containsSameTypeVerified((Type) o);
   }
 
   public boolean containsSameTypeVerified(Type object) {
     Node<Type> current = head;
-    while(current!=null){
-      if(object.equals(current.getItem()))
+    while (current != null) {
+      if (object.equals(current.getItem()))
         return true;
-      current=current.getNext();
+      current = current.getNext();
     }
     return false;
   }
 
   @NotNull public Iterator<Type> iterator() {
-    return null;
+    return new Iterator<Type>() {
+      Node<Type> tmp = head;
+
+      @Override public boolean hasNext() {
+        return null != tmp.getNext();
+      }
+
+      @Override public Type next() {
+        Type aux = tmp.getItem();
+        tmp = tmp.getNext();
+        return aux;
+      }
+    };
   }
 
   /**
@@ -148,28 +161,28 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
     }
   }
 
-//  public String toString() {
-//    StringBuilder dato = new StringBuilder();
-//    Node axu = head;
-//
-//    while (axu != null) {
-//      dato.append("{ ").append(axu.toString()).append(" }").append("\n");
-//      axu = axu.getNext();
-//    }
-//    return dato.toString();
-//  }
+  //  public String toString() {
+  //    StringBuilder dato = new StringBuilder();
+  //    Node axu = head;
+  //
+  //    while (axu != null) {
+  //      dato.append("{ ").append(axu.toString()).append(" }").append("\n");
+  //      axu = axu.getNext();
+  //    }
+  //    return dato.toString();
+  //  }
 
-//  @Override
-//  public String toString() {
-//    StringBuilder dato = new StringBuilder();
-//    Node axu = tail;
-//
-//    while (axu != null) {
-//      dato.append("{ ").append(axu.toString()).append(" }");
-//      axu = axu.getPrevious();
-//    }
-//    return dato.toString();
-//  }
+  //  @Override
+  //  public String toString() {
+  //    StringBuilder dato = new StringBuilder();
+  //    Node axu = tail;
+  //
+  //    while (axu != null) {
+  //      dato.append("{ ").append(axu.toString()).append(" }");
+  //      axu = axu.getPrevious();
+  //    }
+  //    return dato.toString();
+  //  }
 
   public void remove(int pos) {
     Node<Type> prev = head;
@@ -189,7 +202,8 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
   }
 
   @Override public boolean remove(Object o) {
-    return null!=o && null !=head && o.getClass().equals(head.getItem().getClass()) && removeChecked((Type) o);
+    return null != o && null != head && o.getClass().equals(head.getItem().getClass())
+        && removeChecked((Type) o);
   }
 
   public boolean containsAll(@NotNull Collection<?> collection) {
@@ -204,8 +218,8 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
     return collection.stream().allMatch(this::remove);
   }
 
-    public boolean retainAll(@NotNull Collection<?> c) {
-    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
+  public boolean retainAll(@NotNull Collection<?> c) {
+    return this.stream().filter(o -> !c.contains(o)).allMatch(this::remove);
   }
 
   public boolean removeChecked(Type content) {
@@ -216,9 +230,9 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
       anterior = actual;
       actual = actual.getNext();
     }
-    if(anterior.equals(actual)){
-      head=actual.getNext();
-    }else {
+    if (anterior.equals(actual)) {
+      head = actual.getNext();
+    } else {
       anterior.setNext(actual.getNext());
     }
     return true;
