@@ -8,45 +8,46 @@ public class VariableTerm {
     private String literalPart;
     private int grade;
 
-    @java.beans.ConstructorProperties({"coefficient", "literalPart", "grade"})
+  @java.beans.ConstructorProperties({"coefficient", "literalPart", "grade"})
     public VariableTerm(int coefficient, String literalPart, int grade) {
         this.coefficient = coefficient;
         this.literalPart = literalPart;
         this.grade = grade;
     }
 
-    @Override
-    public String toString() {
-        return ((0 == coefficient) ? "" : coefficient) + literalPart + ((0 == grade) ? "" : ("^" + grade));
+    @Override public String toString() {
+    return ((0 == coefficient) ? "" : coefficient) + literalPart + ((0 == grade) ?
+        "" :
+        ("^" + grade));
+  }
+
+  public void sum(VariableTerm otherTerm) {
+    if (literalPart.equals(otherTerm.getLiteralPart())) {
+      if (grade == otherTerm.getGrade()) {
+        coefficient += otherTerm.getCoefficient();
+      } else {
+        //binomial
+      }
     }
-
-    public void sum(VariableTerm otherTerm){
-        if(literalPart==otherTerm.getLiteralPart()){
-            if(grade==otherTerm.getGrade()){
-                coefficient+=otherTerm.getCoefficient();
-            }else{
-                //binomial
-            }
-        }
-    }
+  }
 
 
-    public Object sum1(VariableTerm otherTerm){
-        if(literalPart==otherTerm.getLiteralPart()){
-            if(grade==otherTerm.getGrade()){
-                return new VariableTerm(coefficient+otherTerm.getCoefficient(),literalPart,grade);
-            }else{
-                final Monomial monomial = new Monomial(0);
-                monomial.addTerm(this);
-                monomial.addTerm(otherTerm);
-                return monomial;
-            }
-        }
+  public Object sum1(VariableTerm otherTerm) {
+    if (literalPart.equals(otherTerm.getLiteralPart())) {
+      if (grade == otherTerm.getGrade()) {
+        return new VariableTerm(coefficient + otherTerm.getCoefficient(), literalPart, grade);
+      } else {
         final Monomial monomial = new Monomial(0);
         monomial.addTerm(this);
         monomial.addTerm(otherTerm);
         return monomial;
+      }
     }
+    final Monomial monomial = new Monomial(0);
+    monomial.addTerm(this);
+    monomial.addTerm(otherTerm);
+    return monomial;
+  }
 
     public int getCoefficient() {
         return this.coefficient;
