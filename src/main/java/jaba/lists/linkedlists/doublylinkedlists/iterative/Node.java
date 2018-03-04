@@ -1,4 +1,4 @@
-package jaba.lists.linkedlists.doublylinkedlists;
+package jaba.lists.linkedlists.doublylinkedlists.iterative;
 
 /**
  *
@@ -6,9 +6,9 @@ package jaba.lists.linkedlists.doublylinkedlists;
  */
 public class Node<Type> {
 
-    Type item;
-    Node previous;
-    Node next;
+    private Type item;
+    private Node<Type> previous;
+    private Node<Type> next;
 
     public Node(Type item) {
         this.item = item;
