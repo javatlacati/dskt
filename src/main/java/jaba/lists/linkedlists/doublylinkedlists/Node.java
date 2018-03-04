@@ -4,18 +4,18 @@ package jaba.lists.linkedlists.doublylinkedlists;
  *
  * @author Core i7
  */
-public class Node {
+public class Node<Type> {
 
-    Object item;
+    Type item;
     Node previous;
     Node next;
 
-    public Node(Object item) {
+    public Node(Type item) {
         this.item = item;
     }
 
     @java.beans.ConstructorProperties({"item", "previous", "next"})
-    public Node(Object item, Node previous, Node next) {
+    public Node(Type item, Node previous, Node next) {
         this.item = item;
         this.previous = previous;
         this.next = next;
@@ -33,7 +33,7 @@ public class Node {
         return this.next;
     }
 
-    public void setItem(Object item) {
+    public void setItem(Type item) {
         this.item = item;
     }
 
