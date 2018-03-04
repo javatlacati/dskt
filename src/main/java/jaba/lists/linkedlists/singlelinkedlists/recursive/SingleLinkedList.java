@@ -163,7 +163,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     }
 
     @Override public boolean retainAll(@NotNull Collection<?> c) {
-        return false;
+      return this.stream().filter(o -> !root.contains(o)).allMatch(this::remove);
     }
 
     @Override

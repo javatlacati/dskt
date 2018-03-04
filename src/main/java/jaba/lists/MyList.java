@@ -18,15 +18,18 @@ public interface MyList<Type> extends Collection<Type> {
   int size();
 
   /**
-   * Determines if list is empty.
-   *
-   * @return <code>true</code> if the list is empty <code>false</code>
-   * otherwise
+   * {@inheritDoc}
    */
   boolean isEmpty();
 
+  /**
+   * {@inheritDoc}
+   */
   boolean contains(Object object);
 
+  /**
+   * {@inheritDoc}
+   */
   Type[] toArray();
 
   /**
@@ -38,6 +41,9 @@ public interface MyList<Type> extends Collection<Type> {
    */
   boolean add(Type element);
 
+  /**
+   * {@inheritDoc}
+   */
   boolean remove(Object o);
 
   /**
