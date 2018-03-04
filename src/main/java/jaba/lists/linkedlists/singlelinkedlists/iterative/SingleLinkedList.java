@@ -135,12 +135,13 @@ import org.jetbrains.annotations.NotNull;
       Node<Type> tmp = root;
 
       @Override public boolean hasNext() {
-        return null == tmp.getNext();
+        return null != tmp.getNext();
       }
 
       @Override public Type next() {
+        Type aux = tmp.getItem();
         tmp = tmp.getNext();
-        return tmp.getItem();
+        return aux;
       }
     };
   }
@@ -244,7 +245,7 @@ import org.jetbrains.annotations.NotNull;
   }
 
   @Override public boolean retainAll(@NotNull Collection<?> c) {
-    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
+    return this.stream().filter(o -> !c.contains(o)).allMatch(this::remove);
   }
 
   /*
