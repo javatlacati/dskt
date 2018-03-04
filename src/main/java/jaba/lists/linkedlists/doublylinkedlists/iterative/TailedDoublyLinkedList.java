@@ -204,13 +204,9 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
     return collection.stream().allMatch(this::remove);
   }
 
-  @Override public boolean retainAll(@NotNull Collection<?> c) {
-    return false;
+    public boolean retainAll(@NotNull Collection<?> c) {
+    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
   }
-
-  //  public boolean retainAll(@NotNull Collection<?> c) {
-//    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
-//  }
 
   public boolean removeChecked(Type content) {
     Node<Type> anterior = head;
