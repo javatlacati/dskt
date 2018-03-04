@@ -244,7 +244,7 @@ import org.jetbrains.annotations.NotNull;
   }
 
   @Override public boolean retainAll(@NotNull Collection<?> c) {
-    return false;
+    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
   }
 
   /*

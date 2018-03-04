@@ -115,20 +115,20 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
         return true;
     }
 
-    public boolean containsAll(@NotNull Collection<?> c) {
-        return false;
+    public boolean containsAll(@NotNull Collection<?> collection) {
+        return collection.stream().allMatch(this::contains);
     }
 
-    public boolean addAll(@NotNull Collection<? extends Type> c) {
-        return false;
+    public boolean addAll(@NotNull Collection<? extends Type> collection) {
+        return collection.stream().allMatch(this::add);
     }
 
-    public boolean removeAll(@NotNull Collection<?> c) {
-        return false;
+    public boolean removeAll(@NotNull Collection<?> collection) {
+        return collection.stream().allMatch(this::remove);
     }
 
     public boolean retainAll(@NotNull Collection<?> c) {
-        return false;
+        return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
     }
 
     @Override
