@@ -123,7 +123,8 @@ import org.jetbrains.annotations.NotNull;
   }
 
   @Override public boolean contains(Object o) {
-    return o instanceof Class<?> && containsSameTypeVerified((Type) o);
+    return null!=o && null !=root && o.getClass().equals(root.getItem().getClass())
+        && containsSameTypeVerified((Type) o);
   }
 
   /**
@@ -150,8 +151,9 @@ import org.jetbrains.annotations.NotNull;
     } else {
       Node<Type> currentNode = root;
       while (currentNode != null) {
-        if (currentNode.equals(o))
+        if (currentNode.getItem().equals(o)) {
           return true;
+        }
         currentNode = currentNode.getNext();
       }
     }
@@ -239,6 +241,10 @@ import org.jetbrains.annotations.NotNull;
    */
   public boolean removeAll(@NotNull Collection<?> collection) {
     return collection.stream().allMatch(this::remove);
+  }
+
+  @Override public boolean retainAll(@NotNull Collection<?> c) {
+    return false;
   }
 
   /*
