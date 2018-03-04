@@ -3,7 +3,6 @@ package jaba.lists.linkedlists.doublylinkedlists.iterative;
 import jaba.lists.MyList;
 import java.util.Collection;
 import java.util.Iterator;
-import lombok.experimental.var;
 import org.jetbrains.annotations.NotNull;
 
 /**
