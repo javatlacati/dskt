@@ -1,5 +1,6 @@
 package jaba.lists;
 
+import jaba.lists.linkedlists.doublylinkedlists.iterative.TailedDoublyLinkedList;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,6 +26,8 @@ public class MyListTest {
                         new jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList()
                 }, new Object[]{
                         new jaba.lists.linkedlists.singlelinkedlists.iterative.TailedSingleLinkedList<>()
+                }, new Object[] {
+                    new TailedDoublyLinkedList<>()
                 }
         );
     }
