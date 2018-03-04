@@ -121,7 +121,8 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     }
 
   @Override public boolean contains(Object o) {
-    return o instanceof Class<?> && containsSameTypeVerified((Type) o);
+    return null!=o && null !=root && o.getClass().equals(root.getItem().getClass())
+        && containsSameTypeVerified((Type) o);
   }
 
   /**
@@ -148,8 +149,9 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     } else {
       Node<Type> currentNode = root;
       while (currentNode != null) {
-        if (currentNode.equals(o))
+        if (currentNode.getItem().equals(o)) {
           return true;
+        }
         currentNode = currentNode.getNext();
       }
     }
@@ -237,6 +239,10 @@ public class SingleLinkedList<Type> implements MyList<Type> {
    */
   public boolean removeAll(@NotNull Collection<?> collection) {
     return collection.stream().allMatch(this::remove);
+  }
+
+  @Override public boolean retainAll(@NotNull Collection<?> c) {
+    return false;
   }
 
   /*

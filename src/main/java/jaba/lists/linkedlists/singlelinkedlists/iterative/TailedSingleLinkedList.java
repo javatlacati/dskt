@@ -34,7 +34,7 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
     }
 
     @Override public boolean contains(Object o) {
-        return o instanceof Class<?> && containsSameTypeVerified((Type) o);
+        return null!=o && null !=head && o.getClass().equals(head.getItem().getClass()) && containsSameTypeVerified((Type) o);
     }
 
     public boolean containsSameTypeVerified(Type o) {

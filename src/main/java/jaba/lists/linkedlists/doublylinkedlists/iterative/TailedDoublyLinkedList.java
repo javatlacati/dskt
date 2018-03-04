@@ -25,7 +25,7 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
   }
 
   @Override public boolean contains(Object o) {
-    return o instanceof Class<?> && containsSameTypeVerified((Type) o);
+    return null!=o && null !=head && o.getClass().equals(head.getItem().getClass()) && containsSameTypeVerified((Type) o);
   }
 
   public boolean containsSameTypeVerified(Type object) {
@@ -205,7 +205,11 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
     return collection.stream().allMatch(this::remove);
   }
 
-//  public boolean retainAll(@NotNull Collection<?> c) {
+  @Override public boolean retainAll(@NotNull Collection<?> c) {
+    return false;
+  }
+
+  //  public boolean retainAll(@NotNull Collection<?> c) {
 //    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
 //  }
 

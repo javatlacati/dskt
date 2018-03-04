@@ -16,6 +16,9 @@
 package jaba.lists.linkedlists.singlelinkedlists.recursive;
 
 import jaba.lists.MyList;
+import java.util.Collection;
+import java.util.Iterator;
+import org.jetbrains.annotations.NotNull;
 
 public class SingleLinkedList<Type> implements MyList<Type> {
 
@@ -117,7 +120,11 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     }
 
     @Override public boolean contains(Object o) {
-        return o instanceof Class<?> && root.contains((Type) o);
+        return null!=o && null !=root && o.getClass().equals(root.getItem().getClass()) && root.contains((Type) o);
+    }
+
+    @NotNull @Override public Iterator<Type> iterator() {
+        return null;
     }
 
     @Override public boolean remove(Object o) {
@@ -132,6 +139,22 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         return false;
     }
 
+    @Override public boolean containsAll(@NotNull Collection<?> c) {
+        return false;
+    }
+
+    @Override public boolean addAll(@NotNull Collection<? extends Type> c) {
+        return false;
+    }
+
+    @Override public boolean removeAll(@NotNull Collection<?> c) {
+        return false;
+    }
+
+    @Override public boolean retainAll(@NotNull Collection<?> c) {
+        return false;
+    }
+
     @Override
     public Type[] toArray() {
         if (root == null) {
@@ -139,6 +162,10 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         } else {
             return root.toArray();
         }
+    }
+
+    @NotNull @Override public <T> T[] toArray(@NotNull T[] a) {
+        return null;
     }
 
     @Override

@@ -60,6 +60,9 @@ public class MyListTest {
     @Test
     public void contains() throws Exception {
         assertFalse(myList.contains(null));
+        myList.add("hola");
+        myList.add("mundo!");
+        assertTrue(myList.contains("mundo!"));
     }
 
     @Test
@@ -94,4 +97,5 @@ public class MyListTest {
         assertArrayEquals(arr, myList.toArray());
 
     }
+
 }
