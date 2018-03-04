@@ -15,13 +15,13 @@ import lombok.ToString;
 @AllArgsConstructor
 @ToString(of = "item")
 @EqualsAndHashCode(of = "item")
-public class Node {
+public class Node<Type> {
 
-    Object item;
+    Type item;
     Node previous;
     Node next;
 
-    public Node(Object item) {
+    public Node(Type item) {
         this.item = item;
     }
 
