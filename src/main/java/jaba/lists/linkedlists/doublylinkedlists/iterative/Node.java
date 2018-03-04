@@ -1,4 +1,4 @@
-package jaba.lists.linkedlists.doublylinkedlists;
+package jaba.lists.linkedlists.doublylinkedlists.iterative;
 
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
@@ -17,9 +17,9 @@ import lombok.ToString;
 @EqualsAndHashCode(of = "item")
 public class Node<Type> {
 
-    Type item;
-    Node previous;
-    Node next;
+    private Type item;
+    private Node<Type> previous;
+    private Node<Type> next;
 
     public Node(Type item) {
         this.item = item;
