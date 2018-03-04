@@ -41,6 +41,7 @@ public class MyListTest {
     @Before
     public void setUp() throws Exception {
         myList.clear();
+        System.out.println("testing:"+myList.getClass().getName());
     }
 
     //tests
@@ -78,4 +79,19 @@ public class MyListTest {
         assertTrue(myList.add("mundo!"));
     }
 
+    @Test public void remove() {
+        assertTrue(myList.isEmpty());
+        assertTrue(myList.add("adios"));
+        assertTrue(myList.add("mundo"));
+        assertTrue(myList.add("cruel"));
+
+        assertTrue(myList.remove("adios"));
+        Object[] arr = new Object[]{"mundo","cruel"};
+        assertArrayEquals(arr, myList.toArray());
+
+        assertTrue(myList.remove("cruel"));
+        arr = new Object[]{"mundo"};
+        assertArrayEquals(arr, myList.toArray());
+
+    }
 }

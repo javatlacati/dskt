@@ -1,6 +1,9 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
 import jaba.lists.MyList;
+import java.util.Collection;
+import java.util.Iterator;
+import org.jetbrains.annotations.NotNull;
 
 public class SingleLinkedList<Type> implements MyList<Type> {
     private Node<Type> root;
@@ -117,50 +120,135 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         return root == null;
     }
 
-//    @Override
-//    public boolean contains(Object o){
-//        return o instanceof Class<Type> ? containsSameTypeVerified(o): false;
-//    }
+  @Override public boolean contains(Object o) {
+    return o instanceof Class<?> && containsSameTypeVerified((Type) o);
+  }
 
-    public boolean contains(Type o) { //SameTypeVerified
-        if (root == null && o == null) {
-            return false;
-        } else {
-            Node<Type> currentNode = root;
-            while (currentNode != null) {
-                if (currentNode.equals(o))
-                    return true;
-                currentNode = currentNode.getNext();
-            }
-        }
-        return false;
-    }
+  /**
+   * {@inheritDoc}
+   */
+  @NotNull public Iterator<Type> iterator() {
+    return new Iterator<Type>() {
+      Node<Type> tmp = root;
 
-    @Override
-    public Type[] toArray() {
-        int size = size();
-        Type[] resultingArray = (Type[]) new Object[size];
-        if (size != 0) {
-            Node<Type> currentNode = root;
-            int index = 0;
-            while (currentNode != null) {
-                resultingArray[index] = currentNode.getItem();
-                currentNode = currentNode.getNext();
-                index++;
-            }
-        }
-        return resultingArray;
-    }
+      @Override public boolean hasNext() {
+        return null == tmp.getNext();
+      }
 
-    @Override
-    public boolean add(Type o) {
-        return addAtEnd(o);
-    }
+      @Override public Type next() {
+        tmp = tmp.getNext();
+        return tmp.getItem();
+      }
+    };
+  }
 
-    @Override
-    public void clear() {
-        root = null;
+  public boolean containsSameTypeVerified(Type o) {
+    if (root == null && o == null) {
+      return false;
+    } else {
+      Node<Type> currentNode = root;
+      while (currentNode != null) {
+        if (currentNode.equals(o))
+          return true;
+        currentNode = currentNode.getNext();
+      }
     }
+    return false;
+  }
+
+  @Override public Type[] toArray() {
+    int size = size();
+    Type[] resultingArray = (Type[]) new Object[size];
+    if (size != 0) {
+      Node<Type> currentNode = root;
+      int index = 0;
+      while (currentNode != null) {
+        resultingArray[index] = currentNode.getItem();
+        currentNode = currentNode.getNext();
+        index++;
+      }
+    }
+    return resultingArray;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @NotNull public <T> T[] toArray(@NotNull T[] resultingArray) {
+    int size = size();
+    if (size != 0) {
+      Node<T> currentNode = (Node<T>) root;
+      int index = 0;
+      while (currentNode != null) {
+        resultingArray[index] = currentNode.getItem();
+        currentNode = currentNode.getNext();
+        index++;
+      }
+    }
+    return resultingArray;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override public boolean add(Type o) {
+    return addAtEnd(o);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  @Override public boolean remove(Object o) {
+    return null!=o && null !=root && o.getClass().equals(root.getItem().getClass()) && removeChecked((Type) o);
+  }
+
+  public boolean removeChecked(Type content) {
+    Node<Type> anterior = root;
+    Node<Type> actual = root;
+
+    while (actual.getItem() != content && actual.getNext() != null) {
+      anterior = actual;
+      actual = actual.getNext();
+    }
+    if(anterior.equals(actual)){
+      root=actual.getNext();
+    }else {
+      anterior.setNext(actual.getNext());
+    }
+    return true;
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public boolean containsAll(@NotNull Collection<?> collection) {
+    return collection.stream().allMatch(this::contains);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public boolean addAll(@NotNull Collection<? extends Type> collection) {
+    return collection.stream().allMatch(this::add);
+  }
+
+  /**
+   * {@inheritDoc}
+   */
+  public boolean removeAll(@NotNull Collection<?> collection) {
+    return collection.stream().allMatch(this::remove);
+  }
+
+  /*
+   * {@inheritDoc}
+   */
+  //  public boolean retainAll(@NotNull Collection<?> c) {
+  //    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
+  //  }
+
+  @Override public void clear() {
+    root = null;
+  }
 
     public Node<Type> getRoot() {
         return this.root;
