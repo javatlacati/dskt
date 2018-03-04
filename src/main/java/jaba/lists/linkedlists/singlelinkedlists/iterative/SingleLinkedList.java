@@ -117,8 +117,12 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         return root == null;
     }
 
-    @Override
-    public boolean contains(Type o) {
+//    @Override
+//    public boolean contains(Object o){
+//        return o instanceof Class<Type> ? containsSameTypeVerified(o): false;
+//    }
+
+    public boolean contains(Type o) { //SameTypeVerified
         if (root == null && o == null) {
             return false;
         } else {
@@ -135,17 +139,17 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     @Override
     public Type[] toArray() {
         int size = size();
-        Type[] retorno = (Type[]) new Object[size];
+        Type[] resultingArray = (Type[]) new Object[size];
         if (size != 0) {
             Node<Type> currentNode = root;
             int index = 0;
             while (currentNode != null) {
-                retorno[index] = currentNode.getItem();
+                resultingArray[index] = currentNode.getItem();
                 currentNode = currentNode.getNext();
                 index++;
             }
         }
-        return retorno;
+        return resultingArray;
     }
 
     @Override
