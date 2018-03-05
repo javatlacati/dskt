@@ -25,5 +25,9 @@ public class MonomialTest {
         .asList(new VariableTerm(2, "x", 2), new VariableTerm(5, "y", 6),
             new VariableTerm(-2, "z", 2)));
     assertEquals("2x^2+5y^6-2z^2", monomial.toString());
+    Monomial monomial1 = new Monomial(2, Arrays
+        .asList(new VariableTerm(2, "x", 2), new VariableTerm(5, "y", 6),
+            new VariableTerm(-2, "z", 2)));
+    assertEquals("2(2x^2+5y^6-2z^2)", monomial1.toString());
   }
 }
