@@ -1,7 +1,6 @@
 package jaba.adt.math;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import lombok.EqualsAndHashCode;
 
@@ -38,10 +37,11 @@ import lombok.EqualsAndHashCode;
   //        return fist.getL
   //    }
 
-
   @Override public String toString() {
-    return (0 == monomialCoefficient ? "" : monomialCoefficient + "(") + Arrays
-        .toString(variableTerms.toArray()) + (0 == monomialCoefficient ? "" : ")");
+    VariableTermStringJoiner joiner = new VariableTermStringJoiner();
+    variableTerms.forEach(joiner::add);
+    return (0 == monomialCoefficient ? "" : monomialCoefficient + "(") + joiner.toString() + (
+        0 == monomialCoefficient ? "" : ")");
   }
 
   public void addTerm(VariableTerm variableTerm) {
@@ -57,4 +57,49 @@ import lombok.EqualsAndHashCode;
   }
 
 
+  private class VariableTermStringJoiner {
+    private final String positiveValueDelimiter="+";
+    private final String negativeValueDelimiter="";
+
+    /*
+     * StringBuilder value -- at any time, the characters constructed from the
+     * prefix, the added element separated by the positiveValueDelimiter, but without the
+     * suffix, so that we can more easily add elements without having to jigger
+     * the suffix each time.
+     */
+    private StringBuilder value;
+
+    public VariableTermStringJoiner() {
+    }
+
+    /**
+     * Adds a copy of the given {@code CharSequence} value as the next
+     * element of the {@code StringJoiner} value. If {@code newElement} is
+     * {@code null}, then {@code "null"} is added.
+     *
+     * @param newElement The element to add
+     * @return a reference to this {@code StringJoiner}
+     */
+    public VariableTermStringJoiner add(VariableTerm newElement) {
+      prepareBuilder(newElement).append(newElement);
+      return this;
+    }
+
+    private StringBuilder prepareBuilder(VariableTerm newElement) {
+      if (value == null) {
+        value = new StringBuilder();
+      } else {
+        value.append(newElement.getCoefficient()>-1 ? positiveValueDelimiter:negativeValueDelimiter);
+      }
+      return value;
+    }
+
+    @Override public String toString() {
+      if (value == null) {
+        return "";
+      } else {
+        return value.toString();
+      }
+    }
+  }
 }
