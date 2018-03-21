@@ -16,7 +16,7 @@ public class AutoGrowingArrayBasedQueue extends ArrayBasedQueue {
     }
 
     @Override
-    public synchronized void enqueue(Object item) {
+    public synchronized boolean enqueue(Object item) {
         if (isFull()) {
             int newCapacity = queueArray.length + capacityIncrement;
             Object[] newArray = new Object[newCapacity];
@@ -24,7 +24,7 @@ public class AutoGrowingArrayBasedQueue extends ArrayBasedQueue {
             queueArray = newArray;
             capacity = newCapacity;
         }
-        super.enqueue(item);
+        return super.enqueue(item);
     }
 
     public String toString() {
