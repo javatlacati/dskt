@@ -4,4 +4,4 @@ dist: trusty
 group: edge
 jdk: oraclejdk9
 sudo: false
-script: dependency:purge-local-repository clean install
+script: clean install
