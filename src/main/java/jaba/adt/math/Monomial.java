@@ -2,12 +2,12 @@ package jaba.adt.math;
 
 import java.util.ArrayList;
 import java.util.List;
-import lombok.EqualsAndHashCode;
+import java.util.Objects;
 
 /**
  * Created by Administrador on 29/06/2017.
  */
-@EqualsAndHashCode public class Monomial {
+public class Monomial {
   private int monomialCoefficient;
   private List<VariableTerm> variableTerms;
 
@@ -92,6 +92,22 @@ import lombok.EqualsAndHashCode;
         value.append(newElement.getCoefficient()>-1 ? positiveValueDelimiter:negativeValueDelimiter);
       }
       return value;
+    }
+
+    @Override public boolean equals(Object o) {
+      if (this == o)
+        return true;
+      if (!(o instanceof VariableTermStringJoiner))
+        return false;
+      VariableTermStringJoiner that = (VariableTermStringJoiner) o;
+      return Objects.equals(positiveValueDelimiter, that.positiveValueDelimiter) && Objects
+          .equals(negativeValueDelimiter, that.negativeValueDelimiter) && Objects
+          .equals(value, that.value);
+    }
+
+    @Override public int hashCode() {
+
+      return Objects.hash(positiveValueDelimiter, negativeValueDelimiter, value);
     }
 
     @Override public String toString() {

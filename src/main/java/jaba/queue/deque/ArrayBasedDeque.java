@@ -1,7 +1,5 @@
 package jaba.queue.deque;
 
-import jaba.queue.ArrayBasedQueue;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Deque;
 import java.util.Iterator;
@@ -20,12 +18,12 @@ public class ArrayBasedDeque<Type> implements Deque<Type> {
     /**
      * Internal array to hold the data.
      */
-    Type[] queueArray;
+    Type[] dequeArray;
 
     private int headIndex;
 
     public ArrayBasedDeque(int queueSize) {
-        queueArray = (Type[]) new Object[capacity];
+        dequeArray = (Type[]) new Object[capacity];
         headIndex=0;
     }
 
@@ -37,16 +35,16 @@ public class ArrayBasedDeque<Type> implements Deque<Type> {
         if(headIndex==0){
             addLast(type);
         }else {
-            System.arraycopy(queueArray, 1, queueArray, 0, queueArray.length);
-            queueArray[0]=type;
+            System.arraycopy(dequeArray, 1, dequeArray, 0, dequeArray.length);
+            dequeArray[0]=type;
         }
     }
 
     @Override public void addLast(Type type) {
         final int headIndex1 = this.headIndex + 1;
-        if(queueArray.length>headIndex1) {
+        if(dequeArray.length>headIndex1) {
             headIndex= headIndex1;
-            queueArray[headIndex]=type;
+            dequeArray[headIndex]=type;
         }else {
             throw new OutOfMemoryError("Queue Capacity has been excedeed");
         }

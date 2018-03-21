@@ -10,4 +10,12 @@ public class LabeledPoint extends Point {
     public String toString() {
         return label + super.toString();
     }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getLabel() {
+        return label;
+    }
 }
