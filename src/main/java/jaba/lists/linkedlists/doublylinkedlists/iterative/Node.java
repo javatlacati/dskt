@@ -21,7 +21,7 @@ public class Node<Type> {
         this.next = next;
     }
 
-    public Object getItem() {
+    public Type getItem() {
         return this.item;
     }
 
