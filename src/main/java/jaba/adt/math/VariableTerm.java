@@ -1,5 +1,7 @@
 package jaba.adt.math;
 
+import java.util.Objects;
+
 /**
  * Created by Administrador on 29/06/2017.
  */
@@ -49,7 +51,22 @@ public class VariableTerm {
     return monomial;
   }
 
-    public int getCoefficient() {
+  @Override public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (!(o instanceof VariableTerm))
+      return false;
+    VariableTerm that = (VariableTerm) o;
+    return coefficient == that.coefficient && grade == that.grade && Objects
+        .equals(literalPart, that.literalPart);
+  }
+
+  @Override public int hashCode() {
+
+    return Objects.hash(coefficient, literalPart, grade);
+  }
+
+  public int getCoefficient() {
         return this.coefficient;
     }
 
