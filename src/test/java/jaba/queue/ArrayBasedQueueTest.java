@@ -70,12 +70,12 @@ public class ArrayBasedQueueTest {
         assertEquals(initialCapacity, queue.getCapacity());
     }
 
-    @Test
-    public void setCapacity() {
-        int newCapacity = 51;
-        queue.setCapacity(newCapacity);
-        assertEquals(newCapacity, queue.getCapacity());
-    }
+//    @Test
+//    public void setCapacity() {
+//        int newCapacity = 51;
+//        queue.setCapacity(newCapacity);
+//        assertEquals(newCapacity, queue.getCapacity());
+//    }
 
     @Test
     public void toStringTest() {
