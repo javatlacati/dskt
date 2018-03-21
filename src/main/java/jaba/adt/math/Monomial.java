@@ -37,6 +37,21 @@ public class Monomial {
   //        return fist.getL
   //    }
 
+  @Override public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (!(o instanceof Monomial))
+      return false;
+    Monomial monomial = (Monomial) o;
+    return monomialCoefficient == monomial.monomialCoefficient && Objects
+        .equals(variableTerms, monomial.variableTerms);
+  }
+
+  @Override public int hashCode() {
+
+    return Objects.hash(monomialCoefficient, variableTerms);
+  }
+
   @Override public String toString() {
     VariableTermStringJoiner joiner = new VariableTermStringJoiner();
     variableTerms.forEach(joiner::add);
@@ -92,22 +107,6 @@ public class Monomial {
         value.append(newElement.getCoefficient()>-1 ? positiveValueDelimiter:negativeValueDelimiter);
       }
       return value;
-    }
-
-    @Override public boolean equals(Object o) {
-      if (this == o)
-        return true;
-      if (!(o instanceof VariableTermStringJoiner))
-        return false;
-      VariableTermStringJoiner that = (VariableTermStringJoiner) o;
-      return Objects.equals(positiveValueDelimiter, that.positiveValueDelimiter) && Objects
-          .equals(negativeValueDelimiter, that.negativeValueDelimiter) && Objects
-          .equals(value, that.value);
-    }
-
-    @Override public int hashCode() {
-
-      return Objects.hash(positiveValueDelimiter, negativeValueDelimiter, value);
     }
 
     @Override public String toString() {
