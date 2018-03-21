@@ -4,4 +4,3 @@ dist: trusty
 group: edge
 jdk: oraclejdk9
 sudo: false
-script: clean install
