@@ -36,7 +36,7 @@ public class ArrayBasedQueue<Type> implements Queue<Type> {
     }
 
     @Override public boolean contains(Object o) {
-        return Arrays.stream(queueArray).anyMatch(type -> type.equals(o));
+        return Arrays.stream(queueArray).limit(headIndex).anyMatch(type -> type.equals(o));
     }
 
     @NotNull @Override public Iterator<Type> iterator() {

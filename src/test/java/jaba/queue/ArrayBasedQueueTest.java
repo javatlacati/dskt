@@ -70,13 +70,6 @@ public class ArrayBasedQueueTest {
         assertEquals(initialCapacity, queue.getCapacity());
     }
 
-//    @Test
-//    public void setCapacity() {
-//        int newCapacity = 51;
-//        queue.setCapacity(newCapacity);
-//        assertEquals(newCapacity, queue.getCapacity());
-//    }
-
     @Test
     public void toStringTest() {
         assertEquals("ArrayBasedQueue(queueArray=[null, null, null, null, null])", queue.toString());
@@ -92,12 +85,14 @@ public class ArrayBasedQueueTest {
         queue.enqueue(2);
         queue.enqueue(3);
         queue.enqueue(4);
+        assertTrue(queue.contains(2));
         assertEquals(Integer.valueOf(2), queue.dequeue());
-
+        assertFalse(queue.contains(2));
         queue.enqueue(5);
         queue.enqueue(6);
         log.info(queue.toString());
         assertEquals("ArrayBasedQueue(queueArray=[3, 4, 5, 6, null])", queue.toString());
+        assertArrayEquals(new Integer[]{3,4,5,6,null},queue.toArray());
     }
 
 }
