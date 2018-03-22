@@ -46,7 +46,7 @@ public class ArrayBasedQueueTest {
         for (int i = 0; i < 3; i++) {
             assertEquals(Integer.valueOf(i), queue.dequeue());
         }
-        assertEquals("ArrayBasedQueue(queueArray=[null, null, null, null, null])", queue.toString());
+        assertEquals("ArrayBasedQueue(queueArray=[])", queue.toString());
         assertTrue(queue.isEmpty());
     }
 
@@ -72,7 +72,7 @@ public class ArrayBasedQueueTest {
 
     @Test
     public void toStringTest() {
-        assertEquals("ArrayBasedQueue(queueArray=[null, null, null, null, null])", queue.toString());
+        assertEquals("ArrayBasedQueue(queueArray=[])", queue.toString());
     }
 
   @Test public void happyPath() {
