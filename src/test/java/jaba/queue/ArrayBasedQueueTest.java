@@ -71,34 +71,41 @@ public class ArrayBasedQueueTest {
         assertEquals(initialCapacity, queue.getCapacity());
     }
 
-//    @Test
-//    public void setCapacity() {
-//        int newCapacity = 51;
-//        queue.setCapacity(newCapacity);
-//        assertEquals(newCapacity, queue.getCapacity());
-//    }
-
     @Test
     public void toStringTest() {
         assertEquals("ArrayBasedQueue(queueArray=[])", queue.toString());
     }
 
-    @Test
-    public void happyPath() {
-        log.info("Happy Path");
-        final int expected = 1;
-        queue.enqueue(expected);
-        assertEquals(Integer.valueOf(expected), queue.dequeue());
+  @Test public void happyPath() {
+    log.info("Happy Path");
+    final int expected = 1;
+    queue.enqueue(expected);
+    assertEquals(Integer.valueOf(expected), queue.dequeue());
+    queue.add(7);
+    queue.enqueue(2);
+    queue.add(-4);
+    queue.enqueue(3);
+    queue.add(4);
 
-        queue.enqueue(2);
-        queue.enqueue(3);
-        queue.enqueue(4);
-        assertEquals(Integer.valueOf(2), queue.dequeue());
+    assertTrue(queue.contains(2));
+    assertArrayEquals(new Integer[] {7, 2, -4, 3, 4}, queue.toArray());
 
-        queue.enqueue(5);
-        queue.enqueue(6);
-        log.info(queue.toString());
-        assertEquals("ArrayBasedQueue(queueArray=[3, 4, 5, 6, null])", queue.toString());
-    }
+    assertEquals(Integer.valueOf(7), queue.remove());
+    assertArrayEquals(new Integer[] {2, -4, 3, 4}, queue.toArray());
+    assertEquals(Integer.valueOf(2), queue.dequeue());
+    assertFalse(queue.contains(2));
+
+    assertArrayEquals(new Integer[] {-4, 3, 4}, queue.toArray());
+
+    queue.remove(-4);
+
+    queue.enqueue(5);
+    queue.enqueue(6);
+    log.info(queue.toString());
+    assertEquals("ArrayBasedQueue(queueArray=[3, 4, 5, 6])", queue.toString());
+    assertArrayEquals(new Integer[] {3, 4, 5, 6}, queue.toArray());
+//    assertEquals(true, queue.remove(4));
+//    assertArrayEquals(new Integer[] {3, 5, 6}, queue.toArray());
+  }
 
 }

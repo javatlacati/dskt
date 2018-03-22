@@ -36,7 +36,7 @@ public class ArrayBasedQueue<Type> implements Queue<Type> {
     }
 
     @Override public boolean contains(Object o) {
-        return Arrays.stream(queueArray).anyMatch(type -> type.equals(o));
+        return Arrays.stream(queueArray).limit(headIndex).anyMatch(type -> type.equals(o));
     }
 
     @NotNull @Override public Iterator<Type> iterator() {
@@ -44,7 +44,7 @@ public class ArrayBasedQueue<Type> implements Queue<Type> {
     }
 
     @NotNull @Override public Object[] toArray() {
-        return Arrays.copyOf(queueArray,capacity);
+        return Arrays.copyOf(queueArray,headIndex);
     }
 
 //    public <T> T[] toArray(@NotNull T[] resultingArray) {
@@ -98,7 +98,7 @@ public class ArrayBasedQueue<Type> implements Queue<Type> {
     }
 
     public String toString() {
-        return "ArrayBasedQueue(queueArray=" + java.util.Arrays.deepToString(queueArray) + ")";
+        return "ArrayBasedQueue(queueArray=" + java.util.Arrays.deepToString(toArray()) + ")";
     }
 
     public int getCapacity() {
