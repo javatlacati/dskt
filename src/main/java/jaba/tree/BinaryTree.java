@@ -1,5 +1,7 @@
 package jaba.tree;
 
-public interface BinaryTree<Item> {
+import java.util.Collection;
+
+public interface BinaryTree<Item> extends Collection<Item> {
   boolean isRootNode(BinaryTreeNode<Item> node);
 }

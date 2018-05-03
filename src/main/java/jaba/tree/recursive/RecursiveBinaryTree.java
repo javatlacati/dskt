@@ -2,8 +2,11 @@ package jaba.tree.recursive;
 
 import jaba.tree.BinaryTree;
 import jaba.tree.BinaryTreeNode;
+import java.util.Collection;
+import java.util.Iterator;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.jetbrains.annotations.NotNull;
 
 /** Created by Administrador on 02/07/2017. */
 @Getter
@@ -73,5 +76,61 @@ public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
 
   @Override public boolean isRootNode(BinaryTreeNode<Item> node) {
     return root.equals(node);
+  }
+
+  @Override public int size() {
+    if (root == null) {
+      return 0;
+    } else {
+      return 1 ; // TODO recursive add
+    }
+  }
+
+  @Override public boolean isEmpty() {
+    return false;
+  }
+
+  @Override public boolean contains(Object o) {
+    return false;
+  }
+
+  @NotNull @Override public Iterator<Item> iterator() {
+    return null;
+  }
+
+  @NotNull @Override public Object[] toArray() {
+    return new Object[0];
+  }
+
+  @NotNull @Override public <T> T[] toArray(@NotNull T[] a) {
+    return null;
+  }
+
+  @Override public boolean add(Item item) {
+    return false;
+  }
+
+  @Override public boolean remove(Object o) {
+    return false;
+  }
+
+  @Override public boolean containsAll(@NotNull Collection<?> c) {
+    return false;
+  }
+
+  @Override public boolean addAll(@NotNull Collection<? extends Item> c) {
+    return false;
+  }
+
+  @Override public boolean removeAll(@NotNull Collection<?> c) {
+    return false;
+  }
+
+  @Override public boolean retainAll(@NotNull Collection<?> c) {
+    return false;
+  }
+
+  @Override public void clear() {
+
   }
 }
