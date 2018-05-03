@@ -18,7 +18,6 @@ public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
     root = new RecursiveBinaryTreeNode<>(rootValue);
   }
 
-
   public boolean isInternalNode(RecursiveBinaryTreeNode<Item> node) {
     return !isRootNode(node) && ((null != node.getRight()) || (null != node.getLeft()));
   }
@@ -48,9 +47,7 @@ public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
     return isParentNode(parentCandidate, childCandidate);
   }
 
-  boolean areSiblings(
-      RecursiveBinaryTreeNode<Item> node1,
-      RecursiveBinaryTreeNode<Item> node2) {
+  boolean areSiblings(RecursiveBinaryTreeNode<Item> node1, RecursiveBinaryTreeNode<Item> node2) {
     // TODO buscar padre por DFS
     RecursiveBinaryTreeNode<Item> parent = null;
     if (parent != null) {
@@ -87,11 +84,18 @@ public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
     return result.toString();
   }
 
-  @Override public boolean isRootNode(BinaryTreeNode<Item> node) {
+  @Override
+  public boolean isRootNode(BinaryTreeNode<Item> node) {
     return root.equals(node);
   }
 
-  @Override public int size() {
+  @Override
+  public int grade() {
+    return 0;
+  }
+
+  @Override
+  public int size() {
     if (root == null) {
       return 0;
     } else {
@@ -99,51 +103,66 @@ public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
     }
   }
 
-  @Override public boolean isEmpty() {
+  @Override
+  public boolean isEmpty() {
     return false;
   }
 
-  @Override public boolean contains(Object o) {
+  @Override
+  public boolean contains(Object o) {
     return false;
   }
 
-  @NotNull @Override public Iterator<Item> iterator() {
+  @NotNull
+  @Override
+  public Iterator<Item> iterator() {
     return null;
   }
 
-  @NotNull @Override public Object[] toArray() {
+  @NotNull
+  @Override
+  public Object[] toArray() {
     return new Object[0];
   }
 
-  @NotNull @Override public <T> T[] toArray(@NotNull T[] a) {
+  @NotNull
+  @Override
+  public <T> T[] toArray(@NotNull T[] a) {
     return null;
   }
 
-  @Override public boolean add(Item item) {
+  @Override
+  public boolean add(Item item) {
     return false;
   }
 
-  @Override public boolean remove(Object o) {
+  @Override
+  public boolean remove(Object o) {
     return false;
   }
 
-  @Override public boolean containsAll(@NotNull Collection<?> c) {
+  @Override
+  public boolean containsAll(@NotNull Collection<?> c) {
     return false;
   }
 
-  @Override public boolean addAll(@NotNull Collection<? extends Item> c) {
+  @Override
+  public boolean addAll(@NotNull Collection<? extends Item> c) {
     return false;
   }
 
-  @Override public boolean removeAll(@NotNull Collection<?> c) {
+  @Override
+  public boolean removeAll(@NotNull Collection<?> c) {
     return false;
   }
 
-  @Override public boolean retainAll(@NotNull Collection<?> c) {
+  @Override
+  public boolean retainAll(@NotNull Collection<?> c) {
     return false;
   }
 
-  @Override public void clear() {
-
+  @Override
+  public void clear() {
+    root = null;
   }
 }

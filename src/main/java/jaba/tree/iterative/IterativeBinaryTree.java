@@ -138,4 +138,9 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
   public boolean isRootNode(BinaryTreeNode node) {
     return root.equals(node);
   }
+
+  @Override
+  public int grade() {
+    return 0;
+  }
 }
