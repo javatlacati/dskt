@@ -45,29 +45,41 @@ public class IterativeBinaryTreeNode<Item>  implements BinaryTreeNode<Item> {
     public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
       return childCandidate instanceof IterativeBinaryTreeNode
         && (left.equals(childCandidate) || right.equals(childCandidate));
-    }
+  }
 
-    public Item getValue() {
-        return this.value;
+  @Override
+  public int grade() {
+    int grade = 0;
+    if (left != null) {
+      grade++;
     }
+    if (right != null) {
+      grade++;
+    }
+    return grade;
+  }
 
-    public IterativeBinaryTreeNode getLeft() {
-        return this.left;
-    }
+  public Item getValue() {
+    return this.value;
+  }
 
-    public IterativeBinaryTreeNode getRight() {
-        return this.right;
-    }
+  public IterativeBinaryTreeNode getLeft() {
+    return this.left;
+  }
 
-    public void setValue(Item value) {
-        this.value = value;
-    }
+  public IterativeBinaryTreeNode getRight() {
+    return this.right;
+  }
 
-    public void setLeft(IterativeBinaryTreeNode left) {
-        this.left = left;
-    }
+  public void setValue(Item value) {
+    this.value = value;
+  }
 
-    public void setRight(IterativeBinaryTreeNode right) {
-        this.right = right;
-    }
+  public void setLeft(IterativeBinaryTreeNode left) {
+    this.left = left;
+  }
+
+  public void setRight(IterativeBinaryTreeNode right) {
+    this.right = right;
+  }
 }

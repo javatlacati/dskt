@@ -35,17 +35,29 @@ public class RecursiveBinaryTreeNode<Item>  implements BinaryTreeNode<Item>{
     public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
       return childCandidate instanceof RecursiveBinaryTreeNode
         && (left.equals(childCandidate) || right.equals(childCandidate));
-    }
+  }
 
-    public void setValue(Item value) {
-        this.value = value;
+  @Override
+  public int grade() {
+    int grade = 0;
+    if (left != null) {
+      grade++;
     }
+    if (right != null) {
+      grade++;
+    }
+    return grade;
+  }
 
-    public void setLeft(RecursiveBinaryTreeNode left) {
-        this.left = left;
-    }
+  public void setValue(Item value) {
+    this.value = value;
+  }
 
-    public void setRight(RecursiveBinaryTreeNode right) {
-        this.right = right;
-    }
+  public void setLeft(RecursiveBinaryTreeNode left) {
+    this.left = left;
+  }
+
+  public void setRight(RecursiveBinaryTreeNode right) {
+    this.right = right;
+  }
 }
