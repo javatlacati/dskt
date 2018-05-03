@@ -1,6 +1,7 @@
 package jaba.tree.recursive;
 
 import jaba.tree.BinaryTree;
+import jaba.tree.BinaryTreeNode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -14,9 +15,6 @@ public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
     root = new RecursiveBinaryTreeNode<>(rootValue);
   }
 
-  public boolean isRootNode(RecursiveBinaryTreeNode<Item> node) {
-    return root.equals(node);
-  }
 
   public boolean isInternalNode(RecursiveBinaryTreeNode<Item> node) {
     return !isRootNode(node) && ((null != node.getRight()) || (null != node.getLeft()));
@@ -71,5 +69,9 @@ public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
     }
     result.append('[').append(value).append(']');
     return result.toString();
+  }
+
+  @Override public boolean isRootNode(BinaryTreeNode<Item> node) {
+    return root.equals(node);
   }
 }

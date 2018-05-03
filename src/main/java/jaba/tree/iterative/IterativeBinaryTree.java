@@ -1,7 +1,7 @@
 package jaba.tree.iterative;
 
 import jaba.tree.BinaryTree;
-import lombok.AllArgsConstructor;
+import jaba.tree.BinaryTreeNode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -77,5 +77,10 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
     } else {
       return 1 + root.countElements();
     }
+  }
+
+  @Override
+  public boolean isRootNode(BinaryTreeNode node) {
+    return root.equals(node);
   }
 }

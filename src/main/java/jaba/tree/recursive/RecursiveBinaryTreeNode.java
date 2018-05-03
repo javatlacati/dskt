@@ -1,5 +1,6 @@
 package jaba.tree.recursive;
 
+import jaba.tree.BinaryTreeNode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class RecursiveBinaryTreeNode<Item> {
+public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
   @NonNull private Item value;
   private RecursiveBinaryTreeNode<Item> left;
   private RecursiveBinaryTreeNode<Item> right;

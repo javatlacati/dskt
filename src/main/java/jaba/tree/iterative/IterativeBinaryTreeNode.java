@@ -1,5 +1,6 @@
 package jaba.tree.iterative;
 
+import jaba.tree.BinaryTreeNode;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
@@ -11,7 +12,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-public class IterativeBinaryTreeNode<Item> {
+public class IterativeBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
   @NonNull private Item value;
   private IterativeBinaryTreeNode<Item> left;
   private IterativeBinaryTreeNode<Item> right;
@@ -30,7 +31,7 @@ public class IterativeBinaryTreeNode<Item> {
   }
 
   IterativeBinaryTree<Item> getSubtree() {
-    return new IterativeBinaryTree<>(this);
+    return new IterativeBinaryTree<>(this.value);
   }
 
   IterativeBinaryTreeNode<Item> duplicate() {
