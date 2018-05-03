@@ -1,11 +1,15 @@
 package jaba.tree.iterative;
 
 import jaba.tree.BinaryTree;
+import jaba.tree.BinaryTreeNode;
+import java.util.Collection;
+import java.util.Iterator;
+import org.jetbrains.annotations.NotNull;
 /**
  * Created by Administrador on 02/07/2017.
  */
 /** Created by Administrador on 02/07/2017. */
-public class IterativeBinaryTree<Item> {
+public class IterativeBinaryTree<Item> implements BinaryTree {
   private IterativeBinaryTreeNode<Item> root;
 
   public IterativeBinaryTree(Item rootValue) {
@@ -16,9 +20,10 @@ public class IterativeBinaryTree<Item> {
   }
 
   /** path size from root to node. */
-  //    int getDepth(IterativeBinaryTreeNode<Item> node){
+      int getDepth(IterativeBinaryTreeNode<Item> node){
   // TODO do trough DFS
-  //    }
+        return 0;
+      }
 
   int getHeight() {
     return root.getHeight();
@@ -56,6 +61,46 @@ public class IterativeBinaryTree<Item> {
 
   public boolean isEmpty() {
     return root == null;
+  }
+
+  @Override public boolean contains(Object o) {
+    return false;
+  }
+
+  @NotNull @Override public Iterator iterator() {
+    return null;
+  }
+
+  @NotNull @Override public Object[] toArray() {
+    return new Object[0];
+  }
+
+  @Override public boolean add(Object o) {
+    return false;
+  }
+
+  @Override public boolean remove(Object o) {
+    return false;
+  }
+
+  @Override public boolean addAll(@NotNull Collection c) {
+    return false;
+  }
+
+  @Override public boolean retainAll(@NotNull Collection c) {
+    return false;
+  }
+
+  @Override public boolean removeAll(@NotNull Collection c) {
+    return false;
+  }
+
+  @Override public boolean containsAll(@NotNull Collection c) {
+    return false;
+  }
+
+  @NotNull @Override public Object[] toArray(@NotNull Object[] a) {
+    return new Object[0];
   }
 
   public void merge(
