@@ -8,8 +8,8 @@ import jaba.tree.BinaryTree;
 public class IterativeBinaryTree<Item> {
   private IterativeBinaryTreeNode<Item> root;
 
-  public IterativeBinaryTree(IterativeBinaryTreeNode<Item> root) {
-    this.root = root;
+  public IterativeBinaryTree(Item rootValue) {
+    root = new IterativeBinaryTreeNode<>(rootValue);
   }
 
   public IterativeBinaryTree() {

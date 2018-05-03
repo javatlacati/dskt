@@ -1,10 +1,15 @@
 package jaba.tree.recursive;
 
+import jaba.tree.BinaryTree;
 /**
  * Created by Administrador on 02/07/2017.
  */
 public class RecursiveBinaryTree<Item> {
     RecursiveBinaryTreeNode<Item> root;
+
+  public RecursiveBinaryTree(Item rootValue) {
+    root = new RecursiveBinaryTreeNode<>(rootValue);
+  }
 
   public boolean isRootNode(RecursiveBinaryTreeNode<Item> node) {
     return root.equals(node);
