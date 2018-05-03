@@ -5,6 +5,7 @@ import jaba.tree.BinaryTreeNode;
 import java.util.Collection;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
+
 /** Created by Administrador on 02/07/2017. */
 public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
   private IterativeBinaryTreeNode<Item> root;
@@ -136,6 +137,10 @@ public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
     return root.equals(node);
   }
 
+  @Override
+  public int grade() {
+    return 0;
+  }
   public IterativeBinaryTreeNode<Item> getRoot() {
     return root;
   }
