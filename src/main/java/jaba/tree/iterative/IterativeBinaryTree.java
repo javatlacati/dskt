@@ -18,11 +18,11 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
     root = new IterativeBinaryTreeNode<>(rootValue);
   }
 
-  /** path size from root to node. */
-      int getDepth(IterativeBinaryTreeNode<Item> node){
-  // TODO do trough DFS
-        return 0;
-      }
+  /** path size from root to specified node. */
+  int getDepth(IterativeBinaryTreeNode<Item> node) {
+    // TODO do trough DFS
+    return 0;
+  }
 
   int getHeight() {
     return root.getHeight();
@@ -35,11 +35,9 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
   //
   //  }
 
-  boolean areSiblings(
-      IterativeBinaryTreeNode<IterativeBinaryTree> node1,
-      IterativeBinaryTreeNode<IterativeBinaryTree> node2) {
+  boolean areSiblings(IterativeBinaryTreeNode<Item> node1, IterativeBinaryTreeNode<Item> node2) {
     // TODO buscar padre por DFS
-    IterativeBinaryTreeNode<IterativeBinaryTree> parent = null;
+    IterativeBinaryTreeNode<Item> parent = null;
     if (parent != null) {
       return node1.equals(parent.getLeft()) && node2.equals(parent.getRight())
           || node2.equals(parent.getLeft()) && node1.equals(parent.getRight());
@@ -62,43 +60,56 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
     return root == null;
   }
 
-  @Override public boolean contains(Object o) {
+  @Override
+  public boolean contains(Object o) {
     return false;
   }
 
-  @NotNull @Override public Iterator iterator() {
+  @NotNull
+  @Override
+  public Iterator iterator() {
     return null;
   }
 
-  @NotNull @Override public Object[] toArray() {
+  @NotNull
+  @Override
+  public Object[] toArray() {
     return new Object[0];
   }
 
-  @Override public boolean add(Object o) {
+  @Override
+  public boolean add(Object o) {
     return false;
   }
 
-  @Override public boolean remove(Object o) {
+  @Override
+  public boolean remove(Object o) {
     return false;
   }
 
-  @Override public boolean addAll(@NotNull Collection c) {
+  @Override
+  public boolean addAll(@NotNull Collection c) {
     return false;
   }
 
-  @Override public boolean retainAll(@NotNull Collection c) {
+  @Override
+  public boolean retainAll(@NotNull Collection c) {
     return false;
   }
 
-  @Override public boolean removeAll(@NotNull Collection c) {
+  @Override
+  public boolean removeAll(@NotNull Collection c) {
     return false;
   }
 
-  @Override public boolean containsAll(@NotNull Collection c) {
+  @Override
+  public boolean containsAll(@NotNull Collection c) {
     return false;
   }
 
-  @NotNull @Override public Object[] toArray(@NotNull Object[] a) {
+  @NotNull
+  @Override
+  public Object[] toArray(@NotNull Object[] a) {
     return new Object[0];
   }
 

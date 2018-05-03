@@ -26,4 +26,9 @@ public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
   public boolean isLeaf() {
     return left == null && right == null;
   }
+
+  @Override
+  public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
+    return left.equals(childCandidate) || right.equals(childCandidate);
+  }
 }

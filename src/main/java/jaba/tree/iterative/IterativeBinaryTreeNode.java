@@ -17,16 +17,6 @@ public class IterativeBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
   private IterativeBinaryTreeNode<Item> left;
   private IterativeBinaryTreeNode<Item> right;
 
-  @Override
-  public boolean isParent() {
-    return null != left || null != right;
-  }
-
-  @Override
-  public boolean isLeaf() {
-    return left == null && right == null;
-  }
-
   int getHeight() {
     // TODO hacer for DFS
     return 0;
@@ -44,5 +34,20 @@ public class IterativeBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
   public int countElements() {
     // TODO implement me
     return 0;
+  }
+
+  @Override
+  public boolean isParent() {
+    return null != left || null != right;
+  }
+
+  @Override
+  public boolean isLeaf() {
+    return left == null && right == null;
+  }
+
+  @Override
+  public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
+    return left.equals(childCandidate) || right.equals(childCandidate);
   }
 }
