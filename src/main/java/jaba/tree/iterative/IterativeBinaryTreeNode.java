@@ -3,10 +3,13 @@ package jaba.tree.iterative;
 /**
  * Created by Administrador on 01/07/2017.
  */
+//@AllArgsConstructor
+//@RequiredArgsConstructor
 public class IterativeBinaryTreeNode<Item>  {
-    Item value;
-    private IterativeBinaryTreeNode left;
-    private IterativeBinaryTreeNode right;
+    //@NonNull
+    private Item value;
+    private IterativeBinaryTreeNode<Item> left;
+    private IterativeBinaryTreeNode<Item> right;
 
   boolean isParent() {
     return null != left || null != right;
