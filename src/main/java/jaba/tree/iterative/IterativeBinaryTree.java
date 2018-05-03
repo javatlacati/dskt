@@ -1,5 +1,6 @@
 package jaba.tree.iterative;
 
+import jaba.tree.BinaryTree;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class IterativeBinaryTree<Item> {
+public class IterativeBinaryTree<Item> implements BinaryTree {
   private IterativeBinaryTreeNode<Item> root;
 
   /** path size from root to node. */
@@ -55,19 +56,23 @@ public class IterativeBinaryTree<Item> {
   }
 
   public void merge(
-      IterativeBinaryTreeNode<Item> rootItem,
-      IterativeBinaryTree<Item> tree1,
-      IterativeBinaryTree<Item> tree2) {
-    this.root = rootItem;
+      Item rootItemValue, IterativeBinaryTree<Item> tree1, IterativeBinaryTree<Item> tree2) {
+    if (!tree1.getRoot().equals(tree2.getRoot()))
+      if (tree1.getRoot() != null) {
+        if (tree2.getRoot() != null) {
+          this.root =
+              new IterativeBinaryTreeNode<Item>(rootItemValue, tree1.getRoot(), tree2.getRoot());
+        }
+      }
     // TODO insert all
   }
 
   /** returns the number of elements that conform this tree. */
   public int size() {
-      if(root==null){
-          return 0;
-      }else{
-          return  1+root.countElements();
-      }
+    if (root == null) {
+      return 0;
+    } else {
+      return 1 + root.countElements();
+    }
   }
 }
