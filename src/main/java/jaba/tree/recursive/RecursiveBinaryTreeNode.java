@@ -17,13 +17,13 @@ public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
   private RecursiveBinaryTreeNode<Item> left;
   private RecursiveBinaryTreeNode<Item> right;
 
-    boolean isParent() {
-        return null != left || null != right;
-    }
+  @Override
+  public boolean isParent() {
+    return null != left || null != right;
+  }
 
-    boolean isLeaf() {
-        return left == null && right == null;
-    }
-
-
+  @Override
+  public boolean isLeaf() {
+    return left == null && right == null;
+  }
 }

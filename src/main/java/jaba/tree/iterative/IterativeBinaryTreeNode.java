@@ -17,11 +17,13 @@ public class IterativeBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
   private IterativeBinaryTreeNode<Item> left;
   private IterativeBinaryTreeNode<Item> right;
 
-  boolean isParent() {
+  @Override
+  public boolean isParent() {
     return null != left || null != right;
   }
 
-  boolean isLeaf() {
+  @Override
+  public boolean isLeaf() {
     return left == null && right == null;
   }
 
