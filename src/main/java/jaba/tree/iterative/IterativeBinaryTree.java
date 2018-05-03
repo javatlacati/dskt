@@ -78,4 +78,9 @@ public class IterativeBinaryTree<Item> {
       return 1 + root.countElements();
     }
   }
+
+  @Override
+  public boolean isRootNode(BinaryTreeNode node) {
+    return root.equals(node);
+  }
 }

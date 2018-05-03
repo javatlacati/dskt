@@ -1,10 +1,11 @@
 package jaba.tree.recursive;
 
+import jaba.tree.BinaryTreeNode;
 /**
  * Created by Administrador on 01/07/2017.
  */
-public class RecursiveBinaryTreeNode<Item> {
-    Item value;
+public class RecursiveBinaryTreeNode<Item>  implements BinaryTreeNode<Item>{
+    private Item value;
     private RecursiveBinaryTreeNode<Item> left;
     private RecursiveBinaryTreeNode<Item> right;
 

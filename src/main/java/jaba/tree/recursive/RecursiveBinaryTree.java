@@ -72,4 +72,8 @@ public class RecursiveBinaryTree<Item> {
     result.append('[').append(value).append(']');
     return result.toString();
   }
+
+  @Override public boolean isRootNode(BinaryTreeNode<Item> node) {
+    return root.equals(node);
+  }
 }

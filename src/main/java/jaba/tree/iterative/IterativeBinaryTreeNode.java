@@ -1,11 +1,12 @@
 package jaba.tree.iterative;
 
+import jaba.tree.BinaryTreeNode;
 /**
  * Created by Administrador on 01/07/2017.
  */
 //@AllArgsConstructor
 //@RequiredArgsConstructor
-public class IterativeBinaryTreeNode<Item>  {
+public class IterativeBinaryTreeNode<Item>  implements BinaryTreeNode<Item> {
     //@NonNull
     private Item value;
     private IterativeBinaryTreeNode<Item> left;
@@ -25,7 +26,7 @@ public class IterativeBinaryTreeNode<Item>  {
   }
 
   IterativeBinaryTree<Item> getSubtree() {
-    return new IterativeBinaryTree<>(this);
+    return new IterativeBinaryTree<>(this.value);
   }
 
   IterativeBinaryTreeNode<Item> duplicate() {
