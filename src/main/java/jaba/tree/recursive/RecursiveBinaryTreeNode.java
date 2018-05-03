@@ -27,11 +27,16 @@ public class RecursiveBinaryTreeNode<Item>  implements BinaryTreeNode<Item>{
     }
 
    @Override
-  public boolean isLeaf() {
+   public boolean isLeaf() {
         return left == null && right == null;
     }
 
-public void setValue(Item value) {
+    @Override
+    public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
+      return left.equals(childCandidate) || right.equals(childCandidate);
+    }
+
+    public void setValue(Item value) {
         this.value = value;
     }
 

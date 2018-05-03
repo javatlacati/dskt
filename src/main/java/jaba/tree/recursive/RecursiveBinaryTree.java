@@ -48,6 +48,19 @@ public class RecursiveBinaryTree<Item> {
     return isParentNode(parentCandidate, childCandidate);
   }
 
+  boolean areSiblings(
+      RecursiveBinaryTreeNode<Item> node1,
+      RecursiveBinaryTreeNode<Item> node2) {
+    // TODO buscar padre por DFS
+    RecursiveBinaryTreeNode<Item> parent = null;
+    if (parent != null) {
+      return node1.equals(parent.getLeft()) && node2.equals(parent.getRight())
+          || node2.equals(parent.getLeft()) && node1.equals(parent.getRight());
+    } else {
+      return false;
+    }
+  }
+
   @Override
   public String toString() {
     return showRecursive(root, 0);
@@ -85,7 +98,7 @@ public class RecursiveBinaryTree<Item> {
     if (root == null) {
       return 0;
     } else {
-      return 1 ; // TODO recursive add
+      return 1; // TODO recursive add
     }
   }
 
