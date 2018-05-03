@@ -2,11 +2,17 @@ package jaba.tree.recursive;
 
 import jaba.tree.BinaryTree;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 /** Created by Administrador on 02/07/2017. */
 @Getter
+@NoArgsConstructor
 public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
   private RecursiveBinaryTreeNode<Item> root;
+
+  public RecursiveBinaryTree(Item rootValue) {
+    root = new RecursiveBinaryTreeNode<>(rootValue);
+  }
 
   public boolean isRootNode(RecursiveBinaryTreeNode<Item> node) {
     return root.equals(node);

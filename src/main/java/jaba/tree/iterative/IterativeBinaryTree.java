@@ -8,9 +8,12 @@ import lombok.NoArgsConstructor;
 /** Created by Administrador on 02/07/2017. */
 @Getter
 @NoArgsConstructor
-@AllArgsConstructor
 public class IterativeBinaryTree<Item> implements BinaryTree {
   private IterativeBinaryTreeNode<Item> root;
+
+  public IterativeBinaryTree(Item rootValue) {
+    root = new IterativeBinaryTreeNode<>(rootValue);
+  }
 
   /** path size from root to node. */
   //    int getDepth(IterativeBinaryTreeNode<Item> node){
