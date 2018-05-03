@@ -21,15 +21,17 @@ public class RecursiveBinaryTreeNode<Item>  implements BinaryTreeNode<Item>{
         return this.right;
     }
 
-    boolean isParent() {
+    @Override
+    public boolean isParent() {
       return null != left || null != right;
     }
 
-    boolean isLeaf() {
-      return left == null && right == null;
+   @Override
+  public boolean isLeaf() {
+        return left == null && right == null;
     }
 
-    public void setValue(Item value) {
+public void setValue(Item value) {
         this.value = value;
     }
 
