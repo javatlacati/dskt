@@ -5,8 +5,9 @@ import java.util.Collection;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
 
-public class SingleLinkedList<Type> implements MyList<Type> {
-    private Node<Type> root;
+ public class SingleLinkedList<Type>
+    implements MyList<Type> {
+  private Node<Type> root;
 
     public String getStrings() {
         if (root == null) {
@@ -22,7 +23,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
-    /***/
+    /** */
     public boolean addAtEnd(Type element) {
         Node<Type> newNode = new Node<>(element);
         try {
@@ -41,7 +42,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
-    /***/
+    /** */
     public void addAtRoot(Type element) {
         Node<Type> newNode = new Node<>(element);
         newNode.setNext(root);
@@ -52,7 +53,7 @@ public class SingleLinkedList<Type> implements MyList<Type> {
      * Index is 0 base
      *
      * @param element
-     * @param index   position to insert
+     * @param index position to insert
      */
     public void addAtIndex(Type element, int index) {
         if (index == 0) {
@@ -104,39 +105,41 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         }
     }
 
-    @Override
-    public int size() {
-        int size = 0;
-        Node<Type> currentNode = root;
-        while (currentNode != null) {
-            currentNode = currentNode.getNext();
-            size++;
-        }
-        return size;
+  @Override public int size() {
+    int size = 0;
+    Node<Type> currentNode = root;
+    while (currentNode != null) {
+      currentNode = currentNode.getNext();
+      size++;
     }
+    return size;
+  }
 
-    @Override
-    public boolean isEmpty() {
-        return root == null;
-    }
+  @Override public boolean isEmpty() {
+    return root == null;
+  }
 
-  @Override public boolean contains(Object o) {
-    return null!=o && null !=root && o.getClass().equals(root.getItem().getClass())
+  @Override
+  public boolean contains(Object o) {
+    return null != o
+        && null != root
+        && o.getClass().equals(root.getItem().getClass())
         && containsSameTypeVerified((Type) o);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @NotNull public Iterator<Type> iterator() {
+  /** {@inheritDoc} */
+  @NotNull
+  public Iterator<Type> iterator() {
     return new Iterator<Type>() {
       Node<Type> tmp = root;
 
-      @Override public boolean hasNext() {
+      @Override
+      public boolean hasNext() {
         return null != tmp.getNext();
       }
 
-      @Override public Type next() {
+      @Override
+      public Type next() {
         Type aux = tmp.getItem();
         tmp = tmp.getNext();
         return aux;
@@ -159,7 +162,8 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     return false;
   }
 
-  @Override public Type[] toArray() {
+  @Override
+  public Type[] toArray() {
     int size = size();
     Type[] resultingArray = (Type[]) new Object[size];
     if (size != 0) {
@@ -174,10 +178,9 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     return resultingArray;
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @NotNull public <T> T[] toArray(@NotNull T[] resultingArray) {
+  /** {@inheritDoc} */
+  @NotNull
+  public <T> T[] toArray(@NotNull T[] resultingArray) {
     int size = size();
     if (size != 0) {
       Node<T> currentNode = (Node<T>) root;
@@ -191,18 +194,19 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     return resultingArray;
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override public boolean add(Type o) {
+  /** {@inheritDoc} */
+  @Override
+  public boolean add(Type o) {
     return addAtEnd(o);
   }
 
-  /**
-   * {@inheritDoc}
-   */
-  @Override public boolean remove(Object o) {
-    return null!=o && null !=root && o.getClass().equals(root.getItem().getClass()) && removeChecked((Type) o);
+  /** {@inheritDoc} */
+  @Override
+  public boolean remove(Object o) {
+    return null != o
+        && null != root
+        && o.getClass().equals(root.getItem().getClass())
+        && removeChecked((Type) o);
   }
 
   public boolean removeChecked(Type content) {
@@ -213,9 +217,9 @@ public class SingleLinkedList<Type> implements MyList<Type> {
       anterior = actual;
       actual = actual.getNext();
     }
-    if(anterior.equals(actual)){
-      root=actual.getNext();
-    }else {
+    if (anterior.equals(actual)) {
+      root = actual.getNext();
+    } else {
       anterior.setNext(actual.getNext());
     }
     return true;
@@ -242,8 +246,40 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     return collection.stream().allMatch(this::remove);
   }
 
-  @Override public boolean retainAll(@NotNull Collection<?> c) {
+  @Override
+  public boolean retainAll(@NotNull Collection<?> c) {
     return this.stream().filter(o -> !c.contains(o)).allMatch(this::remove);
+  }
+
+  Node swap(Node first) {
+    Node next = first.getNext();
+    first.setNext(next.getNext());
+    next.setNext(first);
+    return next;
+  }
+
+  public void reverse() {
+    root = reverse(this.root);
+  }
+
+  private Node<Type> reverse(Node<Type> head) {
+    if (head == null) {
+      return null;
+    } else if (head.getNext() == null) {
+      return head;
+    } else {
+      Node<Type> aux = head;
+      head = aux.getNext();
+      aux.setNext(null);
+      while (head.getNext() != null) {
+        Node<Type> aux1 = head.getNext();
+        head.setNext(aux);
+        aux = head;
+        head = aux1;
+      }
+      head.setNext(aux);
+      return head;
+    }
   }
 
   /*
@@ -253,7 +289,8 @@ public class SingleLinkedList<Type> implements MyList<Type> {
   //    return this.stream().filter(o -> !containsSameTypeVerified(o)).allMatch(this::remove);
   //  }
 
-  @Override public void clear() {
+  @Override
+  public void clear() {
     root = null;
   }
 
