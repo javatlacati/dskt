@@ -6,4 +6,6 @@ public interface BinaryTreeNode<Item> {
   boolean isLeaf();
 
   boolean isParentOf(BinaryTreeNode<Item> childCandidate);
+
+  int grade();
 }

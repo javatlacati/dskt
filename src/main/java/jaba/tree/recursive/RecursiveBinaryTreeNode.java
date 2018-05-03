@@ -32,4 +32,16 @@ public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
     return childCandidate instanceof RecursiveBinaryTreeNode
         && (left.equals(childCandidate) || right.equals(childCandidate));
   }
+
+  @Override
+  public int grade() {
+    int grade = 0;
+    if (left != null) {
+      grade++;
+    }
+    if (right != null) {
+      grade++;
+    }
+    return grade;
+  }
 }
