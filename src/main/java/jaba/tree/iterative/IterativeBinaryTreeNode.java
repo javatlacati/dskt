@@ -31,19 +31,20 @@ public class IterativeBinaryTreeNode<Item>  implements BinaryTreeNode<Item> {
     return 0;
   }
 
-    @Override
-    public boolean isParent() {
-      return null != left || null != right;
-    }
+  @Override
+  public boolean isParent() {
+    return null != left || null != right;
+  }
 
-    @Override
-    public boolean isLeaf() {
-      return left == null && right == null;
-    }
+  @Override
+  public boolean isLeaf() {
+    return left == null && right == null;
+  }
 
     @Override
     public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
-      return left.equals(childCandidate) || right.equals(childCandidate);
+      return childCandidate instanceof IterativeBinaryTreeNode
+        && (left.equals(childCandidate) || right.equals(childCandidate));
     }
 
     public Item getValue() {
