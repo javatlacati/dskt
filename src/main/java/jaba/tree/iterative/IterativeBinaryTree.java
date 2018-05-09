@@ -12,14 +12,14 @@ import org.jetbrains.annotations.NotNull;
 @Getter
 @NoArgsConstructor
 public class IterativeBinaryTree<Item> implements BinaryTree {
-  private IterativeBinaryTreeNode<Item> root;
+  private IterativeBinaryTreeNodeNode<Item> root;
 
   public IterativeBinaryTree(Item rootValue) {
-    root = new IterativeBinaryTreeNode<>(rootValue);
+    root = new IterativeBinaryTreeNodeNode<>(rootValue);
   }
 
   /** path size from root to specified node. */
-  int getDepth(IterativeBinaryTreeNode<Item> node) {
+  int getDepth(IterativeBinaryTreeNodeNode<Item> node) {
     // TODO do trough DFS
     return 0;
   }
@@ -28,16 +28,16 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
     return root.getHeight();
   }
 
-  //  boolean isAncestor(IterativeBinaryTreeNode possibleAncestor, IterativeBinaryTreeNode
+  //  boolean isAncestor(IterativeBinaryTreeNodeNode possibleAncestor, IterativeBinaryTreeNodeNode
   // possibleDescendant){
   //      // TODO buscar padre por DFS
-  //      IterativeBinaryTreeNode<IterativeBinaryTree> parent = null;
+  //      IterativeBinaryTreeNodeNode<IterativeBinaryTree> parent = null;
   //
   //  }
 
-  boolean areSiblings(IterativeBinaryTreeNode<Item> node1, IterativeBinaryTreeNode<Item> node2) {
+  boolean areSiblings(IterativeBinaryTreeNodeNode<Item> node1, IterativeBinaryTreeNodeNode<Item> node2) {
     // TODO buscar padre por DFS
-    IterativeBinaryTreeNode<Item> parent = null;
+    IterativeBinaryTreeNodeNode<Item> parent = null;
     if (parent != null) {
       return node1.equals(parent.getLeft()) && node2.equals(parent.getRight())
           || node2.equals(parent.getLeft()) && node1.equals(parent.getRight());
@@ -119,7 +119,7 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
       if (tree1.getRoot() != null) {
         if (tree2.getRoot() != null) {
           this.root =
-              new IterativeBinaryTreeNode<Item>(rootItemValue, tree1.getRoot(), tree2.getRoot());
+              new IterativeBinaryTreeNodeNode<Item>(rootItemValue, tree1.getRoot(), tree2.getRoot());
         }
       }
     // TODO insert all

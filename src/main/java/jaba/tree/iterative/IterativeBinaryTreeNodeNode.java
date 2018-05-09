@@ -1,4 +1,4 @@
-package jaba.tree.recursive;
+package jaba.tree.iterative;
 
 import jaba.tree.AbStractBinaryTreeNode;
 import jaba.tree.BinaryTreeNode;
@@ -13,12 +13,30 @@ import lombok.RequiredArgsConstructor;
 // @Setter
 @AllArgsConstructor
 @RequiredArgsConstructor
-// TODO probar con constructor vacío
 @EqualsAndHashCode
-public class RecursiveBinaryTreeNode<Item> extends AbStractBinaryTreeNode<Item> {
+public class IterativeBinaryTreeNodeNode<Item> extends AbStractBinaryTreeNode<Item> {
   @NonNull private Item value;
-  private RecursiveBinaryTreeNode<Item> left;
-  private RecursiveBinaryTreeNode<Item> right;
+  private IterativeBinaryTreeNodeNode<Item> left;
+  private IterativeBinaryTreeNodeNode<Item> right;
+
+  int getHeight() {
+    // TODO hacer for DFS
+    return 0;
+  }
+
+  IterativeBinaryTree<Item> getSubtree() {
+    return new IterativeBinaryTree<>(this.value);
+  }
+
+  IterativeBinaryTreeNodeNode<Item> duplicate() {
+    // TODO implement me
+    return null;
+  }
+
+  public int countElements() {
+    // TODO implement me
+    return 0;
+  }
 
   @Override
   public boolean isParent() {
@@ -32,7 +50,7 @@ public class RecursiveBinaryTreeNode<Item> extends AbStractBinaryTreeNode<Item> 
 
   //  @Override
   //  public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
-  //    return childCandidate instanceof RecursiveBinaryTreeNode
+  //    return childCandidate instanceof IterativeBinaryTreeNodeNode
   //        && (left.equals(childCandidate) || right.equals(childCandidate));
   //  }
 
@@ -50,15 +68,15 @@ public class RecursiveBinaryTreeNode<Item> extends AbStractBinaryTreeNode<Item> 
 
   @Override
   public void setLeft(BinaryTreeNode<Item> left) {
-    if (left instanceof RecursiveBinaryTreeNode) {
-      this.left = (RecursiveBinaryTreeNode<Item>) left;
+    if (left instanceof IterativeBinaryTreeNodeNode) {
+      this.left = (IterativeBinaryTreeNodeNode<Item>) left;
     }
   }
 
   @Override
   public void setRight(BinaryTreeNode<Item> right) {
-    if (right instanceof RecursiveBinaryTreeNode) {
-      this.right = (RecursiveBinaryTreeNode<Item>) right;
+    if (right instanceof IterativeBinaryTreeNodeNode) {
+      this.right = (IterativeBinaryTreeNodeNode<Item>) right;
     }
   }
 }
