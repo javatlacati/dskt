@@ -8,4 +8,12 @@ public interface BinaryTreeNode<Item> {
   boolean isParentOf(BinaryTreeNode<Item> childCandidate);
 
   int grade();
+
+  BinaryTreeNode<Item> getLeft();
+
+  BinaryTreeNode<Item> getRight();
+
+  void setLeft(BinaryTreeNode<Item> left);
+
+  void setRight(BinaryTreeNode<Item> right);
 }

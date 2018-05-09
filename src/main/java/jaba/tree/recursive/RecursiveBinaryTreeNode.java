@@ -1,5 +1,6 @@
 package jaba.tree.recursive;
 
+import jaba.tree.AbStractBinaryTreeNode;
 import jaba.tree.BinaryTreeNode;
 /** Created by Administrador on 01/07/2017. */
 public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
@@ -40,11 +41,11 @@ public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
     return left == null && right == null;
   }
 
-  @Override
-  public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
-    return childCandidate instanceof RecursiveBinaryTreeNode
-        && (left.equals(childCandidate) || right.equals(childCandidate));
-  }
+  //  @Override
+  //  public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
+  //    return childCandidate instanceof RecursiveBinaryTreeNode
+  //        && (left.equals(childCandidate) || right.equals(childCandidate));
+  //  }
 
   @Override
   public int grade() {
@@ -62,11 +63,17 @@ public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
     this.value = value;
   }
 
-  public void setLeft(RecursiveBinaryTreeNode left) {
-    this.left = left;
+  @Override
+  public void setLeft(BinaryTreeNode<Item> left) {
+    if (left instanceof RecursiveBinaryTreeNode) {
+      this.left = (RecursiveBinaryTreeNode<Item>) left;
+    }
   }
 
-  public void setRight(RecursiveBinaryTreeNode right) {
-    this.right = right;
+  @Override
+  public void setRight(BinaryTreeNode<Item> right) {
+    if (right instanceof RecursiveBinaryTreeNode) {
+      this.right = (RecursiveBinaryTreeNode<Item>) right;
+    }
   }
 }
