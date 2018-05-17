@@ -1,93 +1,91 @@
 package jaba.stack;
 
+import java.util.Stack;
 import lombok.Getter;
 
-public class ArrayBasedStack<Item> {
-    Item[] stackArray;
-    int topPosition;
+public class ArrayBasedStack<Item> extends Stack<Item> {
+  Item[] stackArray;
+  int topPosition;
 
-    @Getter
-    int elementsCapacity;
+  @Getter int elementsCapacity;
 
-    public ArrayBasedStack(int capacity) {
-        elementsCapacity=capacity;
-        stackArray = (Item[]) new Object[capacity];
+  public ArrayBasedStack(int capacity) {
+    elementsCapacity = capacity;
+    stackArray = (Item[]) new Object[capacity];
+  }
+
+  public ArrayBasedStack() {
+    stackArray = (Item[]) new Object[50];
+  }
+
+  /** Adds an element on the top of the stack. */
+  public Item push(Item item) {
+    if (stackArray.length > topPosition) {
+      stackArray[topPosition] = item;
+      topPosition++;
+      return item;
+    } else {
+      throw new IndexOutOfBoundsException("Capacity overflow");
     }
+  }
 
-    public ArrayBasedStack() {
-        stackArray = (Item[]) new Object[50];
+  /** Removes the element of the top of the stack. */
+  public Item pop() {
+    if (topPosition > 0) {
+      --topPosition;
+      return stackArray[topPosition];
+    } else {
+      throw new IndexOutOfBoundsException("Capacity underflow");
     }
+  }
 
-    /**
-     * Adds an element on the top of the stack.
-     */
-    public Item push(Item item) {
-        if (stackArray.length > topPosition) {
-            stackArray[topPosition] = item;
-            topPosition++;
-            return item;
-        } else {
-            throw new IndexOutOfBoundsException("Capacity overflow");
-        }
-    }
+  /** Lets us observe the top element of the stack. */
+  public Item peek() {
+    return stackArray[topPosition];
+  }
 
-    /**
-     * Removes the element of the top of the stack.
-     */
-    public Item pop() {
-        if (topPosition > 0) {
-            --topPosition;
-            return stackArray[topPosition];
-        } else {
-            throw new IndexOutOfBoundsException("Capacity underflow");
-        }
-    }
+  /**
+   * Tells us wherter this stack is empty.
+   *
+   * @return true if the stack is empty false otherwise
+   */
+  public boolean isEmpty() {
+    return topPosition == 0;
+  }
 
-    /**
-     * Lets us observe the top element of the stack.
-     */
-    public Item peek() {
-        return stackArray[topPosition];
-    }
+  public boolean empty() {
+    return isEmpty();
+  }
 
-    /**
-     * Tells us wherter this stack is empty.
-     *
-     * @return true if the stack is empty false otherwise
-     */
-    public boolean isEmpty() {
-        return topPosition == 0;
-    }
+  /** Makes this stack empty. */
+  public void makeEmpty() {
+    topPosition = 0;
+  }
 
-    public boolean empty() {
-        return isEmpty();
+  /** @return position of the element starting from top. */
+  public synchronized int find(Item o) {
+    int result = -1;
+    for (int i = topPosition - 1; i >= 0; i--) {
+      if (stackArray[i] == o) {
+        return i + 1;
+      }
     }
+    return result;
+  }
 
-    /**
-     * Makes this stack empty.
-     */
-    public void makeEmpty() {
-        topPosition = 0;
-    }
+  public String toString() {
+    return "ArrayBasedStack(stackArray="
+        + java.util.Arrays.deepToString(this.stackArray)
+        + ", topPosition="
+        + this.topPosition
+        + ")";
+  }
 
-    /**
-     * @return position of the element starting from top.
-     */
-    public synchronized int find(Item o) {
-        int result = -1;
-        for (int i = topPosition - 1; i >= 0; i--) {
-            if (stackArray[i] == o) {
-                return i + 1;
-            }
-        }
-        return result;
-    }
+  public synchronized int size() {
+    return topPosition;
+  }
 
-    public String toString() {
-        return "ArrayBasedStack(stackArray=" + java.util.Arrays.deepToString(this.stackArray) + ", topPosition=" + this.topPosition + ")";
-    }
-
-    public int getTopPosition() {
-        return this.topPosition;
-    }
+  public int getTopPosition() {
+    return this.topPosition;
+  }
 }
