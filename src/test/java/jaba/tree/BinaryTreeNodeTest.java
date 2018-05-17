@@ -17,29 +17,40 @@ public class BinaryTreeNodeTest {
 
   private final BinaryTreeNode<String> myTreeNodeParent;
   private BinaryTreeNode<String> myTreeNode;
+  private BinaryTreeNode<String> anotherTreeNode;
 
   @Parameterized.Parameters
   public static Collection<Object[]> instancesToTest() {
     return Arrays.asList(
         new Object[] {
-          new RecursiveBinaryTreeNode<String>("a"), new RecursiveBinaryTreeNode<String>("b")
+          new RecursiveBinaryTreeNode<>("a"),
+          new RecursiveBinaryTreeNode<>("b"),
+          new RecursiveBinaryTreeNode<>(
+              "c", new RecursiveBinaryTreeNode<>("d"), new RecursiveBinaryTreeNode<>("e"))
         },
         new Object[] {
-          new IterativeBinaryTreeNodeNode<String>("a"), new IterativeBinaryTreeNodeNode<String>("b")
+          new IterativeBinaryTreeNodeNode<String>("a"),
+          new IterativeBinaryTreeNodeNode<String>("b"),
+          new IterativeBinaryTreeNodeNode<>(
+              "c", new IterativeBinaryTreeNodeNode<>("d"), new IterativeBinaryTreeNodeNode<>("e"))
         });
   }
 
   public BinaryTreeNodeTest(
-      BinaryTreeNode<String> myTreeNode, BinaryTreeNode<String> myTreeNodeParent) {
+      BinaryTreeNode<String> myTreeNodeParent,
+      BinaryTreeNode<String> myTreeNode,
+      BinaryTreeNode<String> anotherTreeNode) {
     this.myTreeNode = myTreeNode;
     this.myTreeNodeParent = myTreeNodeParent;
     myTreeNodeParent.setLeft(myTreeNode);
+    this.anotherTreeNode = anotherTreeNode;
   }
 
   @Test
   public void isParent() {
     assertTrue(myTreeNodeParent.isParent());
     assertFalse(myTreeNode.isParent());
+    assertTrue(anotherTreeNode.isParent());
   }
 
   @Test
