@@ -68,6 +68,16 @@ public class ArrayBasedBag<Item> implements Bag<Item>, Iterable<Item> {
     }
 
     /**
+     * converts the data structure to an array.
+     */
+    @Override
+    public Item[] toArray() {
+        Item[] newArray = (Item[]) new Object[internalArray.length];
+        System.arraycopy(internalArray, 0, newArray, 0, internalArray.length);
+        return newArray;
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
