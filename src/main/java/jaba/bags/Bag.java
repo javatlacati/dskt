@@ -41,4 +41,9 @@ public interface Bag<Item> {
      * Makes this bag empty.
      */
     void disposeItems();
+
+    /**
+     * converts the data structure to an array.
+     */
+    Item[] toArray();
 }
