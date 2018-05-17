@@ -1,6 +1,6 @@
 package jaba.tree;
 
-public interface BinaryTreeNode<Item> {
+public interface BinaryTreeNode<Item extends Comparable<Item>> {
   boolean isParent();
 
   boolean isLeaf();

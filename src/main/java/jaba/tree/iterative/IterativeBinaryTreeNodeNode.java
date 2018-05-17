@@ -14,7 +14,7 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode
-public class IterativeBinaryTreeNodeNode<Item> extends AbStractBinaryTreeNode<Item> {
+public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>> extends AbStractBinaryTreeNode<Item> {
   @NonNull private Item value;
   private IterativeBinaryTreeNodeNode<Item> left;
   private IterativeBinaryTreeNodeNode<Item> right;
