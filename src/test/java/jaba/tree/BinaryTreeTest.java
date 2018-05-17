@@ -10,6 +10,7 @@ import jaba.tree.recursive.RecursiveBinaryTree;
 import jaba.tree.recursive.RecursiveBinaryTreeNode;
 import java.util.Arrays;
 import java.util.Collection;
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,6 +25,11 @@ public class BinaryTreeTest {
     return Arrays.asList(
         new Object[] {new RecursiveBinaryTree<String>()},
         new Object[] {new IterativeBinaryTree<String>()});
+  }
+
+  @After
+  public void tearDown() throws Exception {
+    tree.clear();
   }
 
   public BinaryTreeTest(BinaryTree<String> tree) {

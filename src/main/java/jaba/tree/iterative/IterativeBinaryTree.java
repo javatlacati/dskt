@@ -1,5 +1,6 @@
 package jaba.tree.iterative;
 
+import jaba.stack.AutoGrowingArrayBasedStack;
 import jaba.tree.BinaryTree;
 import jaba.tree.BinaryTreeNode;
 import java.util.Collection;
@@ -7,7 +8,7 @@ import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
 
 /** Created by Administrador on 02/07/2017. */
-public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
+public class IterativeBinaryTree<Item extends Comparable<Item>> implements BinaryTree<Item> {
   private IterativeBinaryTreeNodeNode<Item> root;
 
   public IterativeBinaryTree(Item rootValue) {
@@ -33,7 +34,8 @@ public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
   //
   //  }
 
-  boolean areSiblings(IterativeBinaryTreeNodeNode<Item> node1, IterativeBinaryTreeNodeNode<Item> node2) {
+  boolean areSiblings(
+      IterativeBinaryTreeNodeNode<Item> node1, IterativeBinaryTreeNodeNode<Item> node2) {
     // TODO buscar padre por DFS
     IterativeBinaryTreeNodeNode<Item> parent = null;
     if (parent != null) {
@@ -50,6 +52,7 @@ public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
   * */
 
   /** make empty */
+  @Override
   public void clear() {
     root = null;
   }
@@ -76,8 +79,30 @@ public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
   }
 
   @Override
-  public boolean add(Object o) {
-    return false;
+  public boolean add(Item item) {
+    if (root == null) {
+      root = new IterativeBinaryTreeNodeNode<>(item);
+      return true;
+    } else {
+      var currentNode = root;
+      while (item.compareTo(currentNode.getValue()) < 0) {
+        if (currentNode.getLeft() != null) {
+          currentNode = currentNode.getLeft();
+        } else {
+          currentNode.setLeft(new IterativeBinaryTreeNodeNode<>(item));
+          break;
+        }
+      }
+      while (item.compareTo(currentNode.getValue()) >= 0) {
+        if (currentNode.getRight() != null) {
+          currentNode = currentNode.getRight();
+        } else {
+          currentNode.setRight(new IterativeBinaryTreeNodeNode<>(item));
+          break;
+        }
+      }
+      return true;
+    }
   }
 
   @Override
@@ -117,7 +142,7 @@ public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
       if (tree1.getRoot() != null) {
         if (tree2.getRoot() != null) {
           this.root =
-              new IterativeBinaryTreeNodeNode<Item>(rootItemValue, tree1.getRoot(), tree2.getRoot());
+              new IterativeBinaryTreeNodeNode<>(rootItemValue, tree1.getRoot(), tree2.getRoot());
         }
       }
     // TODO insert all
@@ -134,12 +159,51 @@ public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
 
   @Override
   public boolean isRootNode(BinaryTreeNode node) {
-    return root.equals(node);
+    return root != null && root.equals(node); // TODO send to abstract class
   }
 
   @Override
   public int grade() {
-    return 0;
+    return root == null ? 0 : getMaxSubtreeGrade();
+  }
+
+  private int getMaxSubtreeGrade() {
+    int maxGrade = 0;
+    AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack =
+        new AutoGrowingArrayBasedStack<>();
+
+    var currentNode = root;
+    addLeftNodesToStack(auxiliaryStack, currentNode);
+
+    while (auxiliaryStack.size() > 0) {
+      currentNode = auxiliaryStack.pop();
+      int grade = 0;
+      if (currentNode.getLeft() != null) {
+        grade++;
+        if (currentNode.getRight() != null) {
+          grade++;
+          addLeftNodesToStack(auxiliaryStack, currentNode.getRight());
+          if (grade == 2) {
+            return grade;
+          }
+        }
+
+        if (grade > maxGrade) {
+          maxGrade = grade;
+        }
+      }
+    }
+
+    return maxGrade;
+  }
+
+  private void addLeftNodesToStack(
+      AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack,
+      IterativeBinaryTreeNodeNode<Item> currentNode) {
+    while (currentNode != null) {
+      auxiliaryStack.push(currentNode);
+      currentNode = currentNode.getLeft();
+    }
   }
   public IterativeBinaryTreeNode<Item> getRoot() {
     return root;

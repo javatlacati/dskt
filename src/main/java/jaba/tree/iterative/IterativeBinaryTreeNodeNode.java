@@ -3,7 +3,7 @@ package jaba.tree.iterative;
 import jaba.tree.AbStractBinaryTreeNode;
 import jaba.tree.BinaryTreeNode;
 /** Created by Administrador on 01/07/2017. */
-public class IterativeBinaryTreeNodeNode<Item> implements BinaryTreeNode<Item> {
+public class IterativeBinaryTreeNodeNode<Item> implements BinaryTreeNode<Item> extends Comparable<Item>> extends AbStractBinaryTreeNode<Item> {
   private Item value;
   private IterativeBinaryTreeNodeNode<Item> left;
   private IterativeBinaryTreeNodeNode<Item> right;

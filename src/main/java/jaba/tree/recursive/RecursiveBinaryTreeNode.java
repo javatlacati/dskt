@@ -3,7 +3,8 @@ package jaba.tree.recursive;
 import jaba.tree.AbStractBinaryTreeNode;
 import jaba.tree.BinaryTreeNode;
 /** Created by Administrador on 01/07/2017. */
-public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
+public class RecursiveBinaryTreeNode<Item extends Comparable<Item>>
+    extends AbStractBinaryTreeNode<Item> {
   private Item value;
   private RecursiveBinaryTreeNode<Item> left;
   private RecursiveBinaryTreeNode<Item> right;
@@ -61,6 +62,35 @@ public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
 
   public void setValue(Item value) {
     this.value = value;
+  }
+
+  /** The grade of a tree is equal to the greatest grade of it's nodes. */
+  public int subtreeGrade() {
+    int gradeCurrent = grade();
+    // BT optimization grade can't be greater than 2
+    if (gradeCurrent == 2) {
+      return 2;
+    }
+    return Math.max(
+        getMaxGradeRecursive(left, gradeCurrent), getMaxGradeRecursive(right, gradeCurrent));
+  }
+
+  private int getMaxGradeRecursive(RecursiveBinaryTreeNode<Item> node, int gradeCurrent) {
+    if (node == null) {
+      return 0;
+    } else {
+      final int grade = node.grade();
+      if (grade > gradeCurrent) {
+        // BT optimization grade can't be greater than 2
+        if (grade == 2) {
+          return 2;
+        }
+        return Math.max(
+            getMaxGradeRecursive(node.left, grade), getMaxGradeRecursive(node.right, grade));
+      } else {
+        return gradeCurrent;
+      }
+    }
   }
 
   @Override
