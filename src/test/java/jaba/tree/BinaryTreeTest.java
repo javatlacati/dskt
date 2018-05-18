@@ -64,5 +64,7 @@ public class BinaryTreeTest {
     assertEquals(2, tree.grade());
     tree.add("e");
     assertEquals(2, tree.grade());
+    tree.add("h");
+    assertEquals(2, tree.grade());
   }
 }
