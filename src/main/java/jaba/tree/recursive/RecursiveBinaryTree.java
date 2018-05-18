@@ -108,13 +108,13 @@ public class RecursiveBinaryTree<Item extends Comparable<Item>> implements Binar
     if (root == null) {
       return 0;
     } else {
-      return 1; // TODO recursive add
+      return root.recursiveSize();
     }
   }
 
   @Override
   public boolean isEmpty() {
-    return false;
+    return root == null;
   }
 
   @Override

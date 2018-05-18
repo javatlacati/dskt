@@ -109,6 +109,17 @@ public class RecursiveBinaryTreeNode<Item extends Comparable<Item>>
     }
   }
 
+  protected int recursiveSize() {
+    int count = 1;
+    if (left != null) {
+      count += left.recursiveSize();
+    }
+    if (right != null) {
+      count += right.recursiveSize();
+    }
+    return count;
+  }
+
   @Override public boolean equals(Object o) {
     if (this == o)
       return true;
