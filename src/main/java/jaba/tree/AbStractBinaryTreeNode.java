@@ -1,16 +1,13 @@
 package jaba.tree;
 
-public abstract class AbStractBinaryTreeNode<Item extends Comparable<Item>> implements BinaryTreeNode<Item>{
+public abstract class AbStractBinaryTreeNode<Item extends Comparable<Item>>
+    implements BinaryTreeNode<Item> {
 
   @Override
-  public boolean isParent() {
-    return false;
-  }
+  public abstract boolean isParent();
 
   @Override
-  public boolean isLeaf() {
-    return false;
-  }
+  public abstract boolean isLeaf();
 
   @Override
   public boolean isParentOf(BinaryTreeNode childCandidate) {
