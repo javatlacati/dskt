@@ -1,6 +1,9 @@
 package jaba.stack;
 
-public class ArrayBasedStack<Item> {
+import java.util.Arrays;
+import java.util.Stack;
+
+public class ArrayBasedStack<Item> extends Stack<Item> {
     Item[] stackArray;
     int topPosition;
 
@@ -57,6 +60,11 @@ public class ArrayBasedStack<Item> {
   /** Makes this stack empty. */
   public void makeEmpty() {
     topPosition = 0;
+  }
+
+  @Override
+  public synchronized Item[] toArray() {
+    return Arrays.copyOfRange(stackArray, 0, topPosition);
   }
 
   /** @return position of the element starting from top. */
