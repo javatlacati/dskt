@@ -1,10 +1,9 @@
 # enviroment settings
 environment:
-  matrix:
-  - JAVA_HOME: C:\Program Files\Java\jdk9
-  - MAVEN_OPTS: -Xmx4g
-  - JAVA_OPTS: -Xmx4g
-  - M2: $(USERPROFILE)\.m2
+  JAVA_HOME: C:\Program Files\Java\jdk9
+  MAVEN_OPTS: -Xmx4g
+  JAVA_OPTS: -Xmx4g
+  M2: $(USERPROFILE)\.m2
 
 # install required tools (maven, secure-file, encrypted files)
 install:
@@ -21,9 +20,8 @@ test_script:
   - mvn verify
 
 cache:
-  - C:\maven\
   - C:\Users\appveyor\.m2
   - '%MAVEN_HOME%'
   - '%M2%'
-  # - maven\target\m2
+  - maven\target\m2
   #- C:\jdk10
