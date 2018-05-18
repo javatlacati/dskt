@@ -5,18 +5,15 @@ import jaba.tree.BinaryTreeNode;
 import java.util.Collection;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
-/**
- * Created by Administrador on 02/07/2017.
- */
-public class IterativeBinaryTree<Item> implements BinaryTree {
+/** Created by Administrador on 02/07/2017. */
+public class IterativeBinaryTree<Item> implements BinaryTree<Item> {
   private IterativeBinaryTreeNode<Item> root;
 
   public IterativeBinaryTree(Item rootValue) {
     root = new IterativeBinaryTreeNode<>(rootValue);
   }
 
-  public IterativeBinaryTree() {
-  }
+  public IterativeBinaryTree() {}
 
   /** path size from root to specified node. */
   int getDepth(IterativeBinaryTreeNode<Item> node) {
@@ -137,5 +134,13 @@ public class IterativeBinaryTree<Item> implements BinaryTree {
   @Override
   public boolean isRootNode(BinaryTreeNode node) {
     return root.equals(node);
+  }
+
+  public IterativeBinaryTreeNode<Item> getRoot() {
+    return root;
+  }
+
+  public void setRoot(IterativeBinaryTreeNode<Item> root) {
+    this.root = root;
   }
 }

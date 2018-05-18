@@ -1,16 +1,22 @@
 package jaba.tree.iterative;
 
 import jaba.tree.BinaryTreeNode;
-/**
- * Created by Administrador on 01/07/2017.
- */
-//@AllArgsConstructor
-//@RequiredArgsConstructor
-public class IterativeBinaryTreeNode<Item>  implements BinaryTreeNode<Item> {
-    //@NonNull
-    private Item value;
-    private IterativeBinaryTreeNode<Item> left;
-    private IterativeBinaryTreeNode<Item> right;
+/** Created by Administrador on 01/07/2017. */
+public class IterativeBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
+  private Item value;
+  private IterativeBinaryTreeNode<Item> left;
+  private IterativeBinaryTreeNode<Item> right;
+
+  public IterativeBinaryTreeNode(
+      Item value, IterativeBinaryTreeNode<Item> left, IterativeBinaryTreeNode<Item> right) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
+
+  public IterativeBinaryTreeNode(Item value) {
+    this.value = value;
+  }
 
   int getHeight() {
     // TODO hacer for DFS
@@ -41,9 +47,9 @@ public class IterativeBinaryTreeNode<Item>  implements BinaryTreeNode<Item> {
     return left == null && right == null;
   }
 
-    @Override
-    public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
-      return childCandidate instanceof IterativeBinaryTreeNode
+  @Override
+  public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
+    return childCandidate instanceof IterativeBinaryTreeNode
         && (left.equals(childCandidate) || right.equals(childCandidate));
   }
 

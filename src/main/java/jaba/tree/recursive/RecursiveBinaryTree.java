@@ -5,11 +5,9 @@ import jaba.tree.BinaryTreeNode;
 import java.util.Collection;
 import java.util.Iterator;
 import org.jetbrains.annotations.NotNull;
-/**
- * Created by Administrador on 02/07/2017.
- */
-public class RecursiveBinaryTree<Item> {
-    RecursiveBinaryTreeNode<Item> root;
+/** Created by Administrador on 02/07/2017. */
+public class RecursiveBinaryTree<Item> implements BinaryTree<Item> {
+  RecursiveBinaryTreeNode<Item> root;
 
   public RecursiveBinaryTree(Item rootValue) {
     root = new RecursiveBinaryTreeNode<>(rootValue);
@@ -48,9 +46,7 @@ public class RecursiveBinaryTree<Item> {
     return isParentNode(parentCandidate, childCandidate);
   }
 
-  boolean areSiblings(
-      RecursiveBinaryTreeNode<Item> node1,
-      RecursiveBinaryTreeNode<Item> node2) {
+  boolean areSiblings(RecursiveBinaryTreeNode<Item> node1, RecursiveBinaryTreeNode<Item> node2) {
     // TODO buscar padre por DFS
     RecursiveBinaryTreeNode<Item> parent = null;
     if (parent != null) {
@@ -66,20 +62,21 @@ public class RecursiveBinaryTree<Item> {
     return showRecursive(root, 0);
   }
 
-    public RecursiveBinaryTreeNode<Item> getRoot() {
-        return this.root;
+  public RecursiveBinaryTreeNode<Item> getRoot() {
+    return this.root;
+  }
+
+  private String showRecursive(RecursiveBinaryTreeNode<Item> root, int h) {
+    StringBuilder result = new StringBuilder();
+    if (root == null) {
+      result.append(printNode(null, h));
+    } else {
+      result.append(showRecursive(root.getRight(), h + 1));
+      result.append(printNode(root.getValue(), h));
+      result.append(showRecursive(root.getLeft(), h + 1));
     }
-    private String showRecursive(RecursiveBinaryTreeNode<Item> root, int h) {
-        StringBuilder result=new StringBuilder();
-        if(root == null){
-            result.append(printNode(null,h));
-        }else{
-            result.append(showRecursive(root.getRight(),h+1));
-            result.append(printNode(root.getValue(),h));
-            result.append(showRecursive(root.getLeft(),h+1));
-        }
-        return result.toString();
-    }
+    return result.toString();
+  }
 
   private String printNode(Item value, int h) {
     StringBuilder result = new StringBuilder();
@@ -90,11 +87,13 @@ public class RecursiveBinaryTree<Item> {
     return result.toString();
   }
 
-  @Override public boolean isRootNode(BinaryTreeNode<Item> node) {
+  @Override
+  public boolean isRootNode(BinaryTreeNode<Item> node) {
     return root.equals(node);
   }
 
-  @Override public int size() {
+  @Override
+  public int size() {
     if (root == null) {
       return 0;
     } else {
@@ -102,51 +101,64 @@ public class RecursiveBinaryTree<Item> {
     }
   }
 
-  @Override public boolean isEmpty() {
+  @Override
+  public boolean isEmpty() {
     return false;
   }
 
-  @Override public boolean contains(Object o) {
+  @Override
+  public boolean contains(Object o) {
     return false;
   }
 
-  @NotNull @Override public Iterator<Item> iterator() {
+  @NotNull
+  @Override
+  public Iterator<Item> iterator() {
     return null;
   }
 
-  @NotNull @Override public Object[] toArray() {
+  @NotNull
+  @Override
+  public Object[] toArray() {
     return new Object[0];
   }
 
-  @NotNull @Override public <T> T[] toArray(@NotNull T[] a) {
+  @NotNull
+  @Override
+  public <T> T[] toArray(@NotNull T[] a) {
     return null;
   }
 
-  @Override public boolean add(Item item) {
+  @Override
+  public boolean add(Item item) {
     return false;
   }
 
-  @Override public boolean remove(Object o) {
+  @Override
+  public boolean remove(Object o) {
     return false;
   }
 
-  @Override public boolean containsAll(@NotNull Collection<?> c) {
+  @Override
+  public boolean containsAll(@NotNull Collection<?> c) {
     return false;
   }
 
-  @Override public boolean addAll(@NotNull Collection<? extends Item> c) {
+  @Override
+  public boolean addAll(@NotNull Collection<? extends Item> c) {
     return false;
   }
 
-  @Override public boolean removeAll(@NotNull Collection<?> c) {
+  @Override
+  public boolean removeAll(@NotNull Collection<?> c) {
     return false;
   }
 
-  @Override public boolean retainAll(@NotNull Collection<?> c) {
+  @Override
+  public boolean retainAll(@NotNull Collection<?> c) {
     return false;
   }
 
-  @Override public void clear() {
-
-  }
+  @Override
+  public void clear() {}
 }

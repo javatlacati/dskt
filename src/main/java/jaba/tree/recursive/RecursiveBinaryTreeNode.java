@@ -1,39 +1,48 @@
 package jaba.tree.recursive;
 
 import jaba.tree.BinaryTreeNode;
-/**
- * Created by Administrador on 01/07/2017.
- */
-public class RecursiveBinaryTreeNode<Item>  implements BinaryTreeNode<Item>{
-    private Item value;
-    private RecursiveBinaryTreeNode<Item> left;
-    private RecursiveBinaryTreeNode<Item> right;
+/** Created by Administrador on 01/07/2017. */
+public class RecursiveBinaryTreeNode<Item> implements BinaryTreeNode<Item> {
+  private Item value;
+  private RecursiveBinaryTreeNode<Item> left;
+  private RecursiveBinaryTreeNode<Item> right;
 
-    public Item getValue() {
-        return this.value;
-    }
+  public RecursiveBinaryTreeNode(Item value) {
+    this.value = value;
+  }
 
-    public RecursiveBinaryTreeNode getLeft() {
-        return this.left;
-    }
+  public RecursiveBinaryTreeNode(
+      Item value, RecursiveBinaryTreeNode<Item> left, RecursiveBinaryTreeNode<Item> right) {
+    this.value = value;
+    this.left = left;
+    this.right = right;
+  }
 
-    public RecursiveBinaryTreeNode getRight() {
-        return this.right;
-    }
+  public Item getValue() {
+    return this.value;
+  }
 
-    @Override
-    public boolean isParent() {
-      return null != left || null != right;
-    }
+  public RecursiveBinaryTreeNode getLeft() {
+    return this.left;
+  }
 
-   @Override
-   public boolean isLeaf() {
-        return left == null && right == null;
-    }
+  public RecursiveBinaryTreeNode getRight() {
+    return this.right;
+  }
 
-    @Override
-    public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
-      return childCandidate instanceof RecursiveBinaryTreeNode
+  @Override
+  public boolean isParent() {
+    return null != left || null != right;
+  }
+
+  @Override
+  public boolean isLeaf() {
+    return left == null && right == null;
+  }
+
+  @Override
+  public boolean isParentOf(BinaryTreeNode<Item> childCandidate) {
+    return childCandidate instanceof RecursiveBinaryTreeNode
         && (left.equals(childCandidate) || right.equals(childCandidate));
   }
 
