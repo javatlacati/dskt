@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
+import lombok.experimental.var;
 
 /** Created by Administrador on 01/07/2017. */
 @Getter
@@ -90,5 +91,16 @@ public class RecursiveBinaryTreeNode<Item extends Comparable<Item>>
     if (right instanceof RecursiveBinaryTreeNode) {
       this.right = (RecursiveBinaryTreeNode<Item>) right;
     }
+  }
+
+  protected int recursiveSize() {
+    var count = 1;
+    if (left != null) {
+      count += left.recursiveSize();
+    }
+    if (right != null) {
+      count += right.recursiveSize();
+    }
+    return count;
   }
 }

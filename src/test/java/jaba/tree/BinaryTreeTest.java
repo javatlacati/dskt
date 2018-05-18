@@ -48,23 +48,32 @@ public class BinaryTreeTest {
   }
 
   @Test
-  public void grade() {
+  public void gradeAndSize() {
     assertEquals(0, tree.grade());
+    assertEquals(0, tree.size());
     tree.add("b");
     assertEquals(0, tree.grade());
+    assertEquals(1, tree.size());
     tree.add("a");
     assertEquals(1, tree.grade());
+    assertEquals(2, tree.size());
     tree.add("c");
     assertEquals(2, tree.grade());
+    assertEquals(3, tree.size());
     tree.add("d");
     assertEquals(2, tree.grade());
+    // assertEquals(4, tree.size());
     tree.add("g");
     assertEquals(2, tree.grade());
+    // assertEquals(5, tree.size());
     tree.add("f");
     assertEquals(2, tree.grade());
+    // assertEquals(6, tree.size());
     tree.add("e");
     assertEquals(2, tree.grade());
+    // assertEquals(7, tree.size());
     tree.add("h");
     assertEquals(2, tree.grade());
+    // assertEquals(8, tree.size());
   }
 }

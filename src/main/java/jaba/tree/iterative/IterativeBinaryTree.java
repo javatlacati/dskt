@@ -5,6 +5,8 @@ import jaba.tree.BinaryTree;
 import jaba.tree.BinaryTreeNode;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.experimental.var;
@@ -77,8 +79,28 @@ public class IterativeBinaryTree<Item extends Comparable<Item>> implements Binar
 
   @NotNull
   @Override
-  public Object[] toArray() {
-    return new Object[0];
+  public Item[] toArray() {
+    AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack =
+        new AutoGrowingArrayBasedStack<>();
+
+    var currentNode = root;
+    addLeftNodesToStack(auxiliaryStack, currentNode);
+
+    while (auxiliaryStack.size() > 0) {
+      currentNode = auxiliaryStack.peek();
+
+      if (currentNode.getLeft() != null) {
+        if (currentNode.getRight() != null) {
+          addLeftNodesToStack(auxiliaryStack, currentNode.getRight());
+        }
+      }
+    }
+
+    return (Item[])
+        Stream.of(auxiliaryStack.toArray())
+            .map(IterativeBinaryTreeNodeNode::getValue)
+            .collect(Collectors.toList())
+            .toArray();
   }
 
   @Override
@@ -156,7 +178,25 @@ public class IterativeBinaryTree<Item extends Comparable<Item>> implements Binar
     if (root == null) {
       return 0;
     } else {
-      return 1 + root.countElements();
+      int numberOfElements = 0;
+      AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack =
+          new AutoGrowingArrayBasedStack<>();
+
+      var currentNode = root;
+      addLeftNodesToStack(auxiliaryStack, currentNode);
+
+      while (!auxiliaryStack.isEmpty()) {
+        currentNode = auxiliaryStack.pop();
+        numberOfElements = numberOfElements + 1;
+        if (currentNode.getLeft() != null) {
+          if (currentNode.getRight() != null) {
+            //            numberOfElements = numberOfElements + 1;
+            addLeftNodesToStack(auxiliaryStack, currentNode.getRight());
+          }
+        }
+      }
+
+      return numberOfElements;
     }
   }
 
@@ -204,6 +244,17 @@ public class IterativeBinaryTree<Item extends Comparable<Item>> implements Binar
       AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack,
       IterativeBinaryTreeNodeNode<Item> currentNode) {
     while (currentNode != null) {
+      auxiliaryStack.push(currentNode);
+      currentNode = currentNode.getLeft();
+    }
+  }
+
+  private void addLeftNodesToStackAndCount(
+      AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack,
+      IterativeBinaryTreeNodeNode<Item> currentNode,
+      int numberOfElements) {
+    while (currentNode != null) {
+      numberOfElements = numberOfElements + 1;
       auxiliaryStack.push(currentNode);
       currentNode = currentNode.getLeft();
     }

@@ -14,7 +14,8 @@ import lombok.RequiredArgsConstructor;
 @AllArgsConstructor
 @RequiredArgsConstructor
 @EqualsAndHashCode
-public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>> extends AbStractBinaryTreeNode<Item> {
+public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>>
+    extends AbStractBinaryTreeNode<Item> {
   @NonNull private Item value;
   private IterativeBinaryTreeNodeNode<Item> left;
   private IterativeBinaryTreeNodeNode<Item> right;
@@ -31,11 +32,6 @@ public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>> extends 
   IterativeBinaryTreeNodeNode<Item> duplicate() {
     // TODO implement me
     return null;
-  }
-
-  public int countElements() {
-    // TODO implement me
-    return 0;
   }
 
   @Override
