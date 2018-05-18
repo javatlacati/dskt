@@ -1,7 +1,10 @@
 package jaba.stack;
 
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
 import lombok.extern.java.Log;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -53,7 +56,7 @@ public class ArrayBasedStackTest {
     } catch (Exception e) {
       log.info(e.getMessage());
     }
-    Assert.assertEquals(5, stack.getElementsCapacity());
+    assertEquals(5, stack.getElementsCapacity());
     try {
       log.info(stack.pop().toString());
       log.info(stack.pop().toString());
@@ -73,11 +76,14 @@ public class ArrayBasedStackTest {
   public void toArray() {
     stack.push(4);
     stack.push(8);
-    Assert.assertArrayEquals(new Integer[] {4, 8}, stack.toArray());
+    assertArrayEquals(new Integer[] {4, 8}, stack.toArray());
     stack.push(3);
     stack.push(89);
-    Assert.assertArrayEquals(new Integer[] {4, 8, 3, 89}, stack.toArray());
+    assertArrayEquals(new Integer[] {4, 8, 3, 89}, stack.toArray());
     stack.push(34);
-    Assert.assertArrayEquals(new Integer[] {4, 8, 3, 89, 34}, stack.toArray());
+    assertArrayEquals(new Integer[] {4, 8, 3, 89, 34}, stack.toArray());
+    stack.makeEmpty();
+    assertTrue(stack.isEmpty());
+    assertArrayEquals(new Integer[] {}, stack.toArray());
   }
 }
