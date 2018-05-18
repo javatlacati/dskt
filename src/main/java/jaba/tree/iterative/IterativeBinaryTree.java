@@ -3,16 +3,16 @@ package jaba.tree.iterative;
 /**
  * Created by Administrador on 02/07/2017.
  */
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-
 /** Created by Administrador on 02/07/2017. */
-@Getter
-@NoArgsConstructor
-@AllArgsConstructor
 public class IterativeBinaryTree<Item> {
   private IterativeBinaryTreeNode<Item> root;
+
+  public IterativeBinaryTree(IterativeBinaryTreeNode<Item> root) {
+    this.root = root;
+  }
+
+  public IterativeBinaryTree() {
+  }
 
   /** path size from root to node. */
   //    int getDepth(IterativeBinaryTreeNode<Item> node){
