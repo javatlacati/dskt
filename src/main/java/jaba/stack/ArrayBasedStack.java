@@ -1,5 +1,6 @@
 package jaba.stack;
 
+import java.util.Arrays;
 import java.util.Stack;
 import lombok.Getter;
 
@@ -60,6 +61,11 @@ public class ArrayBasedStack<Item> extends Stack<Item> {
   /** Makes this stack empty. */
   public void makeEmpty() {
     topPosition = 0;
+  }
+
+  @Override
+  public synchronized Item[] toArray() {
+    return Arrays.copyOfRange(stackArray, 0, topPosition);
   }
 
   /** @return position of the element starting from top. */
