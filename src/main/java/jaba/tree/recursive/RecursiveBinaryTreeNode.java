@@ -120,16 +120,16 @@ public class RecursiveBinaryTreeNode<Item extends Comparable<Item>>
     return count;
   }
 
-  @Override public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (!(o instanceof RecursiveBinaryTreeNode))
-      return false;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof RecursiveBinaryTreeNode)) return false;
     RecursiveBinaryTreeNode<?> that = (RecursiveBinaryTreeNode<?>) o;
     return Objects.equals(value, that.value);
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
 
     return Objects.hash(value);
   }

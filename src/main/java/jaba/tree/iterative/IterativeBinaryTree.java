@@ -179,7 +179,7 @@ public class IterativeBinaryTree<Item extends Comparable<Item>> implements Binar
       AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack =
           new AutoGrowingArrayBasedStack<>();
 
-      var currentNode = root;
+      IterativeBinaryTreeNodeNode<Item> currentNode = root;
       addLeftNodesToStack(auxiliaryStack, currentNode);
 
       while (!auxiliaryStack.isEmpty()) {

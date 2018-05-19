@@ -99,17 +99,18 @@ public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>>
     this.value = value;
   }
 
-  @Override public boolean equals(Object o) {
-    if (this == o)
-      return true;
-    if (!(o instanceof IterativeBinaryTreeNodeNode))
-      return false;
+  @Override
+  public boolean equals(Object o) {
+    if (this == o) return true;
+    if (!(o instanceof IterativeBinaryTreeNodeNode)) return false;
     IterativeBinaryTreeNodeNode<?> that = (IterativeBinaryTreeNodeNode<?>) o;
-    return Objects.equals(value, that.value) && Objects.equals(left, that.left) && Objects
-        .equals(right, that.right);
+    return Objects.equals(value, that.value)
+        && Objects.equals(left, that.left)
+        && Objects.equals(right, that.right);
   }
 
-  @Override public int hashCode() {
+  @Override
+  public int hashCode() {
 
     return Objects.hash(value, left, right);
   }
