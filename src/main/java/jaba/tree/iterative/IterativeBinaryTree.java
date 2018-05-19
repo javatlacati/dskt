@@ -84,7 +84,7 @@ public class IterativeBinaryTree<Item extends Comparable<Item>> implements Binar
       root = new IterativeBinaryTreeNodeNode<>(item);
       return true;
     } else {
-      var currentNode = root;
+      IterativeBinaryTreeNodeNode<Item> currentNode = root;
       while (item.compareTo(currentNode.getValue()) < 0) {
         if (currentNode.getLeft() != null) {
           currentNode = currentNode.getLeft();
@@ -172,7 +172,7 @@ public class IterativeBinaryTree<Item extends Comparable<Item>> implements Binar
     AutoGrowingArrayBasedStack<IterativeBinaryTreeNodeNode<Item>> auxiliaryStack =
         new AutoGrowingArrayBasedStack<>();
 
-    var currentNode = root;
+    IterativeBinaryTreeNodeNode<Item> currentNode = root;
     addLeftNodesToStack(auxiliaryStack, currentNode);
 
     while (auxiliaryStack.size() > 0) {
@@ -205,11 +205,12 @@ public class IterativeBinaryTree<Item extends Comparable<Item>> implements Binar
       currentNode = currentNode.getLeft();
     }
   }
-  public IterativeBinaryTreeNode<Item> getRoot() {
+
+  public IterativeBinaryTreeNodeNode<Item> getRoot() {
     return root;
   }
 
-  public void setRoot(IterativeBinaryTreeNode<Item> root) {
+  public void setRoot(IterativeBinaryTreeNodeNode<Item> root) {
     this.root = root;
   }
 }

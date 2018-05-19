@@ -3,7 +3,8 @@ package jaba.tree.iterative;
 import jaba.tree.AbStractBinaryTreeNode;
 import jaba.tree.BinaryTreeNode;
 /** Created by Administrador on 01/07/2017. */
-public class IterativeBinaryTreeNodeNode<Item> implements BinaryTreeNode<Item> extends Comparable<Item>> extends AbStractBinaryTreeNode<Item> {
+public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>>
+    extends AbStractBinaryTreeNode<Item> {
   private Item value;
   private IterativeBinaryTreeNodeNode<Item> left;
   private IterativeBinaryTreeNodeNode<Item> right;
@@ -94,13 +95,5 @@ public class IterativeBinaryTreeNodeNode<Item> implements BinaryTreeNode<Item> e
 
   public void setValue(Item value) {
     this.value = value;
-  }
-
-  public void setLeft(IterativeBinaryTreeNodeNode left) {
-    this.left = left;
-  }
-
-  public void setRight(IterativeBinaryTreeNodeNode right) {
-    this.right = right;
   }
 }
