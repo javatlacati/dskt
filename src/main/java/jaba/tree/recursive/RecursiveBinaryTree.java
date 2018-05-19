@@ -16,6 +16,9 @@ public class RecursiveBinaryTree<Item extends Comparable<Item>> implements Binar
     root = new RecursiveBinaryTreeNode<>(rootValue);
   }
 
+  public RecursiveBinaryTree() {
+  }
+
   public boolean isRootNode(RecursiveBinaryTreeNode<Item> node) {
     return root.equals(node);
   }
