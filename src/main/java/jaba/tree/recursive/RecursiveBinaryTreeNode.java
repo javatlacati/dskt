@@ -2,6 +2,8 @@ package jaba.tree.recursive;
 
 import jaba.tree.AbStractBinaryTreeNode;
 import jaba.tree.BinaryTreeNode;
+import java.util.Objects;
+
 /** Created by Administrador on 01/07/2017. */
 public class RecursiveBinaryTreeNode<Item extends Comparable<Item>>
     extends AbStractBinaryTreeNode<Item> {
@@ -105,5 +107,19 @@ public class RecursiveBinaryTreeNode<Item extends Comparable<Item>>
     if (right instanceof RecursiveBinaryTreeNode) {
       this.right = (RecursiveBinaryTreeNode<Item>) right;
     }
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (!(o instanceof RecursiveBinaryTreeNode))
+      return false;
+    RecursiveBinaryTreeNode<?> that = (RecursiveBinaryTreeNode<?>) o;
+    return Objects.equals(value, that.value);
+  }
+
+  @Override public int hashCode() {
+
+    return Objects.hash(value);
   }
 }

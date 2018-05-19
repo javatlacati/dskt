@@ -2,6 +2,8 @@ package jaba.tree.iterative;
 
 import jaba.tree.AbStractBinaryTreeNode;
 import jaba.tree.BinaryTreeNode;
+import java.util.Objects;
+
 /** Created by Administrador on 01/07/2017. */
 public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>>
     extends AbStractBinaryTreeNode<Item> {
@@ -95,5 +97,20 @@ public class IterativeBinaryTreeNodeNode<Item extends Comparable<Item>>
 
   public void setValue(Item value) {
     this.value = value;
+  }
+
+  @Override public boolean equals(Object o) {
+    if (this == o)
+      return true;
+    if (!(o instanceof IterativeBinaryTreeNodeNode))
+      return false;
+    IterativeBinaryTreeNodeNode<?> that = (IterativeBinaryTreeNodeNode<?>) o;
+    return Objects.equals(value, that.value) && Objects.equals(left, that.left) && Objects
+        .equals(right, that.right);
+  }
+
+  @Override public int hashCode() {
+
+    return Objects.hash(value, left, right);
   }
 }
