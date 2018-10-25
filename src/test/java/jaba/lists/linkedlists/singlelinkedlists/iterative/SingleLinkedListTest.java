@@ -49,4 +49,112 @@ public class SingleLinkedListTest {
         assertThat(instance.getRoot(), notNullValue());
     }
 
+    @Test
+    public void addAtEnd() {
+    }
+
+    @Test
+    public void addAtRoot() {
+    }
+
+    @Test
+    public void addAtIndex() {
+    }
+
+    @Test
+    public void addSingleLinkedListAtRoot() {
+    }
+
+    @Test
+    public void addSingleLinkedListAtEnd() {
+    }
+
+    @Test
+    public void printList() {
+    }
+
+    @Test
+    public void removeLast() {
+    }
+
+    @Test
+    public void size() {
+    }
+
+    @Test
+    public void isEmpty() {
+    }
+
+    @Test
+    public void contains() {
+    }
+
+    @Test
+    public void iterator() {
+    }
+
+    @Test
+    public void containsSameTypeVerified() {
+    }
+
+    @Test
+    public void toArray() {
+    }
+
+    @Test
+    public void toArray1() {
+    }
+
+    @Test
+    public void add() {
+    }
+
+    @Test
+    public void remove() {
+    }
+
+    @Test
+    public void removeChecked() {
+    }
+
+    @Test
+    public void containsAll() {
+    }
+
+    @Test
+    public void addAll() {
+    }
+
+    @Test
+    public void removeAll() {
+    }
+
+    @Test
+    public void retainAll() {
+    }
+
+    @Test
+    public void swap() {
+    }
+
+    @Test
+    public void reverse() {
+        instance.addAtEnd("cruel");
+        instance.addAtEnd("mundo");
+        instance.addAtEnd("Adios");
+        instance.reverse();
+        assertThat(instance.getStrings(), is("Node(item=Adios)Node(item=mundo)Node(item=cruel)"));
+    }
+
+    @Test
+    public void clear() {
+    }
+
+    @Test
+    public void equals() {
+    }
+
+    @Test
+    public void ahashCode() {
+    }
 }
