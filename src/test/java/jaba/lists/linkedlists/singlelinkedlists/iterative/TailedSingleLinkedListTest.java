@@ -6,6 +6,8 @@ import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.*;
 
 public class TailedSingleLinkedListTest {
     private TailedSingleLinkedList<String> instance;
@@ -29,4 +31,16 @@ public class TailedSingleLinkedListTest {
         Assert.assertThat(instance.getStrings(), is("Node(item=Adios)Node(item=mundo)Node(item=cruel)"));
     }
 
+    @Test
+    public void reverse() {
+        instance.add("cruel");
+        instance.add("mundo");
+        instance.add("Adios");
+        assertEquals("cruel", instance.getHead().getItem());
+        assertEquals("Adios", instance.getTail().getItem());
+        instance.reverse();
+        assertThat(instance.getStrings(), is("Node(item=Adios)Node(item=mundo)Node(item=cruel)"));
+        assertEquals("Adios", instance.getHead().getItem());
+        assertEquals("cruel", instance.getTail().getItem());
+    }
 }

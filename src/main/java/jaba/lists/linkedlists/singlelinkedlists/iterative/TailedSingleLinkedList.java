@@ -255,6 +255,28 @@ public class TailedSingleLinkedList<Type> implements MyList<Type>, Iterable<Type
     };
   }
 
+   public void reverse() {
+        if (head == null) {
+            // if if has no head it's empty we have finished
+            return;
+        } else if (head == tail) {
+            // if the head is the tail we have on element and we have finished
+            return;
+        } else {
+            tail=head;
+            Node<Type> aux = head;
+            head = aux.getNext();
+            aux.setNext(null);
+            while (head.getNext() != null) {
+                Node<Type> aux1 = head.getNext();
+                head.setNext(aux);
+                aux = head;
+                head = aux1;
+            }
+            head.setNext(aux);
+        }
+    }
+
     public Node<Type> getHead() {
         return this.head;
     }
