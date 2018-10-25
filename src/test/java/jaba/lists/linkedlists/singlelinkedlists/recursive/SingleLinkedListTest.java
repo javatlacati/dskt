@@ -124,7 +124,15 @@ public class SingleLinkedListTest {
     @Test
     @Ignore
     public void reverse() throws Exception {
+        String strings = instance.getStrings();
+        instance.reverse();
+        assertEquals(strings, instance.getStrings());
+
         instance.addAtEnd("Adios");
+        strings = instance.getStrings();
+        instance.reverse();
+        assertEquals(strings, instance.getStrings());
+
         instance.addAtEnd("mundo");
         instance.addAtEnd("cruel");
         SingleLinkedList<String> instance1 = new SingleLinkedList<>();

@@ -64,8 +64,7 @@ public class Node<Type> {
     if (next == null) {
       return i;
     } else {
-      int i1 = i + 1;
-      return next.size(i1);
+      return next.size(i + 1);
     }
   }
 
@@ -91,22 +90,30 @@ public class Node<Type> {
     return (null == next) ? (Type[]) new Object[i] : next.privateCreateArray(i + 1);
   }
 
-  public void reverse(Node<Type> currentHead, Node<Type> root) {
-    if (root.getNext() == null) {
-      //we are done
-      root.setNext(currentHead);
-    } else {
-      root = root.next;
-      if (currentHead.getNext().equals(root)) {
-        currentHead.setNext(null);
-        Node<Type> aux = root;
-        root = root.getNext();
-        aux.setNext(currentHead);
-        currentHead = aux;
-        reverse(currentHead, root);
-      } else {
-
+  public Node<Type> reverse(Node<Type> previous, Node<Type> currentHead) {
+    if (currentHead.getNext() != null) {
+      Node<Type> aux= currentHead.getNext();
+      if(previous==null){ // we are on the head
+        if (aux.equals(currentHead)) {
+          currentHead.setNext(aux);
+          return currentHead;
+        } else {
+            currentHead.setNext(null);
+            return reverse(currentHead,aux);
+        }
+      }else {
+        if (aux.equals(currentHead)) {
+          currentHead.setNext(aux);
+          aux.setNext(previous);
+            return currentHead;
+        } else {
+          currentHead.setNext(previous);
+          return reverse(currentHead,aux);
+        }
       }
+    }else {
+        currentHead.setNext(previous);
+        return currentHead;
     }
   }
 
