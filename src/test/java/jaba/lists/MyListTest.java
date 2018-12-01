@@ -18,15 +18,15 @@ public class MyListTest {
   @Parameters
   public static Collection<Object[]> instancesToTest() {
     return Arrays.asList(
-        new Object[] {new jaba.lists.linkedlists.singlelinkedlists.iterative.SingleLinkedList()},
-        new Object[] {new jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList()},
+        new Object[] {new jaba.lists.linkedlists.singlelinkedlists.iterative.SingleLinkedList<>()},
+        new Object[] {new jaba.lists.linkedlists.singlelinkedlists.recursive.SingleLinkedList<>()},
         new Object[] {
           new jaba.lists.linkedlists.singlelinkedlists.iterative.TailedSingleLinkedList<>()
         },
         new Object[] {new TailedDoublyLinkedList<>()});
   }
 
-  private MyList myList;
+  private MyList<String> myList;
 
   public MyListTest(MyList myList) {
     this.myList = myList;
