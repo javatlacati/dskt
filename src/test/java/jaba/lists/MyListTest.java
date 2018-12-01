@@ -129,6 +129,15 @@ public class MyListTest {
     assertArrayEquals(new String[] {"mundo", "bye!"}, myList.toArray());
   }
 
+  @Test
+  public void clear() {
+    myList.add("cruel");
+    myList.add("mundo");
+    myList.add("Adios");
+    myList.clear();
+    assertTrue(myList.isEmpty());
+  }
+
   /**
    * This method is related to {@link MyList#contains(Object)} but is a simplification to see if
    * continuation can enhance the performance of the given datastructures.

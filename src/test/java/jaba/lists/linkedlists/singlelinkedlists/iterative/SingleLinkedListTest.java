@@ -1,10 +1,12 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.*;
 import static org.hamcrest.MatcherAssert.assertThat;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Core i7 on 31/05/2017.
@@ -146,9 +148,6 @@ public class SingleLinkedListTest {
         assertThat(instance.getStrings(), is("Node(item=Adios)Node(item=mundo)Node(item=cruel)"));
     }
 
-    @Test
-    public void clear() {
-    }
 
     @Test
     public void equals() {
