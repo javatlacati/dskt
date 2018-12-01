@@ -81,7 +81,7 @@ public class Node<Type> {
     return (null == next) ? internalArray : next.toArray(2, internalArray);
   }
 
-  private Type[] toArray(int i, Type[] internalArray) {
+  public Type[] toArray(int i, Type[] internalArray) {
     internalArray[i - 1] = item;
     return (null == next) ? internalArray : next.toArray(i + 1, internalArray);
   }

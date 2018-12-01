@@ -189,7 +189,14 @@ public class SingleLinkedList<Type> implements MyList<Type> {
     @NotNull
     @Override
     public <T> T[] toArray(@NotNull T[] a) {
-        return null;
+        int index = 0;
+        if (a.length == 0) {
+            return a;
+        } else {
+            Node<T> currentNode = (Node<T>) root;
+            a[index] = currentNode.getItem();
+            return currentNode.toArray(++index, a);
+        }
     }
 
     @Override

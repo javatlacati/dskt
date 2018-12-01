@@ -70,6 +70,17 @@ public class MyListTest {
   }
 
   @Test
+  public void toCreatedArray() throws Exception {
+    assertArrayEquals(new String[0], myList.toArray(new String[0]));
+    myList.add("hola");
+    Object[] arr = new Object[] {"hola"};
+    assertArrayEquals(arr, myList.toArray(new String[1]));
+    myList.add("mundo!");
+    arr = new Object[] {"hola", "mundo!"};
+    assertArrayEquals(arr, myList.toArray(new String[2]));
+  }
+
+  @Test
   public void add() throws Exception {
     assertTrue(myList.add("hola"));
     assertTrue(myList.add("mundo!"));
