@@ -33,6 +33,7 @@ public class Point {
         return Math.sqrt((dx * dx) + (dy * dy));
     }
 
+    /**Returns a string representation of the object. */
     @Override
     public String toString() {
         return "(" + x + ", " + y + ')';

@@ -28,6 +28,7 @@ open class Point {
         return Math.sqrt(dx * dx + dy * dy)
     }
 
+    /**Returns a string representation of the object. */
     override fun toString(): String {
         return "($x, $y)"
     }
