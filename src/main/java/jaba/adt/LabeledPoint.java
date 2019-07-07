@@ -11,6 +11,7 @@ import lombok.Setter;
 public class LabeledPoint extends Point {
     String label;
 
+    /**Returns a string representation of the object. */
     @Override
     public String toString() {
         return label + super.toString();
