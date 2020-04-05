@@ -53,6 +53,10 @@ public class MyListTest {
   public void size() throws Exception {
     assertNotNull(myList.size());
     assertEquals(0, myList.size());
+    assertTrue(myList.add("hola"));
+    assertEquals(1, myList.size());
+    assertTrue(myList.add("mundo"));
+    assertEquals(2, myList.size());
   }
 
   @Test
@@ -71,6 +75,9 @@ public class MyListTest {
     assertArrayEquals(arr, myList.toArray());
     myList.add("mundo!");
     arr = new Object[] {"hola", "mundo!"};
+    assertArrayEquals(arr, myList.toArray());
+    myList.add("cruel");
+    arr = new Object[] {"hola", "mundo!","cruel"};
     assertArrayEquals(arr, myList.toArray());
   }
 
@@ -132,6 +139,19 @@ public class MyListTest {
     String[] arr = new String[] {"mundo", "bye!"};
     assertTrue(myList.retainAll(Arrays.asList(arr)));
     assertArrayEquals(new String[] {"mundo", "bye!"}, myList.toArray());
+  }
+
+  @Test
+  public void get() {
+    assertTrue(myList.add("adios"));
+    assertEquals("adios",myList.get(0));
+    assertTrue(myList.add("mundo"));
+    assertEquals("adios",myList.get(0));
+    assertEquals("mundo",myList.get(1));
+    assertTrue(myList.add("cruel"));
+    assertEquals("adios",myList.get(0));
+    assertEquals("mundo",myList.get(1));
+    assertEquals("cruel",myList.get(2));
   }
 
   /**

@@ -1,9 +1,10 @@
 package jaba.lists.linkedlists.doublylinkedlists.iterative;
 
 import jaba.lists.MyList;
+import org.jetbrains.annotations.NotNull;
+
 import java.util.Collection;
 import java.util.Iterator;
-import org.jetbrains.annotations.NotNull;
 
 /**
  * @author Core i7
@@ -60,6 +61,23 @@ public class TailedDoublyLinkedList<Type> implements MyList<Type> {
   @Override public void clear() {
     head = null;
     tail = null;
+  }
+
+  @Override
+  public Type get(int index) {
+    if (index == 0) {
+      return head.getItem();
+    }
+    Node<Type> tmp = head;
+    int currentIdx = 0;
+    while (null != tmp) {
+      tmp = tmp.getNext();
+      currentIdx++;
+      if (currentIdx == index) {
+        return tmp.getItem();
+      }
+    }
+    return null;
   }
 
   /**

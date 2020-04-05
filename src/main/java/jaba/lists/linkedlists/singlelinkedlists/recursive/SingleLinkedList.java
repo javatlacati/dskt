@@ -202,6 +202,15 @@ public class SingleLinkedList<Type> implements MyList<Type> {
         root = null;
     }
 
+    @Override
+    public Type get(int index) {
+//        if (index == 0) {
+            return root.get(index);
+//        } else {
+//            return root.get(index-1);
+//        }
+    }
+
     public Node<Type> getRoot() {
         return this.root;
     }

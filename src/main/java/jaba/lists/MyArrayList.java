@@ -152,4 +152,9 @@ public class MyArrayList<Type> implements MyList<Type> {
     public void clear() {
         size = 0;
     }
+
+    @Override
+    public Type get(int index){
+        return internalArray[index];
+    }
 }

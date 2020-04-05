@@ -50,4 +50,6 @@ public interface MyList<Type> extends Collection<Type> {
    * Deletes all of the elements in the list.
    */
   void clear();
+
+  Type get(int index);
 }

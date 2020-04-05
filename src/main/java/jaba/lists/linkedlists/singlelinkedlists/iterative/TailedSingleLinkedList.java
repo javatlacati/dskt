@@ -28,6 +28,20 @@ import java.util.NoSuchElementException;
       size++;
     }
     return size;
+//      if(head == null){
+//        return 0;
+//      }
+//      Node<Type> currentNode = head;
+//      int size = 1;
+//      if(currentNode == tail){
+//        return size;
+//      }
+//      while (currentNode != tail) {
+//        currentNode = currentNode.getNext();
+//        size++;
+//      }
+//      return size;
+
   }
 
   @Override public boolean isEmpty() {
@@ -129,6 +143,24 @@ import java.util.NoSuchElementException;
   @Override public void clear() {
     head = null;
     tail = null;
+  }
+
+  @Override
+  public Type get(int index) {
+    if(index == 0){
+      return head.getItem();
+    }
+    Node<Type> currentNode = head;
+    int currentIdx = 0;
+    while (currentNode != tail) {
+      currentNode = currentNode.getNext();
+      currentIdx++;
+      if(currentIdx == index){
+        return currentNode.getItem();
+      }
+    }
+    //TODO verify what hapens if the one we want is the last
+    return null;
   }
 
   private boolean addAtEnd(Node<Type> aNode) {

@@ -175,4 +175,12 @@ public class Node<Type> {
       return remove(content, actual, actual.getNext());
     }
   }
+
+  public Type get(int index) {
+    if (index == 0) {
+      return getItem();
+    }else{
+      return next.get(index-1);
+    }
+  }
 }

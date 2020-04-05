@@ -1,12 +1,13 @@
 package jaba.lists.linkedlists.singlelinkedlists.iterative;
 
 import jaba.lists.MyList;
-import java.util.Collection;
-import java.util.Iterator;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
+
+import java.util.Collection;
+import java.util.Iterator;
 
 @Setter
 @Getter
@@ -293,5 +294,22 @@ public class SingleLinkedList<Type> implements MyList<Type> {
   @Override
   public void clear() {
     root = null;
+  }
+
+  @Override
+  public Type get(int index) {
+    int currentIdx = 0;
+    if (index == 0) {
+      return root.getItem();
+    }
+    Node<Type> currentNode = root;
+    while (currentNode != null) {
+      currentNode = currentNode.getNext();
+      currentIdx++;
+      if (currentIdx == index) {
+        return currentNode.getItem();
+      }
+    }
+    return null;
   }
 }
