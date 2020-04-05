@@ -23,7 +23,12 @@ public class MyListTest {
         new Object[] {
           new jaba.lists.linkedlists.singlelinkedlists.iterative.TailedSingleLinkedList<>()
         },
-        new Object[] {new TailedDoublyLinkedList<>()});
+        new Object[] {
+                new jaba.lists.MyArrayList<>()
+        },
+        new Object[] {new TailedDoublyLinkedList<>()}
+        );
+
   }
 
   private MyList myList;
