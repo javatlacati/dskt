@@ -210,19 +210,58 @@ public class CircularList<Type> implements MyList<Type> {
     }
 
     private boolean removeChecked(Type content) {
-        Node<Type> anterior = root;
-        Node<Type> actual = root;
+        //only one node
+        if(root.getNext() == root){
+            if(content.equals(root.getItem()) ){
+                root=null;
+                return true;
+            }else {
+                return false;
+            }
+        }
 
-//        while (actual.getItem() != content && actual.getNext() != root) {
-//            anterior = actual;
-//            actual = actual.getNext();
-//        }
-//        if (anterior.equals(actual)) {
-//            root = actual.getNext();
-//        } else {
-//            anterior.setNext(actual.getNext());
-//        }
-        return true;
+        //checking root first
+        if (content.equals(root.getItem())) {
+            //root = root.getNext();
+            Node<Type> previousOfRoot = root.getNext();
+            while (previousOfRoot.getNext() != root) {
+                previousOfRoot = previousOfRoot.getNext();
+            }
+
+            previousOfRoot.setNext(root.getNext());
+            root = previousOfRoot.getNext();
+            return true;
+        }
+
+        Node<Type> anterior = root;
+        Node<Type> actual = root.getNext();
+
+        //only two elements
+        if(actual.getNext() == root){
+            if(content.equals(root.getItem()) ) {
+                actual.setNext(root.getNext());
+                root = actual.getNext();
+                return true;
+            }else{
+                if(content.equals(actual.getItem()) ){
+                    root=actual;
+                    root.setNext(root);
+                    return true;
+                }
+            }
+
+        }
+
+        while (actual.getNext() != root) {
+            if(content.equals(root.getItem()) ){
+                anterior.setNext(actual.getNext());
+                return true;
+            }
+            anterior = actual;
+            actual = actual.getNext();
+        }
+
+        return false;
     }
 
     @Override
