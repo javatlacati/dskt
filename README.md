@@ -14,6 +14,7 @@ Java 9 branch status on Windows:  [![Java 9 branch on windows](https://ci.appvey
 
 Tested code: [![Coverage Status](https://coveralls.io/repos/github/javatlacati/datastrructureskotlin/badge.svg?branch=master)](https://coveralls.io/github/javatlacati/datastrructureskotlin?branch=master)
 
+Vulnerabilities: [![DepShield Badge](https://depshield.sonatype.org/badges/javatlacati/dskt/depshield.svg)](https://depshield.github.io)
 
 Sample project that showcases how to implement and use some basic datastructures.
 
